@@ -1,0 +1,401 @@
+/*imports*/
+
+@import "fonts"
+@import "normalize"
+
+/*Colores*/
+
+naranja = #e0611a
+azul = #33b2c1
+verde = #61b174
+rojo = #b16161
+azul-fuerte = #34495e
+azul-c = #3a383d
+verde-c = #436651
+rojo-c = #664343
+gris = #e5e5e5
+azul-hover = #2c3e50
+
+/*Funciones*/
+
+border-radius(n)
+	-moz-border-radius n
+	-ms-border-radius n
+	-o-border-radius n
+	border-radius n
+
+/*Scrollbar y seleccion*/
+
+::selection
+	background #d8ecea
+
+::-moz-selection
+	background #d8ecea
+
+::-webkit-scrollbar
+	width 8px
+	background #ecf0f1
+	-webkit-border-radius 15px
+	border-radius 15px
+
+::-webkit-scrollbar-track
+	-webkit-border-radius 15px
+	border-radius 15px
+	background #ecf0f1
+
+::-webkit-scrollbar-thumb
+	-webkit-border-radius 15px
+	border-radius 15px
+	background rgba(52, 152, 219,0.7)
+	&:hover
+		background rgba(52, 152, 219,1)
+
+::-webkit-scrollbar-thumb:window-inactive
+	background rgba(189,195,199,0.3)
+
+/*CSS*/
+
+html
+	font-family 'Montserrat', sans-serif
+	-webkit-font-smoothing antialiased
+	-moz-osx-font-smoothing grayscale
+	font-smoothing antialiased
+	max-width 100%
+
+body
+	font-size 16px
+	overflow-x hidden
+
+a
+	text-decoration none
+	color azul
+	font-weight bold
+	transition 0.3s
+	&:hover
+		color azul-fuerte
+	&.inicio
+		color azul
+		&:hover
+			color naranja
+
+figure
+	margin 0
+	padding 0
+
+header
+	background-color azul-fuerte
+	margin 0
+	min-height 4rem
+	padding 0
+	text-align center
+	position relative
+
+h1
+	strong
+		font-size bold
+
+section
+	&.home
+		display block
+		text-align center
+		background azul-fuerte url(../img/bg.png) center left
+		background-size auto 100%
+
+form
+	font-family 'Lato', sans-serif
+
+.titulo
+		color white
+		font-size 2.5rem
+		font-weight normal
+		display inline-block
+		margin .5rem 0 0 0
+		padding 0
+
+.max
+	max-width 100rem
+	display inline-block
+	margin 0
+	padding 0
+	text-align left
+	position relative
+	overflow hidden
+
+.logo
+	width 2.5rem
+	height auto
+	display inline-block
+
+.max-container
+	@extend .max
+	text-align center
+	padding 4rem 0
+
+.login-form
+	display inline-block
+	margin 0
+	padding 0
+
+.input-login
+	display inline-block
+	border none
+	border-radius(5px)
+	height 1.6rem
+	padding .15rem .3rem
+	font-weight normal
+	color gray
+
+.boton
+	display inline-block
+	border none
+	border-radius(5px)
+	color white
+	background-color azul
+	padding .35rem 1.2rem
+	transition 0.3s
+	&:hover
+		background-color azul-hover
+
+.boton-login
+	@extend .boton
+	display none
+
+.texto-inicio
+	max-width 33rem
+	text-align left
+	display inline-block
+	margin-top 6rem
+	font-weight normal
+	color white
+	margin-right 2rem
+
+.form-registro
+	display inline-block
+	text-align left
+	vertical-align top
+	margin-left 2rem
+
+.back-error
+	color naranja
+	display inline-block
+	font-size .9rem
+
+.block
+	display block
+
+.input-registro
+	display block
+	border-radius(5px)
+	padding .35rem 1.2rem
+	border none
+	margin .5rem 0
+	height 1.7rem
+	width 16rem
+	color gray
+
+.combo-registro
+	@extend .input-registro
+	display inline-block
+	width auto
+	padding 0
+	height 2rem
+	margin-bottom 0
+	&:nth-child(1)
+		width 3.4rem
+	&:nth-child(2)
+		width 3.4rem
+	&:nth-child(3)
+		width 5.6rem
+
+.texto-form
+	color white
+
+.fecha-form
+	margin 0
+
+.boton-registro
+	@extend .boton
+	display block
+	width 18.6rem
+	padding .7rem 0
+
+.terms-container
+	color white
+	position relative
+	margin .7rem 0
+	display inline-block
+
+.terms-container2
+	@extend .terms-container
+	margin-bottom 0
+
+label
+	cursor pointer
+	padding-left 35px
+	span
+		display block
+		position absolute
+		left 0
+		transition-duration 0.3s
+	.box
+		top -1px
+		border 2px solid white
+		height 15px
+		width 15px
+		z-index 666
+		transition-delay 0.2s
+	.check
+		top -7px
+		left 6px
+		width 9px
+		height 21px
+		border 2px solid verde
+		border-top none
+		border-left none
+		opacity 0
+		z-index 666
+		transform rotate(180deg)
+		transition-delay 0.3s
+	.box2
+		top -1px
+		border 2px solid white
+		height 15px
+		width 15px
+		z-index 666
+		transition-delay 0.2s
+	.check2
+		top -7px
+		left 6px
+		width 9px
+		height 21px
+		border 2px solid verde
+		border-top none
+		border-left none
+		opacity 0
+		z-index 666
+		transform rotate(180deg)
+		transition-delay 0.3s
+
+#check
+	display none
+	&:checked ~ label
+		.box
+			opacity 0
+			transform scale(0) rotate(-180deg)
+		.check
+			opacity 1
+			transform scale(1) rotate(45deg)
+
+#check2
+	display none
+	&:checked ~ label
+		.box2
+			opacity 0
+			transform scale(0) rotate(-180deg)
+		.check2
+			opacity 1
+			transform scale(1) rotate(45deg)
+
+.reg-empresa
+	margin .3rem 0
+	color white
+
+.res-br
+	display none
+
+.active
+	background-color azul-hover
+
+@media screen and (min-width 56.66rem)
+
+	.login-form
+		margin 1rem 0 0 0
+		float right
+		display inline-block
+
+	.min
+		min-width 60rem
+
+@media screen and (max-width 62rem)
+
+	.min
+		min-width 56rem
+
+@media screen and (max-width 56.6rem)
+
+	.logo
+		margin 0 0 0 3rem
+
+	.login-form
+		display block
+		text-align center
+		background-color azul-hover
+		padding 1rem 0
+
+	.form-registro
+		margin 0
+
+	.texto-inicio
+		margin 1rem 0
+
+	.max-container
+		padding 1rem 0
+
+	.input-login
+		margin 0 .3rem
+
+	.min
+		min-width 100%
+
+	.boton-login
+		display inline-block
+		position absolute
+		right 0
+		top 0
+		z-index 2
+		margin .7rem 0
+		margin-right 3rem
+
+	.login-form
+		display none
+
+@media screen and (max-width 33rem)
+
+	.max
+		overflow hidden
+
+	.titulo
+		font-size 1.5rem
+		vertical-align top
+		margin-top .8rem
+
+	.logo
+		margin .5rem 0 0 1rem
+
+	.texto-inicio
+		max-width 22rem
+		font-size 1.3rem
+		padding 0
+		margin 0
+
+	.res-br
+		display block
+
+	.input-login
+		margin .5rem 0
+		width 15rem
+		height 1.7rem
+		padding .35rem 1.2rem
+
+	.boton
+		margin .5rem 0 00
+		width 17rem
+		padding .6rem 1.2rem
+
+@media screen and (max-width 23rem)
+
+	.texto-inicio
+		max-width 18rem
+
+	.boton-login
+		margin-right 1rem

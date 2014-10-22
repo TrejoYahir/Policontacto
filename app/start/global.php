@@ -6,7 +6,7 @@
 |--------------------------------------------------------------------------
 |
 | In addition to using Composer, you may use the Laravel class loader to
-| load your controllers and models. This is useful for keeping all of
+| load your controllers and Entidades. This is useful for keeping all of
 | your classes in the "global" namespace without Composer updating.
 |
 */
@@ -15,7 +15,7 @@ ClassLoader::addDirectories(array(
 
 	app_path().'/commands',
 	app_path().'/controllers',
-	app_path().'/models',
+	app_path().'/Entidades',
 	app_path().'/database/seeds',
 
 ));
