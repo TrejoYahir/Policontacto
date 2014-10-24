@@ -1,30 +1,31 @@
 <?php
 
 use Policontacto\Entidades\User;
+use Policontacto\Managers\RegistroManager;
+use Policontacto\Repositorios\EstudianteRepo;
 
 class UsersController extends BaseController {
+
+    protected  $estudianteRepo;
+
+    public function __construct(EstudianteRepo $estudianteRepo)
+    {
+        $this->estudianteRepo = $estudianteRepo;
+    }
 
     public function registro()
     {
 
-        $data = Input::only(['email', 'password', 'password_confirmation']);
-        $reglas = [
-            'email'                               => 'required|email|unique:tblusuario,email',
-            'password'                       => 'required|confirmed',
-            'password_confirmation' => 'required'
-        ];
+        $user = $this->estudianteRepo->nuevoEstudiante();
+        $manager = new RegistroManager($user, Input::all());
 
-        $validacion = \Validator::make($data, $reglas);
+        if($manager->save()) {
 
-        if($validacion->passes()) {
-
-            $user = new User($data);
-            $user->save();
             return Redirect::route('home');
 
         }
 
-         return Redirect::back()->withInput()->withErrors($validacion->messages());
+         return Redirect::back()->withInput()->withErrors($manager->getErrors());
 
     }
 

@@ -9,12 +9,9 @@
 			</h2>
 			{{ Form::open(['route' => 'registro', 'method' => 'POST', 'class' => 'form-registro', 'novalidate']) }}
 
-                 {{ Form::text('nombre', null, ['class' => 'input-registro', 'placeholder' => 'Nombre', 'required']) }}
-                 {{ $errors->first('nombre', '<span class="back-error">:message</span>') }}
-                 {{ Form::text('apellidos', null, ['class' => 'input-registro', 'placeholder' => 'Apellidos', 'required']) }}
-                 {{ $errors->first('apellidos', '<span class="back-error">:message</span>') }}
-                 {{ Form::email('email', null, ['class' => 'input-registro', 'placeholder' => 'Email', 'required']) }}
-                 {{ $errors->first('email', '<span class="back-error">:message</span>') }}
+				 {{ Campo::text('nombre', null, ['class' => 'input-registro', 'required']) }}
+                 {{ Campo::text('apellidos', null, ['class' => 'input-registro', 'required']) }}
+                 {{ Campo::email('email', null, ['class' => 'input-registro', 'required']) }}
                   <div class="fecha-form">
                       <span class="texto-form">Fecha de nacimiento</span>
                       <div class="form-inline">
@@ -23,19 +20,17 @@
                           {{ Form::selectYear('fecha_nacimiento[year]', date('Y') - 14, date('Y') - 80, null, ['class' => 'combo-registro']) }}
                       </div>
                   </div>
-                 {{ Form::password('password',  ['class' => 'input-registro', 'placeholder' => 'Contraseña', 'required']) }}
-                 {{ $errors->first('password', '<span class="back-error">:message</span>') }}
-                 {{ Form::password('password_confirmation', ['class' => 'input-registro', 'placeholder' => 'Confirmar contraseña', 'required']) }}
-                 {{ $errors->first('password_confirmation', '<span class="back-error block">:message</span>') }}
-                  <div class="terms-container">
-                  		{{ Form::checkbox('check', null, false, ['id' => 'check', 'required']) }}
-                  		<label for="check">
-                  			<span class="check"></span>
-                  			<span class="box"></span>
-                  		    Acepto los <a href="" class="inicio">terminos y condiciones</a>
-                  		</label>
-                  </div>
-                  {{ $errors->first('check', '<span class="back-error">:message</span>') }}
+                 {{Campo::password('password',  ['class' => 'input-registro', 'required']) }}
+                 {{Campo::password('password_confirmation', ['class' => 'input-registro', 'required']) }}
+                 <div class="terms-container">
+                         {{ Form::checkbox('check', null, false, ['id' => 'check', 'required']) }}
+                         <label for="check">
+                                	<span class="check"></span>
+                                	<span class="box"></span>
+                                  Acepto los <a href="" class="inicio">terminos y condiciones</a>
+                         </label>
+                 </div>
+				{{ $errors->first('check', '<span class="back-error">:message</span>') }}
                 <button type="submit" class="boton-registro">Registrarse</button>
 				<p class="reg-empresa">o registrate como empresa <a href="" class="inicio">aquí</a></p>
 

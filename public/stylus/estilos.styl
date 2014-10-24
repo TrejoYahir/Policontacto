@@ -141,9 +141,11 @@ form
 	border none
 	border-radius(5px)
 	height 1.6rem
-	padding .15rem .3rem
+	padding .3rem .7rem
 	font-weight normal
 	color gray
+	&:focus
+		outline none
 
 .boton
 	display inline-block
@@ -151,7 +153,7 @@ form
 	border-radius(5px)
 	color white
 	background-color azul
-	padding .35rem 1.2rem
+	padding .5rem 1.2rem
 	transition 0.3s
 	&:hover
 		background-color azul-hover
@@ -159,6 +161,7 @@ form
 .boton-login
 	@extend .boton
 	display none
+	padding .35rem 1.2rem
 
 .texto-inicio
 	max-width 33rem
@@ -177,7 +180,7 @@ form
 
 .back-error
 	color naranja
-	display inline-block
+	display block
 	font-size .9rem
 
 .block
@@ -192,6 +195,8 @@ form
 	height 1.7rem
 	width 16rem
 	color gray
+	&:focus
+		outline none
 
 .combo-registro
 	@extend .input-registro
