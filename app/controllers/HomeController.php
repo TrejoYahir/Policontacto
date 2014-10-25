@@ -1,10 +1,11 @@
 <?php
 
-class HomeController extends BaseController {
+class HomeController extends BaseController
+{
 
-   	public function index()
-	{
-		return View::make('home');
-	}
+    public function index()
+    {
+        return View::make('home');
+    }
 
 }

@@ -1,10 +1,12 @@
 <?php
 
 namespace Policontacto\Repositorios;
+
 use Policontacto\Entidades\Estudiante;
 use Policontacto\Entidades\User;
 
-class EstudianteRepo extends BaseRepo {
+class EstudianteRepo extends BaseRepo
+{
 
     public function getModel()
     {

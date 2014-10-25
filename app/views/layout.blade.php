@@ -16,21 +16,40 @@
     		<div class="max min">
     			<img src="{{ asset('img/logo-small.png') }}" alt="" class="logo">
     			<h1 class="titulo">Poli<strong>contacto</strong></h1>
-    			<form action="" class="login-form" method="post">
-    				<input type="text" name="correo" id="correo" placeholder="Correo" class="input-login" required><br class="res-br">
-    				<input type="password" name="password" id="password" placeholder="Contraseña" class="input-login" required><br class="res-br">
-    				<button type="submit" class="boton">Entrar</button><br>
-    				<div class="terms-container2">
-    					<input type="checkbox" id="check2">
-    					<label for="check2">
-    						<span class="check2"></span>
-    						<span class="box2"></span>
-    						Mantener sesión iniciada
-    					</label>
-    				</div>
-    			</form>
-    		</div>
-    		<button class="boton-login">login</button>
+    			@if(Auth::check())
+
+    			    <div class="info">
+    			        <span>{{ Auth::user()->email }}</span>
+    			        <div class="flecha-abajo"></div>
+    			         <span class="menu">
+                             <a href="" class="item-link">Editar Perfil</a>
+                             <a href="{{ route('logout') }}" class="item-link">Salir</a>
+                         </span>
+    			    </div>
+
+				@else
+
+    			    {{ Form::open(['route' => 'login', 'method' => 'POST', 'class' => 'login-form', 'novalidate']) }}
+
+    			       {{ Form::email('email', null, ['class' => 'input-login', 'placeholder'=>'Email', 'required']) }}<br class="res-br">
+    			        {{ Form::password('password', ['class' => 'input-login', 'placeholder'=>'Contraseña', 'required']) }}<br class="res-br">
+    			         <button type="submit" class="boton">Entrar</button><br>
+    			         <div class="terms-container2">
+                         {{ Form::checkbox('check2', null, false, ['id' => 'check2', 'required']) }}
+                         <label for="check2">
+                             <span class="check2"></span>
+                             <span class="box2"></span>
+                             Mantener sesión iniciada
+                         </label>
+                         </div>
+                         @if(Session::has('login_error'))
+                            <span class="back-login-error">Usuario o contraseña incorrectos</span>
+                         @endif
+    			    {{ Form::close() }}
+    		        </div>
+    		        <button class="boton-login">login</button>
+
+    	        @endif
     	</header>
 
 @yield('content')

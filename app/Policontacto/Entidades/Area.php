@@ -1,8 +1,9 @@
 <?php namespace Policontacto\Entidades;
 
-class Area extends \Eloquent {
+class Area extends \Eloquent
+{
     protected $table = 'ctgarea';
-	protected $fillable = [];
+    protected $fillable = [];
 
     public function estudiantes()
     {

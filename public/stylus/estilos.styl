@@ -56,7 +56,7 @@ border-radius(n)
 /*CSS*/
 
 html
-	font-family 'Montserrat', sans-serif
+	font-family 'Lato', sans-serif
 	-webkit-font-smoothing antialiased
 	-moz-osx-font-smoothing grayscale
 	font-smoothing antialiased
@@ -91,8 +91,12 @@ header
 	position relative
 
 h1
+	font-family 'Montserrat', sans-serif
 	strong
 		font-size bold
+
+h2
+	font-family 'Montserrat', sans-serif
 
 section
 	&.home
@@ -100,9 +104,6 @@ section
 		text-align center
 		background azul-fuerte url(../img/bg.png) center left
 		background-size auto 100%
-
-form
-	font-family 'Lato', sans-serif
 
 .titulo
 		color white
@@ -119,7 +120,6 @@ form
 	padding 0
 	text-align left
 	position relative
-	overflow hidden
 
 .logo
 	width 2.5rem
@@ -135,6 +135,51 @@ form
 	display inline-block
 	margin 0
 	padding 0
+
+.info
+	display inline-block
+	color white
+	margin 0
+	padding 0
+	float right
+	position relative
+	margin-top 1rem
+
+.flecha-abajo
+	width 0;
+	height 0;
+	border-left 5px solid transparent;
+	border-right 5px solid transparent;
+	border-top 5px solid white;
+	display inline-block
+	top -.15rem
+	position relative
+	cursor pointer
+	margin-left .2rem
+
+.menu
+	top 1.7rem
+	z-index 666
+	height 3.5rem
+	padding .5rem 0
+	position absolute
+	border-radius(5px)
+	background-color white
+	display none
+	right 0
+
+.rotate
+	transform rotate(180deg)
+
+.item-link
+	padding .3rem .6rem
+	display block
+	color azul-hover
+	background-color white
+	transition 0.1s
+	&:hover
+		color white
+		background-color azul
 
 .input-login
 	display inline-block
@@ -178,10 +223,21 @@ form
 	vertical-align top
 	margin-left 2rem
 
+.form-inline
+	display inline-block
+
 .back-error
 	color naranja
 	display block
 	font-size .9rem
+
+.back-login-error
+	font-size .9rem
+	display inline-block
+	border-radius(6px)
+	color white
+	background-color naranja
+	padding .3rem
 
 .block
 	display block
@@ -205,17 +261,26 @@ form
 	padding 0
 	height 2rem
 	margin-bottom 0
-	&:nth-child(1)
-		width 3.4rem
-	&:nth-child(2)
-		width 3.4rem
 	&:nth-child(3)
-		width 5.6rem
+		width 3.5rem
+	&:nth-child(4)
+		width 3.5rem
+	&:nth-child(5)
+		width 4.4rem
+
+.combo-genero
+	@extend .input-registro
+	display inline-block
+	width auto
+	padding 0
+	height 2rem
+	margin-bottom 0
+	width 6.1rem
 
 .texto-form
 	color white
 
-.fecha-form
+.select-form
 	margin 0
 
 .boton-registro

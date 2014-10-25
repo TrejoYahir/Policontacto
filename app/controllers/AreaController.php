@@ -4,17 +4,18 @@ use Policontacto\Repositorios\AreaRepo;
 use Policontacto\Repositorios\EstudianteRepo;
 use Policontacto\Repositorios\EmpresaRepo;
 
-class AreaController extends BaseController {
+class AreaController extends BaseController
+{
 
-    protected  $AreaRepo;
+    protected $AreaRepo;
     protected $EstudianteRepo;
     protected $EmpresaRepo;
 
     public function  __construct(AreaRepo $AreaRepo, EstudianteRepo $EstudianteRepo, EmpresaRepo $EmpresaRepo)
     {
-            $this->AreaRepo = $AreaRepo;
-            $this->EstudianteRepo = $EstudianteRepo;
-            $this->EmpresaRepo = $EmpresaRepo;
+        $this->AreaRepo = $AreaRepo;
+        $this->EstudianteRepo = $EstudianteRepo;
+        $this->EmpresaRepo = $EmpresaRepo;
 
     }
 

@@ -1,12 +1,12 @@
 <?php
 
-use Policontacto\Entidades\User;
 use Policontacto\Managers\RegistroManager;
 use Policontacto\Repositorios\EstudianteRepo;
 
-class UsersController extends BaseController {
+class UsersController extends BaseController
+{
 
-    protected  $estudianteRepo;
+    protected $estudianteRepo;
 
     public function __construct(EstudianteRepo $estudianteRepo)
     {
@@ -19,13 +19,13 @@ class UsersController extends BaseController {
         $user = $this->estudianteRepo->nuevoEstudiante();
         $manager = new RegistroManager($user, Input::all());
 
-        if($manager->save()) {
+        if ($manager->save()) {
 
             return Redirect::route('home');
 
         }
 
-         return Redirect::back()->withInput()->withErrors($manager->getErrors());
+        return Redirect::back()->withInput()->withErrors($manager->getErrors());
 
     }
 

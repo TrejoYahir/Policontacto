@@ -6,7 +6,8 @@ use Illuminate\Html\FormBuilder as Form;
 use Illuminate\View\Factory as View;
 use Illuminate\Session\Store as Session;
 
-class ConstructorCampos {
+class ConstructorCampos
+{
 
     protected $form;
     protected $view;
@@ -22,16 +23,15 @@ class ConstructorCampos {
     public function control($tipo, $nombre, $valor = null, $atributos = array(), $opciones = null)
     {
 
-        switch($tipo)
-        {
+        switch ($tipo) {
             case 'select':
                 return $this->form->select($nombre, $opciones, $valor, $atributos);
             case 'password':
-                return  $this->form->password($nombre, $atributos);
+                return $this->form->password($nombre, $atributos);
             case 'checkbox':
-                return  $this->form->checkbox($nombre, $valor, $opciones, $atributos);
+                return $this->form->checkbox($nombre, $valor, $opciones, $atributos);
             default:
-                return  $this->form->input($tipo, $nombre, $valor, $atributos);
+                return $this->form->input($tipo, $nombre, $valor, $atributos);
         }
 
     }
@@ -39,12 +39,9 @@ class ConstructorCampos {
     public function atributos($nombre, &$atributos)
     {
 
-        if (\Lang::has('validation.attributes.' . $nombre))
-        {
+        if (\Lang::has('validation.attributes.' . $nombre)) {
             $atributos['placeholder'] = \Lang::get('validation.attributes.' . $nombre);
-        }
-        else
-        {
+        } else {
             $atributos['placeholder'] = str_replace('_', ' ', $nombre);
         }
 
@@ -56,10 +53,10 @@ class ConstructorCampos {
     public function errores($nombre)
     {
         $error = null;
-        if( $this->session->has('errors')) {
-            $errors =  $this->session->get('errors');
+        if ($this->session->has('errors')) {
+            $errors = $this->session->get('errors');
 
-            if($errors->has($nombre)) {
+            if ($errors->has($nombre)) {
                 $error = $errors->first($nombre);
             }
         }
@@ -69,8 +66,7 @@ class ConstructorCampos {
 
     public function plantilla($tipo)
     {
-        if (\File::exists('app/views/campos/' . $tipo . '.blade.php'))
-        {
+        if (\File::exists('app/views/campos/' . $tipo . '.blade.php')) {
             return 'campos/' . $tipo;
         }
         return 'campos/campos';
@@ -83,15 +79,15 @@ class ConstructorCampos {
         $error = $this->errores($nombre);
         $plantilla = $this->plantilla($tipo);
 
-        return  $this->view->make($plantilla, compact('nombre', 'control', 'error'));
+        return $this->view->make($plantilla, compact('nombre', 'control', 'error'));
     }
 
-    public function password($nombre, $atributos=array())
+    public function password($nombre, $atributos = array())
     {
         return $this->input('password', $nombre, null, $atributos);
     }
 
-    public function checkbox($nombre, $valor, $opciones, $atributos=array())
+    public function checkbox($nombre, $valor, $opciones, $atributos = array())
     {
         return $this->input('checkbox', $nombre, $valor, $atributos, $opciones);
     }

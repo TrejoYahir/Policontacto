@@ -3,7 +3,8 @@
 namespace Policontacto\Repositorios;
 
 
-abstract class BaseRepo {
+abstract class BaseRepo
+{
 
     protected $model;
 

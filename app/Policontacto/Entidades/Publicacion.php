@@ -1,6 +1,7 @@
 <?php namespace Policontacto\Entidades;
 
-class Publicacion extends \Eloquent {
+class Publicacion extends \Eloquent
+{
     protected $table = 'tblpublicacion';
-	protected $fillable = [];
+    protected $fillable = [];
 }

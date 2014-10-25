@@ -3,18 +3,18 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCtgPlantelTable extends Migration {
+class CreateCtgPlantelTable extends Migration
+{
 
-	/**
-	 * Run the migrations.
-	 *
-	 * @return void
-	 */
-	public function up()
-	{
-		Schema::create('ctgPlantel', function(Blueprint $table)
-		{
-			$table->increments('id');
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('ctgPlantel', function (Blueprint $table) {
+            $table->increments('id');
 
             $table->integer('area_id')->unsigned();
             $table->string('nombre');
@@ -23,18 +23,18 @@ class CreateCtgPlantelTable extends Migration {
             $table->foreign('area_id')->references('id')->on('ctgArea')->onUpdate('cascade');
 
             $table->timestamps();
-		});
-	}
+        });
+    }
 
 
-	/**
-	 * Reverse the migrations.
-	 *
-	 * @return void
-	 */
-	public function down()
-	{
-		Schema::drop('ctgPlantel');
-	}
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('ctgPlantel');
+    }
 
 }

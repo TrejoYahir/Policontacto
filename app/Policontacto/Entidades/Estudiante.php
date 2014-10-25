@@ -1,15 +1,16 @@
 <?php namespace Policontacto\Entidades;
 
-class Estudiante extends \Eloquent {
+class Estudiante extends \Eloquent
+{
     protected $table = 'tblestudiante';
-	protected $fillable = [];
+    protected $fillable = [];
 
     public function user()
     {
         return $this->hasOne('Policontacto\Entidades\User', 'id', 'usuario_id');
     }
 
-    public  function area()
+    public function area()
     {
         return $this->belongsTo('Policontacto\Entidades\Area');
     }

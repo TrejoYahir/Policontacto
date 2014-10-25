@@ -2,7 +2,8 @@
 
 namespace Policontacto\Managers;
 
-abstract class BaseManager {
+abstract class BaseManager
+{
 
     protected $entidad;
     protected $data;
@@ -18,7 +19,7 @@ abstract class BaseManager {
 
     abstract public function getReglas();
 
-    public  function isValid()
+    public function isValid()
     {
 
         $reglas = $this->getReglas();
@@ -33,7 +34,7 @@ abstract class BaseManager {
     public function save()
     {
 
-        if(!$this->isValid()) {
+        if (!$this->isValid()) {
             return false;
         }
 
