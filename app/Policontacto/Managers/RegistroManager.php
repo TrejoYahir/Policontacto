@@ -10,7 +10,7 @@ class RegistroManager extends BaseManager
     {
         $reglas = [
             'email' => 'required|email|unique:tblusuario,email',
-            'password' => 'required|confirmed',
+            'password' => 'required|confirmed|min:6',
             'password_confirmation' => 'required'
         ];
 

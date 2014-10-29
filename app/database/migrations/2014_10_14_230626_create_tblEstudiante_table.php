@@ -17,18 +17,18 @@ class CreateTblEstudianteTable extends Migration
             $table->increments('id');
 
             $table->integer('area_id')->unsigned();
-            $table->integer('usuario_id')->unsigned();
             $table->integer('plantel_id')->unsigned();
             $table->integer('especialidad_id')->unsigned();
             $table->string('nombre');
             $table->string('apellidos');
+	        $table->string('genero');
             $table->text('curriculum');
-            $table->date('fecha_nacimiento');
+            $table->date('fecha');
             $table->string('slug');
-            $table->boolean('serv_social');
+            $table->boolean('serv');
             $table->boolean('empleo');
 
-            $table->foreign('usuario_id')->references('id')->on('tblUsuario')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id')->references('id')->on('tblUsuario')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('plantel_id')->references('id')->on('ctgPlantel')->onUpdate('cascade');
             $table->foreign('especialidad_id')->references('id')->on('ctgEspecialidad')->onUpdate('cascade');
             $table->foreign('area_id')->references('id')->on('ctgArea')->onUpdate('cascade');

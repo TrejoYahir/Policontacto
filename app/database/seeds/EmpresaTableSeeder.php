@@ -25,7 +25,7 @@ class EmpresaTableSeeder extends Seeder
 
             Empresa::create([
 
-                'usuario_id' => $user->id,
+                'id' => $user->id,
                 'ubicacion' => $faker->address,
                 'nombre' => $nombre,
                 'area_id' => $faker->numberBetween(1, 3),

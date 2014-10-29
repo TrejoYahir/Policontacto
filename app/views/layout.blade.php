@@ -14,15 +14,18 @@
     <body>
     	<header>
     		<div class="max min">
-    			<img src="{{ asset('img/logo-small.png') }}" alt="" class="logo">
-    			<h1 class="titulo">Poli<strong>contacto</strong></h1>
+    			<a class="title" href="{{ route('home') }}">
+    			    <img src="{{ asset('img/logo-small.png') }}" alt="" class="logo">
+                    <h1 class="titulo">Poli<strong>contacto</strong></h1>
+    			</a>
     			@if(Auth::check())
 
     			    <div class="info">
     			        <span>{{ Auth::user()->email }}</span>
     			        <div class="flecha-abajo"></div>
     			         <span class="menu">
-                             <a href="" class="item-link">Editar Perfil</a>
+                             <a href="{{ route('cuenta') }}" class="item-link">Editar usuario</a>
+                             <a href="{{ route('perfil') }}" class="item-link">Editar Perfil</a>
                              <a href="{{ route('logout') }}" class="item-link">Salir</a>
                          </span>
     			    </div>

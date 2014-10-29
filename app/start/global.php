@@ -50,6 +50,10 @@ App::error(function (Exception $exception, $code) {
     Log::error($exception);
 });
 
+App::error(function (Policontacto\Managers\ExcepcionesValidacion $excepcion) {
+	return Redirect::back()->withInput()->withErrors($excepcion->getErrors());
+});
+
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler

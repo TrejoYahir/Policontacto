@@ -7,7 +7,7 @@ class Empresa extends \Eloquent
 
     public function user()
     {
-        return $this->hasOne('Policontacto\Entidades\User', 'id', 'usuario_id');
+        return $this->hasOne('Policontacto\Entidades\User', 'id', 'id');
     }
 
     public function area()

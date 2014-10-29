@@ -28,13 +28,14 @@ class EstudianteTableSeeder extends Seeder
 
             Estudiante::create([
 
-                'usuario_id' => $user->id,
+                'id' => $user->id,
                 'area_id' => 1,
-                'serv_social' => $faker->boolean(70),
+                'serv' => $faker->boolean(70),
                 'empleo' => $faker->boolean(30),
                 'nombre' => $nombre,
                 'apellidos' => $apellidos,
-                'fecha_nacimiento' => $faker->dateTimeBetween('-30 years', '-17 years'),
+	            'genero' => $faker->randomElement(['Hombre', 'Mujer']),
+                'fecha' => $faker->dateTimeBetween('-30 years', '-17 years'),
                 'curriculum' => $faker->text(),
                 'slug' => \Str::slug($nombre_completo),
                 'plantel_id' => 9,

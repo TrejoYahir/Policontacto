@@ -7,7 +7,6 @@ abstract class BaseManager
 
     protected $entidad;
     protected $data;
-    protected $errors;
 
     public function  __construct($entidad, $data)
     {
@@ -24,29 +23,20 @@ abstract class BaseManager
 
         $reglas = $this->getReglas();
         $validacion = \Validator::make($this->data, $reglas);
-        $isValid = $validacion->passes();
-        $this->errors = $validacion->messages();
 
-        return $isValid;
-
+	    if($validacion->fails()){
+		    throw new ExcepcionesValidacion('validación fallida', $validacion->messages());
+	    }
     }
 
     public function save()
     {
 
-        if (!$this->isValid()) {
-            return false;
-        }
-
+        $this->isValid();
         $this->entidad->fill($this->data);
         $this->entidad->save();
 
         return true;
-    }
-
-    public function getErrors()
-    {
-        return $this->errors;
     }
 
 }

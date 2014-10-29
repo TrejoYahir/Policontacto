@@ -24,8 +24,11 @@ class ConstructorCampos
     {
 
         switch ($tipo) {
-            case 'select':
-                return $this->form->select($nombre, $opciones, $valor, $atributos);
+	        case 'select':
+		        $opciones = array('' => 'Seleccione una opción') + $opciones;
+		        return $this->form->select($nombre, $opciones, $valor, $atributos);
+            case 'textarea':
+                return $this->form->textarea($nombre, $valor, $atributos);
             case 'password':
                 return $this->form->password($nombre, $atributos);
             case 'checkbox':
@@ -86,6 +89,11 @@ class ConstructorCampos
     {
         return $this->input('password', $nombre, null, $atributos);
     }
+
+	public function select($nombre, $opciones, $valor = null, $atributos = array())
+	{
+		return $this->input('select', $nombre, $valor, $atributos, $opciones);
+	}
 
     public function checkbox($nombre, $valor, $opciones, $atributos = array())
     {

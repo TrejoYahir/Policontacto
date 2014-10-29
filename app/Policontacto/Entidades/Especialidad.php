@@ -4,4 +4,10 @@ class Especialidad extends \Eloquent
 {
     protected $table = 'ctgespecialidad';
     protected $fillable = [];
+
+	public function estudiantes()
+	{
+		return $this->hasMany('Policontacto\Entidades\Estudiante');
+	}
+
 }

@@ -11,3 +11,9 @@ Route::get('empresa/{slug}/{id}', ['as' => 'empresa', 'uses' => 'AreaController@
 Route::post('registro', ['as' => 'registro', 'uses' => 'UsersController@registro']);
 Route::post('login', ['as' => 'login', 'uses' => 'AuthController@login']);
 Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@logout']);
+
+//Edición
+Route::get('cuenta', ['as' => 'cuenta', 'uses' => 'UsersController@cuenta']);
+Route::put('cuenta', ['as' => 'cambiarCuenta', 'uses' => 'UsersController@cambiarCuenta']);
+Route::get('perfil', ['as' => 'perfil', 'uses' => 'UsersController@perfil']);
+Route::put('perfil', ['as' => 'cambiarPerfil', 'uses' => 'UsersController@cambiarPerfil']);

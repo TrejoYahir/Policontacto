@@ -12,4 +12,9 @@ class AreaRepo extends BaseRepo
         return new Area;
     }
 
+	public function getList()
+	{
+		return Area::lists('nombre', 'id');
+	}
+
 } 

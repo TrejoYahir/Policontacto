@@ -77,6 +77,8 @@ a
 		color azul
 		&:hover
 			color naranja
+	.title
+		display inline-block
 
 figure
 	margin 0
@@ -99,9 +101,9 @@ h2
 	font-family 'Montserrat', sans-serif
 
 section
+	text-align center
 	&.home
 		display block
-		text-align center
 		background azul-fuerte url(../img/bg.png) center left
 		background-size auto 100%
 
@@ -160,7 +162,7 @@ section
 .menu
 	top 1.7rem
 	z-index 666
-	height 3.5rem
+	height 5.4rem
 	padding .5rem 0
 	position absolute
 	border-radius(5px)
@@ -242,6 +244,11 @@ section
 .block
 	display block
 
+textarea
+	&.input-registro
+		height 10rem
+		padding-top .7rem
+
 .input-registro
 	display block
 	border-radius(5px)
@@ -253,6 +260,7 @@ section
 	color gray
 	&:focus
 		outline none
+
 
 .combo-registro
 	@extend .input-registro
@@ -267,6 +275,12 @@ section
 		width 3.5rem
 	&:nth-child(5)
 		width 4.4rem
+
+.combo-perfil
+	@extend .input-registro
+	width 18.4rem
+	padding 0 1.2rem
+	height 2.3rem
 
 .combo-genero
 	@extend .input-registro
@@ -292,7 +306,7 @@ section
 .terms-container
 	color white
 	position relative
-	margin .7rem 0
+	margin .7rem .5rem .7rem 0
 	display inline-block
 
 .terms-container2
