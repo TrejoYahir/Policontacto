@@ -53,11 +53,11 @@ return array(
         ),
 
         'mysql' => array(
-            'driver' => 'mysql',
-            'host' => 'localhost',
-            'database' => 'poliprueba',
-            'username' => 'root',
-            'password' => 'n0m3l0',
+            'driver' => 'pgsql',
+            'host' => 'ec2-54-163-249-168.compute-1.amazonaws.com',
+            'database' => 'defv4hv0v09v0c',
+            'username' => 'zfemecrjpvowec',
+            'password' => 'v3D-YKlp-Zs9YaNL7nvh9AR0Qg',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
