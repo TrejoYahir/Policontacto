@@ -26,6 +26,11 @@ class EstudianteTableSeeder extends Seeder
             $apellidos = $faker->lastName;
             $nombre_completo = $nombre . " " . $apellidos;
 
+	        $day = $faker->dayOfMonth();
+	        $month = $faker->month();
+	        $year = $faker->year(2000);
+			$fecha = compact('year', 'month', 'day');
+
             Estudiante::create([
 
                 'id' => $user->id,
@@ -35,7 +40,7 @@ class EstudianteTableSeeder extends Seeder
                 'nombre' => $nombre,
                 'apellidos' => $apellidos,
 	            'genero' => $faker->randomElement(['Hombre', 'Mujer']),
-                'fecha' => $faker->dateTimeBetween('-30 years', '-17 years'),
+                'fecha' => $fecha,
                 'curriculum' => $faker->text(),
                 'slug' => \Str::slug($nombre_completo),
                 'plantel_id' => 9,

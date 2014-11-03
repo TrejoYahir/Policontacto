@@ -24,6 +24,8 @@ class AreaController extends BaseController
 
         $area = $this->AreaRepo->find($id);
 
+	    $this->notFoundUnless($area);
+
         return View::make('usuarios/area', compact('area'));
 
     }
@@ -33,6 +35,8 @@ class AreaController extends BaseController
 
         $estudiante = $this->EstudianteRepo->find($id);
 
+	    $this->notFoundUnless($estudiante);
+
         return View::make('usuarios/estudiante', compact('estudiante'));
 
     }
@@ -41,6 +45,8 @@ class AreaController extends BaseController
     {
 
         $empresa = $this->EmpresaRepo->find($id);
+
+	    $this->notFoundUnless($empresa);
 
         return View::make('usuarios/empresa', compact('empresa'));
 

@@ -2,7 +2,7 @@
 
 class Especialidad extends \Eloquent
 {
-    protected $table = 'ctgespecialidad';
+    protected $table = 'ctgEspecialidad';
     protected $fillable = [];
 
 	public function estudiantes()

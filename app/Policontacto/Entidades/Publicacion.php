@@ -2,6 +2,6 @@
 
 class Publicacion extends \Eloquent
 {
-    protected $table = 'tblpublicacion';
+    protected $table = 'tblPublicacion';
     protected $fillable = [];
 }

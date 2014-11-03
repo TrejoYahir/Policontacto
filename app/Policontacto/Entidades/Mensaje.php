@@ -2,6 +2,6 @@
 
 class Mensaje extends \Eloquent
 {
-    protected $table = 'tblmensaje';
+    protected $table = 'tblMensaje';
     protected $fillable = [];
 }

@@ -10,7 +10,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
 
     use UserTrait, RemindableTrait;
 
-    protected $table = 'tblusuario';
+    protected $table = 'tblUsuario';
 
     protected $hidden = array('password', 'remember_token');
 
@@ -24,16 +24,25 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
 	    }
     }
 
+	public function estudiante()
+	{
+		return $this->hasOne('Policontacto\Entidades\Estudiante', 'id', 'id');
+	}
+
+	public function empresa()
+	{
+		return $this->hasOne('Policontacto\Entidades\Empresa', 'id', 'id');
+	}
+
 	public function getEstudiante()
 	{
 
-		$estudiante = $this->estudiante();
+		$estudiante = $this->estudiante;
 
 		if(is_null($estudiante)) {
 			$estudiante = new Estudiante();
 			$estudiante->id = $this->id;
 		}
-
 		return $estudiante;
 
 	}
@@ -50,16 +59,6 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
 
 		return $empresa;
 
-	}
-
-	public function estudiante()
-	{
-		return $this->hasOne('Policontacto\Entidades\Estudiante', 'id', 'id');
-	}
-
-	public function empresa()
-	{
-		return $this->hasOne('Policontacto\Entidades\Empresa', 'id', 'id');
 	}
 
 }

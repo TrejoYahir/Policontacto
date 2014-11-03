@@ -2,8 +2,8 @@
 
 class Estudiante extends \Eloquent
 {
-    protected $table = 'tblestudiante';
-    protected $fillable = ['area_id', 'especialidad_id', 'plantel_id', 'nombre', 'apellidos', 'curriculum', 'fecha', 'serv', 'empleo'];
+    protected $table = 'tblEstudiante';
+    protected $fillable = ['area_id', 'especialidad_id', 'plantel_id', 'nombre', 'apellidos', 'curriculum', 'fecha', 'serv', 'empleo', 'genero'];
 
     public function user()
     {
@@ -14,5 +14,14 @@ class Estudiante extends \Eloquent
     {
         return $this->belongsTo('Policontacto\Entidades\Area');
     }
+
+	public function setFechaAttribute($val)
+	{
+		if($val['day'] < 10){
+			$val['day'] = "0".$val['day'];
+		}
+
+		$this->attributes['fecha'] = implode("-", $val);
+	}
 
 }

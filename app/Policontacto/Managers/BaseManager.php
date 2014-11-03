@@ -29,11 +29,16 @@ abstract class BaseManager
 	    }
     }
 
+	public function prepararDatos($data)
+	{
+		return $data;
+	}
+
     public function save()
     {
 
         $this->isValid();
-        $this->entidad->fill($this->data);
+        $this->entidad->fill($this->prepararDatos($this->data));
         $this->entidad->save();
 
         return true;

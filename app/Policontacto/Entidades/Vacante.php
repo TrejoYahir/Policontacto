@@ -2,6 +2,6 @@
 
 class Vacante extends \Eloquent
 {
-    protected $table = 'ctgvacante';
+    protected $table = 'ctgVacante';
     protected $fillable = [];
 }

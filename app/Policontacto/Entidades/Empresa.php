@@ -2,7 +2,7 @@
 
 class Empresa extends \Eloquent
 {
-    protected $table = 'tblempresa';
+    protected $table = 'tblEmpresa';
     protected $fillable = [];
 
     public function user()

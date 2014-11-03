@@ -2,7 +2,7 @@
 
 class Area extends \Eloquent
 {
-    protected $table = 'ctgarea';
+    protected $table = 'ctgArea';
     protected $fillable = [];
 
     public function estudiantes()

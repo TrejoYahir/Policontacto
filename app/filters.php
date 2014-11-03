@@ -36,7 +36,7 @@ Route::filter('auth', function () {
         if (Request::ajax()) {
             return Response::make('Unauthorized', 401);
         } else {
-            return Redirect::guest('login');
+            return Redirect::guest('/');
         }
     }
 });
@@ -76,4 +76,8 @@ Route::filter('csrf', function () {
     if (Session::token() != Input::get('_token')) {
         throw new Illuminate\Session\TokenMismatchException;
     }
+});
+
+Route::filter('isAdmin', function () {
+	if (!isAdmin()) return Redirect::to('/');
 });

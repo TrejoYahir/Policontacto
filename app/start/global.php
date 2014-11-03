@@ -81,3 +81,8 @@ App::down(function () {
 */
 
 require app_path() . '/filters.php';
+
+function isAdmin()
+{
+	return Auth::check() & Auth::user()->admin == true;
+}

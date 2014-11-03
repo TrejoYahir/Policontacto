@@ -2,6 +2,6 @@
 
 class Evento extends \Eloquent
 {
-    protected $table = 'tblevento';
+    protected $table = 'tblEvento';
     protected $fillable = [];
 }

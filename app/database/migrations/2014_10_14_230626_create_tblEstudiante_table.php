@@ -24,9 +24,9 @@ class CreateTblEstudianteTable extends Migration
 	        $table->string('genero');
             $table->text('curriculum');
             $table->date('fecha');
-            $table->string('slug');
-            $table->boolean('serv');
-            $table->boolean('empleo');
+            $table->string('slug')->nullable();
+            $table->boolean('serv')->default(false);
+            $table->boolean('empleo')->default(false);
 
             $table->foreign('id')->references('id')->on('tblUsuario')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('plantel_id')->references('id')->on('ctgPlantel')->onUpdate('cascade');

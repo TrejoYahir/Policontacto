@@ -2,7 +2,7 @@
 
 class Plantel extends \Eloquent
 {
-    protected $table = 'ctgplantel';
+    protected $table = 'ctgPlantel';
     protected $fillable = [];
 
 	public function estudiantes()

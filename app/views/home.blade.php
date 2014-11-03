@@ -7,6 +7,7 @@
 		<h2 class="texto-inicio">
 			Nosotros te ayudamos a encontrar un lugar para hacer tu servicio social, encontrar empleo, mantenerte en contacto con otros estudiantes y alimentar tus conocimientos.
 		</h2>
+		@if(Auth::guest())
 		{{ Form::open(['route' => 'registro', 'method' => 'POST', 'class' => 'form-registro']) }}
 
 			{{ Campo::text('nombre', null, ['class' => 'input-registro', 'required']) }}
@@ -39,6 +40,12 @@
 			<p class="reg-empresa">o registrate como empresa <a href="" class="inicio">aquí</a></p>
 
 		{{ Form::close() }}
+		@endif
+		@if(Auth::user())
+			@if(isAdmin())
+				<p>Eres admin, lol</p>
+			@endif
+		@endif
 	</article>
 </section>
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" charset="utf-8"></script>
