@@ -26,7 +26,14 @@ return array(
     |
     */
 
-    'default' => 'mysql',
+    'default' => 'pgsql'
+
+    $url = parse_url(getenv("DATABASE_URL"));
+
+    $host = $url["host"];
+    $username = $url["user"];
+    $password = $url["pass"];
+    $database = substr($url["path"], 1);
 
     /*
     |--------------------------------------------------------------------------
@@ -53,26 +60,26 @@ return array(
         ),
 
         'mysql' => array(
-            'driver' => 'pgsql',
-            'host' => 'ec2-54-163-249-168.compute-1.amazonaws.com',
-            'database' => 'defv4hv0v09v0c',
-            'username' => 'zfemecrjpvowec',
-            'password' => 'v3D-YKlp-Zs9YaNL7nvh9AR0Qg',
+            'driver' => 'mysql',
+            'host' => 'localhost',
+            'database' => 'poliprueba',
+            'username' => 'root',
+            'password' => 'n0m3l0',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
         ),
 
         'pgsql' => array(
-            'driver' => 'pgsql',
-            'host' => 'localhost',
-            'database' => 'forge',
-            'username' => 'forge',
-            'password' => '',
-            'charset' => 'utf8',
-            'prefix' => '',
-            'schema' => 'public',
-        ),
+            'driver'   => 'pgsql',
+            'host'     => $host,
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
+            'charset'  => 'utf8',
+            'prefix'   => '',
+            'schema'   => 'public',
+    ),
 
         'sqlsrv' => array(
             'driver' => 'sqlsrv',
