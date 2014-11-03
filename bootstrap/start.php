@@ -32,18 +32,9 @@ $env = $app->detectEnvironment(array(
 
 ));
 
-// $env = $app->detectEnvironment(function () {
-
-//     // Defined in the server configuration
-//     if (isset($_SERVER['APP_ENVIRONMENT'])) {
-//         return $_SERVER['APP_ENVIRONMENT'];
-
-//         // Look for ./environment.php
-//     } elseif (file_exists(__DIR__ . '/environment.php')) {
-//         return include __DIR__ . '/environment.php';
-//     }
-
-// });
+$env = $app->detectEnvironment(function() {
+    return getenv('APP_ENV') ?: 'local';
+});
 
 /*
 |--------------------------------------------------------------------------
