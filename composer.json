@@ -8,13 +8,13 @@
     "license": "MIT",
     "type": "project",
     "require": {
-        "laravel/framework": "4.2.*",
-        "barryvdh/laravel-ide-helper": "dev-master"
+        "laravel/framework": "4.2.*"        
     },
     "require-dev": {
         "way/generators": "~2.0",
         "fzaninotto/faker": "v1.3.0",
-        "barryvdh/laravel-debugbar": "1.*"
+        "barryvdh/laravel-debugbar": "1.*",
+        "barryvdh/laravel-ide-helper": "dev-master"
     },
     "autoload": {
         "psr-4": {
