@@ -63,9 +63,9 @@ return array(
         'mysql' => array(
             'driver' => 'mysql',
             'host' => 'localhost',
-            'database' => 'poliprueba',
+            'database' => 'database',
             'username' => 'root',
-            'password' => 'n0m3l0',
+            'password' => '',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',

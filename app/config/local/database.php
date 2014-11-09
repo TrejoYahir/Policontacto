@@ -18,14 +18,16 @@ return array(
     |
     */
 
+    'default' => 'mysql',
+
     'connections' => array(
 
         'mysql' => array(
             'driver' => 'mysql',
             'host' => 'localhost',
-            'database' => 'homestead',
-            'username' => 'homestead',
-            'password' => 'secret',
+            'database' => 'poliprueba',
+            'username' => 'root',
+            'password' => 'n0m3l0',
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
