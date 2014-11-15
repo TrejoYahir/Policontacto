@@ -1,5 +1,11 @@
 <?php
 
+$host = 'localhost';
+$username = 'root';
+$password = 'n0m3l0';
+$database = 'poliprueba';
+
+
 return array(
 
     /*
@@ -24,10 +30,10 @@ return array(
 
         'mysql' => array(
             'driver' => 'mysql',
-            'host' => 'localhost',
-            'database' => 'poliprueba',
-            'username' => 'root',
-            'password' => 'n0m3l0',
+            'host' => $host,
+            'database' => $database,
+            'username' => $username,
+            'password' => $password,
             'charset' => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix' => '',
