@@ -8,6 +8,8 @@
     "license": "MIT",
     "type": "project",
     "require": {
+        "ext-gd": "*",
+        "fzaninotto/faker": "v1.3.0",
         "laravel/framework": "4.2.*"        
     },
     "require-dev": {
