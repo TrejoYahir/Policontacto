@@ -10,10 +10,10 @@
 		@if(Auth::guest())
 		{{ Form::open(['route' => 'registro', 'method' => 'POST', 'class' => 'form-registro']) }}
 
-			{{ Campo::text('nombre', null, ['class' => 'input-registro', 'required']) }}
-			{{ Campo::text('apellidos', null, ['class' => 'input-registro', 'required']) }}
+		{{--{{ Campo::text('nombre', null, ['class' => 'input-registro', 'required']) }}
+			{{ Campo::text('apellidos', null, ['class' => 'input-registro', 'required']) }} --}}
 			{{ Campo::email('email', null, ['class' => 'input-registro', 'required']) }}
-			<div class="select-form">
+		{{--<div class="select-form">
 				<div class="form-inline">
 					<span class="texto-form">Fecha de nacimiento</span><br/>
 					{{ Form::selectRange('fecha[day]', 1, 31, null, ['class' => 'combo-registro']) }}
@@ -24,7 +24,7 @@
 					<span class="texto-form">Género</span><br/>
 					{{ Form::select('genero', ['Hombre' => 'Hombre', 'Mujer' => 'Mujer'], null, ['class' => 'combo-genero']) }}
 				</div>
-			</div>
+			</div>--}}
 			{{Campo::password('password',  ['class' => 'input-registro', 'required']) }}
 			{{Campo::password('password_confirmation', ['class' => 'input-registro', 'required']) }}
 			<div class="terms-container">
