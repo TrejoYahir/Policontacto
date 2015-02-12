@@ -9,7 +9,7 @@ class PerfilManager extends BaseManager
 	public function getReglas()
 	{
 		$reglas = [
-			'area_id' => 'required|exists:ctgarea,id',
+			'area_id' => 'required|exists:ctgArea,id',
 			'plantel_id' => 'required|exists:ctgplantel,id',
 			'especialidad_id' => 'required|exists:ctgespecialidad,id',
 			'nombre' => 'required',
