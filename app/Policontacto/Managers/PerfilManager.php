@@ -10,8 +10,8 @@ class PerfilManager extends BaseManager
 	{
 		$reglas = [
 			'area_id' => 'required|exists:ctgArea,id',
-			'plantel_id' => 'required|exists:ctgplantel,id',
-			'especialidad_id' => 'required|exists:ctgespecialidad,id',
+			'plantel_id' => 'required|exists:ctgPlantel,id',
+			'especialidad_id' => 'required|exists:ctgEspecialidad,id',
 			'nombre' => 'required',
 			'apellidos' => 'required',
 			'curriculum' => 'required|max:1000',
