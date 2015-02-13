@@ -32,7 +32,7 @@
 
 				@else
 
-    			    {{ Form::open(['route' => 'login', 'method' => 'POST', 'class' => 'login-form', 'novalidate']) }}
+    			    {{ Form::open(['route' => 'login', 'method' => 'POST', 'class' => 'login-form']) }}
 
     			       {{ Form::email('email', null, ['class' => 'input-login', 'placeholder'=>'Email', 'required']) }}<br class="res-br">
     			        {{ Form::password('password', ['class' => 'input-login', 'placeholder'=>'Contraseña', 'required']) }}<br class="res-br">
