@@ -48,6 +48,69 @@
 		@endif
 	</article>
 </section>
+<section class="home2">
+	<article class="top-section">	
+		<h2 class="titulo-seccion">¿Qué es Policontacto?</h2>
+	</article>
+</section>
+<section class="home2">
+	<article class="contenido special-bg">
+		<div class="cont-container">			
+			<div class="bloque-texto">
+				Policontacto es un sistema que te provee una serie de herramientas útiles para facilitar trámites, buscar empleo, ampliar tus conocimientos y mantenerte conectado con personas de tu área profesional desde la comodidad de tu hogar.
+			</div>
+		</div>
+	</article>
+	<article class="top-section gris-c">	
+		<h2 class="titulo-seccion gris">Aprovecha el poder de la web</h2>
+	</article>
+	<article class="contenido">
+		<div class="bloque-informacion">
+			<div class="icon-holder">			
+				<span class="icon-bolt icono"></span>
+			</div><br>
+			<strong class="icono-title">
+				Rápido y seguro
+			</strong>
+			<p class="icono-text">
+				Policontacto está hecho de forma que tu navegación sea lo más rápida y segura posible, por lo que no tendrás que preocuparte por tus datos ya que están a salvo con nosotros.
+			</p>
+		</div>
+		<div class="bloque-informacion">
+			<div class="icon-holder">			
+				<span class="icon-home icono"></span>
+			</div><br>
+			<strong class="icono-title">
+				Desde la comodidad de tu hogar
+			</strong>
+			<p class="icono-text">
+				Busca y encuentra lo que desees desde la comodidad de tu hogar, no más viajes en vano para pedir informes.
+			</p>
+		</div>
+		<div class="bloque-informacion">
+			<div class="icon-holder">			
+				<span class="icon-desktop icono"></span>
+			</div><br>
+			<strong class="icono-title">
+				Compatible con todos los dispositivos
+			</strong>
+			<p class="icono-text">
+				Nuestro sistema está adaptado para que puedas accesar a él desde cualquier dispositivo sin ningún problema.
+			</p>
+		</div>
+		<div class="bloque-informacion">
+			<div class="icon-holder">			
+				<span class="icon-web icono"></span>
+			</div><br>
+			<strong class="icono-title">
+				Accesible desde cualquier lugar
+			</strong>
+			<p class="icono-text">
+				Gracias a el poder de la web puedes accesar a nuestro sistema desde cualquier lugar a cualquier hora.
+			</p>
+		</div>
+	</article>
+</section>
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="{{ asset('js/home.js') }}"></script>
 <script>window.jQuery || document.write('<script src="{{ asset('js/lib/jquery-2.1.1.min.js') }}"><\/script>')</script>

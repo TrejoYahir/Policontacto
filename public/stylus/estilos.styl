@@ -13,7 +13,9 @@ azul-fuerte = #34495e
 azul-c = #3a383d
 verde-c = #436651
 rojo-c = #664343
-gris = #e5e5e5
+gris = #8a9094
+gris-c = #919191
+gris-f = #38373c
 azul-hover = #2c3e50
 
 /*Funciones*/
@@ -106,14 +108,17 @@ section
 		display block
 		background azul-fuerte url(../img/bg.png) center left
 		background-size auto 100%
+	&.home2
+		display block
+		
 
 .titulo
-		color white
-		font-size 2.5rem
-		font-weight normal
-		display inline-block
-		margin .5rem 0 0 0
-		padding 0
+	color white
+	font-size 2.5rem
+	font-weight normal
+	display inline-block
+	margin .5rem 0 0 0
+	padding 0
 
 .max
 	max-width 100rem
@@ -218,7 +223,14 @@ section
 	font-weight normal
 	color white
 	margin-right 2rem
-
+	
+.titulo-seccion
+	text-align center
+	display inline-block
+	margin 0
+	font-weight normal
+	color white
+	
 .form-registro
 	display inline-block
 	text-align left
@@ -244,6 +256,9 @@ section
 
 .block
 	display block
+	
+.gris
+	color gris
 
 textarea
 	&.input-registro
@@ -390,6 +405,87 @@ label
 
 .active
 	background-color azul-hover
+	
+.contenido
+	display block
+	text-align center
+	padding 2rem 0
+	vertical-align top
+
+.special-bg	
+	background url(../img/bgg.png) center left
+
+.top-section
+	background-color azul-hover
+	display block
+	padding 2rem 0
+	text-align center
+
+.bloque-texto
+	display inline-block
+	color gris
+	text-align justify
+	max-width 40rem
+	padding 2rem 1rem
+	vertical-align top
+	font-size 1.3rem
+
+.imagen-home
+	display inline-block
+	max-width 12rem
+	height auto
+	vertical-align top
+	margin 0 2rem
+
+.cont-container
+	display inline-block
+	padding 1rem 0
+
+.white
+	color white
+	
+.gris
+	color gris
+		
+.gris-c
+	background-color rgba(145, 145, 145, 0.1)
+
+
+.bloque-informacion
+	display inline-block
+	vertical-align top
+	text-align center
+	max-width 25rem
+	padding 1rem	
+	&:hover
+		.icon-holder
+			background-color azul-fuerte
+			color white
+
+.icon-holder
+	border-radius(50%)
+	border 1px solid #e5e5e5
+	width 6rem
+	height 6rem
+	display inline-block
+	font-size 3rem
+	color azul-fuerte
+	text-align center
+	margin 1rem
+	transition-duration 0.3s
+
+.icono
+	display inline-block
+	vertical-align middle
+	padding-top 1.3rem
+
+.icono-title
+	display inline-block
+	color gris
+	font-size 1.1rem
+	
+.icono-text
+	@extend .icono-title
 
 @media screen and (min-width 56.66rem)
 
