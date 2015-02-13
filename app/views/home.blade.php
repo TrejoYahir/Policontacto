@@ -111,6 +111,9 @@
 		</div>
 	</article>
 </section>
+<footer>
+	<img src="{{ asset('img/CodeArtBlanco.png') }}" alt="" class="footer-logo"><p class="footer-text">©2015 CodeArt S.A. de C.V.</p>        
+</footer>
 <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="{{ asset('js/home.js') }}"></script>
 <script>window.jQuery || document.write('<script src="{{ asset('js/lib/jquery-2.1.1.min.js') }}"><\/script>')</script>
