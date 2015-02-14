@@ -1,3 +1,7 @@
+@extends('layout')
+
+@section('content')
+
 {{$area->nombre}}<br/>
 
 @foreach ($area->estudiantes as $estudiante)
@@ -7,3 +11,5 @@
 @foreach ($area->empresas as $empresa)
     <a href="{{ route('empresa', [$empresa->slug, $empresa->id]) }}">{{ $empresa->user->email }}</a><br/>
 @endforeach
+
+@stop

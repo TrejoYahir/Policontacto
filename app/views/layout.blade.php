@@ -32,7 +32,7 @@
 
 				@else
 
-    			    {{ Form::open(['route' => 'login', 'method' => 'POST', 'class' => 'login-form']) }}
+    			    {{ Form::open(['route' => 'login', 'method' => 'POST', 'class' => 'login-form', 'novalidate']) }}
 
     			       {{ Form::email('email', null, ['class' => 'input-login', 'placeholder'=>'Email', 'required']) }}<br class="res-br">
     			        {{ Form::password('password', ['class' => 'input-login', 'placeholder'=>'Contraseña', 'required']) }}<br class="res-br">
@@ -56,6 +56,8 @@
     	</header>
 
 @yield('content')
-    
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ asset('js/home.js') }}"></script>
+    <script>window.jQuery || document.write('<script src="{{ asset('js/lib/jquery-2.1.1.min.js') }}"><\/script>')</script>
     </body>
 </html>

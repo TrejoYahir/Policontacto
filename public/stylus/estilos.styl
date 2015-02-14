@@ -57,6 +57,7 @@ border-radius(n)
 
 /*CSS*/
 
+
 html
 	font-family 'Lato', sans-serif
 	-webkit-font-smoothing antialiased
@@ -102,6 +103,8 @@ h1
 h2
 	font-family 'Montserrat', sans-serif
 
+//landing
+
 section
 	text-align center
 	&.home
@@ -113,11 +116,12 @@ section
 	
 footer
 	display block
-	background-color azul-fuerte
+	background azul-fuerte url(../img/bg.png) center left
 	color white
 	text-align center	
-	padding 2rem
+	padding 1.5rem
 	vertical-align top
+	
 
 .titulo
 	color white
@@ -466,8 +470,9 @@ label
 	padding 1rem	
 	&:hover
 		.icon-holder
-			background-color azul-fuerte
+			background-color azul
 			color white
+			border 1px solid white
 
 .icon-holder
 	border-radius(50%)
@@ -476,7 +481,7 @@ label
 	height 6rem
 	display inline-block
 	font-size 3rem
-	color azul-fuerte
+	color azul
 	text-align center
 	margin 1rem
 	transition-duration 0.3s
@@ -504,6 +509,38 @@ label
 	display inline-block
 	padding 0
 	margin 0
+	padding-bottom .5rem
+
+//perfil
+
+.perfil
+	text-align left
+
+.info-container
+	max-width 15rem
+	color gris
+	display inline-block
+	text-align center
+	margin 1rem
+	padding 1rem
+
+.img-container
+	display block
+	text-align center
+
+.img-perfil
+	max-width 5rem
+	border-radius(50%)
+	display inline-block
+	
+.info-perfil
+	margin .5rem 0
+	padding 0
+	font-size .8rem
+	display inline-block
+	
+.nombre-perfil
+	font-size 1rem	
 
 @media screen and (min-width 56.66rem)
 
