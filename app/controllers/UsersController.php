@@ -31,7 +31,10 @@ class UsersController extends BaseController
         $manager = new RegistroManager($user, Input::all());
 
         $manager->save();
-         return Redirect::route('home');
+
+        Auth::login($user);
+
+        return Redirect::route('perfil');
 
     }
 

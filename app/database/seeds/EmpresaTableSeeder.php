@@ -17,7 +17,7 @@ class EmpresaTableSeeder extends Seeder
                 'email' => $faker->companyEmail,
                 'password' => 123456,
                 'descripcion' => $faker->text(200),
-                'url_foto' => $faker->imageUrl($width = 640, $height = 480, 'cats')
+                'url_foto' => $faker->imageUrl(512, 512, 'cats')
 
             ]);
 
