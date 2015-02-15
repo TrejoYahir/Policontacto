@@ -15,10 +15,9 @@ abstract class BaseRepo
 
     abstract public function getModel();
 
-    public function find($slug)
+    public function find($id)
     {
-        //return $this->model->find($id);
-        return $this->model->where('slug', '=', $slug)->first();
+        return $this->model->find($id);
     }
 
 } 
