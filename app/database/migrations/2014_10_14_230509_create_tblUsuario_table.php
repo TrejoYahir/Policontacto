@@ -18,7 +18,7 @@ class CreateTblUsuarioTable extends Migration
 
             $table->string('email');
             $table->string('password');
-            $table->string('url_foto')->nullable();
+            //$table->string('url_foto')->nullable();
             $table->text('descripcion')->nullable();
             $table->string('remember_token')->nullable();
 	        $table->boolean('admin')->default(false);

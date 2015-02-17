@@ -5,7 +5,7 @@
 <section class="perfil">	
 	<div class="info-container">
 		<figure class="img-container">
-			<img src="{{ $empresa->user->url_foto  }}" class="img-perfil">			
+			<img src="{{ $empresa->url_foto  }}" class="img-perfil">			
 		</figure>
 		<p class="info-perfil nombre-perfil"><strong>{{ $empresa->nombre  }}</strong></p>
 		<p class="info-perfil">{{ $empresa->user->email  }}</p>

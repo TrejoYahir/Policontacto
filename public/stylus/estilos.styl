@@ -111,8 +111,9 @@ section
 		display block
 		background azul-fuerte url(../img/bg.png) center left
 		background-size auto 100%
-	&.home2
-		display block
+	
+.section-class
+	display block
 	
 footer
 	display block
@@ -244,13 +245,18 @@ footer
 	
 .form-registro
 	display inline-block
-	text-align left
+	text-align center
 	vertical-align top
 	margin-left 2rem
 	margin-top 2rem
 
+.form-section
+	display inline-block
+	vertical-align top
+
 .form-inline
 	display inline-block
+	text-align left
 
 .back-error
 	color naranja
@@ -329,6 +335,12 @@ textarea
 	display block
 	width 18.6rem
 	padding .7rem 0
+	
+.boton-guardar
+	@extend .boton-registro
+	padding .9rem 0
+	margin 2rem 0
+	display inline-block
 
 .terms-container
 	color white
@@ -407,9 +419,13 @@ label
 			opacity 1
 			transform scale(1) rotate(45deg)
 
+.check-perfil
+	margin 1rem
+
 .reg-empresa
 	margin .3rem 0
 	color white
+	text-align left
 
 .res-br
 	display none
@@ -513,7 +529,7 @@ label
 
 //perfil
 
-.perfil
+.perfil-seccion
 	text-align left
 
 .info-container
@@ -529,7 +545,9 @@ label
 	text-align center
 
 .img-perfil
-	max-width 5rem
+	width 7rem
+	height 7rem
+	border .2rem solid azul
 	border-radius(50%)
 	display inline-block
 	
@@ -541,6 +559,51 @@ label
 	
 .nombre-perfil
 	font-size 1rem	
+
+.boton-seleccion
+	cursor pointer
+	padding 2rem
+	width 13rem
+	height 13rem
+	border-radius(50%)
+	position relative
+	text-align center
+	border solid .5rem azul
+	margin 7rem 0 0 5rem
+	
+#simbolo-upload
+	color azul
+	font-size 6rem
+	font-weight bold
+	position absolute
+	top 30%
+	left 40%
+		
+.upload
+	right 0
+	margin 0
+	bottom 0
+	padding 0
+	opacity 0
+	height 100%
+	width 100%
+	border-radius(50%)
+	outline none
+	cursor pointer
+	position absolute
+
+.display-none
+	display none
+
+#texto-imagen-s
+	margin-left 5rem
+
+.perfil
+	background azul-fuerte url(../img/bg.png) center left
+	background-size auto 100%
+
+.foto-error
+	margin-left 5rem
 
 @media screen and (min-width 56.66rem)
 

@@ -18,7 +18,6 @@ class EstudianteTableSeeder extends Seeder
                 'email' => $faker->email,
                 'password' => 123456,
                 'descripcion' => $faker->text(200),
-                'url_foto' => $faker->imageUrl(512, 512, 'people')
 
             ]);
 
@@ -26,10 +25,10 @@ class EstudianteTableSeeder extends Seeder
             $apellidos = $faker->lastName;
             $nombre_completo = $nombre . " " . $apellidos;
 
-	        $day = $faker->dayOfMonth();
-	        $month = $faker->month();
-	        $year = $faker->year(2000);
-			$fecha = compact('year', 'month', 'day');
+            $day = $faker->dayOfMonth();
+            $month = $faker->month();
+            $year = $faker->year(2000);
+            $fecha = compact('year', 'month', 'day');
 
             Estudiante::create([
 
@@ -39,12 +38,13 @@ class EstudianteTableSeeder extends Seeder
                 'empleo' => $faker->boolean(30),
                 'nombre' => $nombre,
                 'apellidos' => $apellidos,
-	            'genero' => $faker->randomElement(['Hombre', 'Mujer']),
+                'genero' => $faker->randomElement(['Hombre', 'Mujer']),
                 'fecha' => $fecha,
                 'curriculum' => $faker->text(),
                 'slug' => \Str::slug($nombre_completo),
                 'plantel_id' => 9,
                 'especialidad_id' => $faker->numberBetween(1, 3)
+                'url_foto' => $faker->imageUrl(512, 512, 'people')
 
             ]);
         }

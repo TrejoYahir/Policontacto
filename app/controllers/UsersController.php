@@ -75,9 +75,11 @@ class UsersController extends BaseController
 
 		$user = Auth::user();
 		$estudiante = $user->getEstudiante();
-		$manager = new PerfilManager($estudiante, Input::all());
+		$manager = new PerfilManager($estudiante, Input::all());		
 		$manager->save();
-		return Redirect::route('home');
+
+		return Redirect::route('home');			
+		
 
 	}
 

@@ -17,7 +17,6 @@ class EmpresaTableSeeder extends Seeder
                 'email' => $faker->companyEmail,
                 'password' => 123456,
                 'descripcion' => $faker->text(200),
-                'url_foto' => $faker->imageUrl(512, 512, 'cats')
 
             ]);
 
@@ -31,6 +30,7 @@ class EmpresaTableSeeder extends Seeder
                 'area_id' => $faker->numberBetween(1, 3),
                 'requisitos' => $faker->text(),
                 'slug' => \Str::slug($nombre)
+                'url_foto' => $faker->imageUrl(512, 512, 'cats')
 
             ]);
         }

@@ -18,7 +18,8 @@ class PerfilManager extends BaseManager
 			'fecha' => 'required',
 			'serv' => '',
 			'empleo' => '',
-			'genero' => 'required|in:Masculino,Femenino'
+			'genero' => 'required|in:Masculino,Femenino',
+			'url_foto' => 'max:6000|mimes:jpg,png,jpeg'
 		];
 
 		return $reglas;

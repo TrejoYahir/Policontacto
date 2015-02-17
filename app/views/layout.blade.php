@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class='home'>
+<html lang="es">
     <head>
         <!--Meta tags-->
         <meta charset="UTF-8" />
@@ -11,7 +11,7 @@
         <link rel="stylesheet" href="{{ asset('css/estilos.css') }}" />
         <title>Policontacto</title>
     </head>
-    <body>
+    <body @yield('body-class')>
     	<header>
     		<div class="max min">
     			<a class="title" href="{{ route('home') }}">
@@ -55,9 +55,10 @@
     	        @endif
     	</header>
 
-@yield('content')
+    @yield('content')
     <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="{{ asset('js/home.js') }}"></script>
     <script>window.jQuery || document.write('<script src="{{ asset('js/lib/jquery-2.1.1.min.js') }}"><\/script>')</script>
+    <script src="{{ asset('js/home.js') }}"></script>
+    @yield('custom-js')
     </body>
 </html>
