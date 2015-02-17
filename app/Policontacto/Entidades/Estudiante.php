@@ -41,7 +41,7 @@ class Estudiante extends \Eloquent
         {
             $file = $val;
             $filename = $file->getClientOriginalName();
-            $ruta = "public/profile-pics/";
+            $ruta = public_path() . "/profile-pics/";
             $this->attributes['url_foto'] = "profile-pics/" . $filename;
             $file->move($ruta, $filename);
         }
