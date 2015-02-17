@@ -12,7 +12,7 @@ class PerfilManager extends BaseManager
 			'area_id' => 'required|exists:ctgArea,id',
 			'plantel_id' => 'required|exists:ctgPlantel,id',
 			'especialidad_id' => 'required|exists:ctgEspecialidad,id',
-			'nombre' => 'required',
+			'nombre' => 'required|Alpha',
 			'apellidos' => 'required',
 			'curriculum' => 'required|max:2000',
 			'fecha' => 'required',
