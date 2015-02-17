@@ -14,7 +14,7 @@ class PerfilManager extends BaseManager
 			'especialidad_id' => 'required|exists:ctgEspecialidad,id',
 			'nombre' => 'required',
 			'apellidos' => 'required',
-			'curriculum' => 'required|max:1000',
+			'curriculum' => 'required|max:2000',
 			'fecha' => 'required',
 			'serv' => '',
 			'empleo' => '',
