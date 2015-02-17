@@ -39,13 +39,13 @@
 
 				@else
 
-					{{ Form::open(['route' => 'login', 'method' => 'POST', 'class' => 'login-form', 'novalidate']) }}
+					{{ Form::open(['route' => 'login', 'method' => 'POST', 'class' => 'login-form']) }}
 
-					   {{ Form::email('email', null, ['class' => 'input-login', 'placeholder'=>'Email', 'required']) }}<br class="res-br">
-						{{ Form::password('password', ['class' => 'input-login', 'placeholder'=>'Contraseña', 'required']) }}<br class="res-br">
+					   {{ Form::email('email', null, ['class' => 'input-login', 'placeholder'=>'Email', 'maxlength' => '50', 'required']) }}<br class="res-br">
+						{{ Form::password('password', ['class' => 'input-login', 'placeholder'=>'Contraseña','maxlength' => '30', 'required']) }}<br class="res-br">
 						 <button type="submit" class="boton">Entrar</button><br>
 						 <div class="terms-container2">
-						 {{ Form::checkbox('check2', null, false, ['id' => 'check2', 'required']) }}
+						 {{ Form::checkbox('check2', null, false, ['id' => 'check2']) }}
 						 <label for="check2">
 							 <span class="check2"></span>
 							 <span class="box2"></span>

@@ -18,7 +18,7 @@ return array(
     |
     */
 
-    "accepted" => "El campo :attribute debe ser aceptado.",
+/*  "accepted" => "El campo :attribute debe ser aceptado.",
     "active_url" => "El campo :attribute no es una URL válida.",
     "after" => "El campo :attribute debe ser una fecha después de :date.",
     "alpha" => "El campo :attribute sólo puede contener letras.",
@@ -77,6 +77,73 @@ return array(
 
     "unique" => "Este :attribute está ocupado.",
     "url" => "El formato de :attribute es inválido.",
+
+    //validaciones customizadas en app/validators.php
+    "alpha_spaces"     => "El campo :attribute solo debe contener letras y espacios.", */
+
+
+    "accepted" => "Este campo debe ser aceptado.",
+    "active_url" => "Este campo no es una URL válida.",
+    "after" => "Este campo debe ser una fecha después de :date.",
+    "alpha" => "Este campo sólo puede contener letras.",
+    "alpha_dash" => "Este campo sólo puede contener letras, números y guiones.",
+    "alpha_num" => "Este campo sólo puede contener letras y números.",
+    "array" => "Este campo debe ser un arreglo.",
+    "before" => "Este campo debe ser una fecha antes :date.",
+    "between" => array(
+        "numeric" => "Este campo debe estar entre :min - :max.",
+        "file" => "Este campo debe estar entre :min - :max kilobytes.",
+        "string" => "Este campo debe estar entre :min - :max caracteres.",
+        "array" => "Este campo debe tener entre :min y :max elementos.",
+    ),
+    "confirmed" => "Los campos de :attribute no coinciden.",
+    "date" => "Esta no es una fecha válida.",
+    "date_format" => "Este campo no corresponde con el formato :format.",
+    "different" => "Este campo and :other debe ser diferente.",
+    "digits" => "Este campo debe ser de :digits dígitos.",
+    "digits_between" => "Este campo debe terner entre :min y :max dígitos.",
+    "email" => "El formato del :attribute es invalido.",
+    "exists" => "Este campo seleccionado es inválido.",
+    "image" => "Este campo debe ser una imagen.",
+    "in" => "Este campo seleccionado es inválido.",
+    "integer" => "Este campo debe ser un entero.",
+    "ip" => "Este campo Debe ser una dirección IP válida.",
+    "match" => "El formato :attribute es inválido.",
+    "max" => array(
+        "numeric" => "Este campo debe ser menor que :max.",
+        "file" => "Este campo debe ser menor que :max kilobytes.",
+        "string" => "Este campo debe ser menor que :max caracteres.",
+        "array" => "Este campo debe tener al menos :min elementos.",
+    ),
+
+    "mimes" => "Este campo debe ser un archivo de tipo :values.",
+    "min" => array(
+        "numeric" => "Este campo debe tener al menos :min.",
+        "file" => "Este campo debe tener al menos :min kilobytes.",
+        "string" => "Este campo debe tener al menos :min caracteres.",
+    ),
+    "not_in" => "Este campo seleccionado es invalido.",
+    "numeric" => "Este campo debe ser un numero.",
+    "regex" => "El formato de este campo es inválido.",
+    "required" => "Este campo es requerido",
+    "required_if" => "Este campo es requerido cuando el campo :other es :value.",
+    "required_with" => "Este campo es requerido cuando :values está presente.",
+    "required_with_all" => "Este campo es requerido cuando :values está presente.",
+    "required_without" => "Este campo es requerido cuando :values no está presente.",
+    "required_without_all" => "Este campo es requerido cuando ningún :values está presentes.",
+    "same" => "Este campo y :other debe coincidir.",
+    "size" => array(
+        "numeric" => "Este campo debe ser :size.",
+        "file" => "Este campo debe terner :size kilobytes.",
+        "string" => "Este campo debe tener :size caracteres.",
+        "array" => "Este campo debe contener :size elementos.",
+    ),
+
+    "unique" => "Este :attribute está ocupado.",
+    "url" => "El formato de :attribute es inválido.",
+
+    //validaciones customizadas en app/validators.php
+    "alpha_spaces"     => "Este campo solo debe contener letras y espacios.",
 
     /*
     |--------------------------------------------------------------------------

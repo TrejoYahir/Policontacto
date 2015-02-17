@@ -73,6 +73,10 @@ return array(
     "url" => "The :attribute format is invalid.",
     "timezone" => "The :attribute must be a valid zone.",
 
+
+    //Custom validation rules in app/validators.php
+    "alpha_spaces"     => "The :attribute may only contain letters and spaces.",
+
     /*
     |--------------------------------------------------------------------------
     | Custom Validation Language Lines

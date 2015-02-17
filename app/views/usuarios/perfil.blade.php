@@ -6,27 +6,28 @@
 
 <section class="section-class">
 	<article class="max-container">
-		{{ Form::model($estudiante, ['route' => 'cambiarPerfil', 'method' => 'PUT', 'files' => true, 'class' => 'form-registro', 'novalidate']) }}
+		{{ Form::model($estudiante, ['route' => 'cambiarPerfil', 'method' => 'PUT', 'files' => true, 'class' => 'form-perfil']) }}
 			<?php $array = array(null, null, null) ?>
 			@if($estudiante->fecha)
 				<?php $array = explode("-", $estudiante->fecha); ?>
 			@endif	
 			<div class="form-section">        
-				{{ Campo::text('nombre', null, ['class' => 'input-registro', 'required']) }}
-				{{ Campo::text('apellidos', null, ['class' => 'input-registro', 'required']) }}
+				{{ Campo::text('nombre', null, ['class' => 'input-registro', 'maxlength' => '30', 'required']) }}
+				{{ Campo::text('apellidos', null, ['class' => 'input-registro','maxlength' => '50', 'required']) }}
 				<div class="select-form">
 					<div class="form-inline">
 						<span class="texto-form">Fecha de nacimiento</span><br/>
 						{{ Form::selectYear('fecha[year]', date('Y') - 14, date('Y') - 80, $array[0], ['class' => 'combo-registro']) }}
 						{{ Form::selectRange('fecha[month]', 01, 12, $array[1], ['class' => 'combo-registro']) }}
-						{{ Form::selectRange('fecha[day]', 01, 31, $array[2], ['class' => 'combo-registro']) }}
+						{{ Form::selectRange('fecha[day]', 01, 31, $array[2], ['class' => 'combo-registro']) }}					
 					</div>
 					<div class="form-inline">
 						<span class="texto-form">Género</span><br/>
 						{{ Form::select('genero', ['Masculino' => 'Masculino', 'Femenino' => 'Femenino'], null, ['class' => 'combo-genero']) }}
 					</div>
+					{{ $errors->first('fecha', '<span class="back-error">:message</span>') }}
 				</div>
-			 {{Campo::textarea('curriculum', null, ['class' => 'input-registro', 'required']) }}        
+			 {{Campo::textarea('curriculum', null, ['class' => 'input-registro','maxlength' => '2000', 'required']) }}        
 				<div class="select-form">
 					<div class="form-inline">
 						<span class="texto-form">Área</span><br/>

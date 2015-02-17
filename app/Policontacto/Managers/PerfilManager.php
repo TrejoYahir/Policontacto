@@ -12,10 +12,10 @@ class PerfilManager extends BaseManager
 			'area_id' => 'required|exists:ctgArea,id',
 			'plantel_id' => 'required|exists:ctgPlantel,id',
 			'especialidad_id' => 'required|exists:ctgEspecialidad,id',
-			'nombre' => 'required|Alpha',
-			'apellidos' => 'required',
+			'nombre' => 'required|alpha_spaces|min:2|Max:30|',
+			'apellidos' => 'required|alpha_spaces|min:2|Max:50|',
 			'curriculum' => 'required|max:2000',
-			'fecha' => 'required',
+			'fecha' => 'required|date',
 			'serv' => '',
 			'empleo' => '',
 			'genero' => 'required|in:Masculino,Femenino',
@@ -23,6 +23,18 @@ class PerfilManager extends BaseManager
 		];
 
 		return $reglas;
+	}
+
+	public function hacerCambios($data)
+	{
+
+		if($data['fecha']['day'] < 10){
+			$data['fecha']['day'] = "0".$data['fecha']['day'];
+		}
+
+		$data['fecha'] = implode("-", $data['fecha']);
+
+		return $data;
 	}
 
 	public function prepararDatos($data)

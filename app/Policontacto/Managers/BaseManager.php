@@ -20,8 +20,8 @@ abstract class BaseManager
 
     public function isValid()
     {
-
         $reglas = $this->getReglas();
+        $this->data = $this->hacerCambios($this->data);
         $validacion = \Validator::make($this->data, $reglas);
 
 	    if($validacion->fails()){
@@ -33,6 +33,11 @@ abstract class BaseManager
 	{
 		return $data;
 	}
+
+    public function hacerCambios($data)
+    {
+        return $data;
+    }
 
     public function save()
     {

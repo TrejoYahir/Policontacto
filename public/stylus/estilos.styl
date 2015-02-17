@@ -260,10 +260,13 @@ footer
 	
 .form-registro
 	display inline-block
-	text-align center
+	text-align left
 	vertical-align top
 	margin-left 2rem
 	margin-top 2rem
+
+.form-perfil
+	@extend .form-registro	
 
 .form-section
 	display inline-block
@@ -628,6 +631,7 @@ label
 .align-left
 	text-align left
 
+
 @media screen and (min-width 56.66rem)
 
 	.login-form
@@ -642,6 +646,11 @@ label
 
 	.min
 		min-width 56rem
+
+@media screen and (min-width 85rem)
+
+	.min
+		min-width 80rem
 
 @media screen and (max-width 56.6rem)
 

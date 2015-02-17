@@ -15,14 +15,14 @@ class Estudiante extends \Eloquent
         return $this->belongsTo('Policontacto\Entidades\Area');
     }
 
-	public function setFechaAttribute($val)
+	/*public function setFechaAttribute($val)
 	{
 		if($val['day'] < 10){
 			$val['day'] = "0".$val['day'];
 		}
 
 		$this->attributes['fecha'] = implode("-", $val);
-	}
+	}*/
 
     public function setUrlFotoAttribute($val)
     {
