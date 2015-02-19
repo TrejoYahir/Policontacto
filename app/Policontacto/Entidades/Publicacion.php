@@ -3,7 +3,7 @@
 class Publicacion extends \Eloquent
 {
     protected $table = 'tblPublicacion';
-    protected $fillable = ['contenido', 'fecha'];
+    protected $fillable = ['contenido', 'fecha', 'texto'];
 
     public function user()
     {
