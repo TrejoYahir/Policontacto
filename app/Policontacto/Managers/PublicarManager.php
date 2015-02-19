@@ -15,11 +15,17 @@ class PublicarManager extends BaseManager
 		return $reglas;
 	}
 
+	public function prepararDatos($data)
+	{
+		$data['tipo'] = 'texto'; 
+		
+		return $data;
+	}
+
 	public function hacerCambios($data)
 	{
 
-		$data['fecha'] = date('Y-m-d H:i:s');
-		$data['tipo'] = 'texto'; 
+		$data['fecha'] = date('Y-m-d H:i:s');		
 
 		return $data;
 	}
