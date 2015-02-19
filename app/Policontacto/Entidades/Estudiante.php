@@ -15,14 +15,6 @@ class Estudiante extends \Eloquent
         return $this->belongsTo('Policontacto\Entidades\Area');
     }
 
-	/*public function setFechaAttribute($val)
-	{
-		if($val['day'] < 10){
-			$val['day'] = "0".$val['day'];
-		}
-
-		$this->attributes['fecha'] = implode("-", $val);
-	}*/
 
     public function setUrlFotoAttribute($val)
     {
@@ -46,6 +38,17 @@ class Estudiante extends \Eloquent
             $file->move($ruta, $filename);
         }
         
+    }
+
+    public function getNombreCortoAttribute()
+    {
+        if(isset($this->attributes['nombre']) && isset($this->attributes['apellidos']))
+        {
+            $apellidos = explode(' ',$this->attributes['apellidos']);
+            $nombres = explode(' ',$this->attributes['nombre']);
+            $this->attributes['nombre_corto'] = $nombres[0] . " " . $apellidos[0];
+        }
+        return $this->attributes['nombre_corto'];
     }
 
 }

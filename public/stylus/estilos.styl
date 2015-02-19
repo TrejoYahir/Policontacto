@@ -26,6 +26,14 @@ border-radius(n)
 	-o-border-radius n
 	border-radius n
 
+column(n, m)
+	-moz-column-count n
+	-webkit-column-count n
+	column-count n
+	-moz-column-gap m
+	-webkit-column-gap m
+	column-gap m
+
 /*Scrollbar y seleccion*/
 
 ::selection
@@ -123,6 +131,12 @@ footer
 	padding 1.5rem
 	vertical-align top
 	
+.fixed-header
+	position fixed
+	top 0
+	left 0
+	right 0
+	z-index 1
 
 .titulo
 	color white
@@ -156,10 +170,13 @@ footer
 	padding 0
 
 .img-avatar
-	width 2rem
-	height 2rem
+	width 2.5rem
+	height 2.5rem
 	display inline-block
 	border-radius(50%)
+	border 2px solid azul
+	box-sizing border-box
+	margin 0 .5rem
 
 .nombre-avatar
 	color white
@@ -177,7 +194,7 @@ footer
 	padding 0
 	float right
 	position relative
-	margin-top 1rem
+	margin-top .7rem
 
 .flecha-abajo
 	width 0;
@@ -194,7 +211,7 @@ footer
 .menu
 	top 1.7rem
 	z-index 666
-	height 5.4rem
+	height 6rem
 	padding .5rem 0
 	position absolute
 	border-radius(5px)
@@ -548,40 +565,76 @@ label
 //perfil
 
 .perfil-seccion
-	text-align left
+	display block
+	text-align center
+	position relative
+
+.max-perfil
+	max-width 100rem
+	min-width 80rem
+	margin-top 5rem
+	padding 0
+	
+.contenedor-absoluto
+	position absolute
+	left 0
+	top 0
+	
+.contenedor-relativo
+	position relative
+	left 0
+	top 0
 
 .perfil-estudiante
 	background-color #e5e5e5
 
 .info-container
-	max-width 15rem
+	width 19rem
 	color gris
-	background-color white
 	display inline-block
 	text-align center
-	margin 2rem 1rem 0 3rem
-	padding 2rem 3.5rem
+	padding 0
+	margin-top .5rem
 	border-radius(5px)
+	position fixed
 
 .img-container
 	display block
 	text-align center
 
 .img-perfil
-	width 7rem
-	height 7rem
+	width 10rem
+	height 10rem
 	border .2rem solid azul
 	border-radius(50%)
 	display inline-block
 	
+
+.info-section
+	display block
+	padding 1rem
+	margin .3rem 0
+	border-radius(3px)
+	background white url(../img/bgg.png) center left
+	background-size auto 300%
+	box-shadow 0 3px 2px -2px #ccc
+	&:nth-child(1)
+		background azul-fuerte url(../img/bg.png) center left
+		margin-top 0
+	
 .info-perfil
-	margin .5rem 0
-	padding 0
-	font-size .8rem
+	margin 0
+	padding 1rem 
+	font-size .9rem
 	display inline-block
+	vertical-align middle
 	
 .nombre-perfil
-	font-size 1rem	
+	font-size 1.1rem
+	padding-bottom .3rem
+
+.correo-perfil
+	padding-top 0
 
 .boton-seleccion
 	cursor pointer
@@ -625,12 +678,96 @@ label
 	background azul-fuerte url(../img/bg.png) center left
 	background-size auto 100%
 
+.contenido-perfil
+	left 21rem
+	position relative
+	top 0
+	max-width 57rem
+	min-width 57rem
+
+.relative
+	position relative
+
 .foto-error
 	margin-left 5rem
 
 .align-left
 	text-align left
 
+.contenido-perfil
+	text-align left
+	
+.compartir-form
+	margin .5rem 0
+
+.boton-compartir
+	@extend .boton
+	display inline-block
+	width 7rem
+	padding .7rem 0
+	vertical-align top
+	box-shadow 0 3px 2px -2px #ccc
+
+.textarea-compartir
+	display inline-block
+	border-radius(5px)
+	padding .35rem 1.2rem
+	border none
+	height 1.7rem
+	min-width 20rem
+	color gray
+	vertical-align top
+	transition .3s
+	box-shadow 0 3px 2px -2px #ccc
+	&:focus
+		outline none
+		height 5rem
+		
+.publicaciones
+	min-width 35rem
+	max-width 54rem
+	display inline-block
+
+.publicacion
+	display inline-block
+	max-width 15rem
+	min-width 15rem
+	padding 1rem
+	color gris
+	background-color white
+	vertical-align top
+	margin .3rem 0
+	box-shadow 0 3px 2px -2px #ccc
+	border-radius(2px)
+
+.publicacion-header
+	display block
+	margin-bottom .5rem
+
+.info-publicacion
+	display inline-block
+
+.avatar-publicacion
+	vertical-align top
+	width 3.5rem
+	height 3.5rem
+	margin-left 0
+	
+.nombre-publicacion
+	font-size 1rem
+
+.email-publicacion
+	font-size .8rem
+
+.fecha-publicacion
+	font-size .7rem	
+
+.contenido-publicacion
+	display block
+	text-align left
+	padding .5rem .3rem
+	background-color #F5F5F5
+	border .5px solid #ccc
 
 @media screen and (min-width 56.66rem)
 
@@ -642,15 +779,36 @@ label
 	.min
 		min-width 60rem
 
+	.max-perfil
+		min-width 60rem
+
 @media screen and (max-width 62rem)
 
 	.min
 		min-width 56rem
 
+	.max-perfil
+		min-width 56rem
+		
+	.textarea-compartir
+		max-width 15rem
+	
+	.publicaciones
+		min-width 20rem	
+
 @media screen and (min-width 85rem)
 
 	.min
 		min-width 80rem
+
+	.max-perfil
+		min-width 80rem
+
+	.textarea-compartir
+		min-width 42rem
+	
+	.publicaciones
+		min-width 60rem	
 
 @media screen and (max-width 56.6rem)
 

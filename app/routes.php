@@ -24,6 +24,8 @@ Route::group(['before' => 'auth'],  function(){
 	Route::get('perfil', ['as' => 'perfil', 'uses' => 'UsersController@perfil']);
 	Route::put('perfil', ['as' => 'cambiarPerfil', 'uses' => 'UsersController@cambiarPerfil']);
 	Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@logout']);
+	Route::post('publicar', ['as' => 'publicar', 'uses' => 'UsersController@publicar']);
+	Route::get('posts', ['as' => 'obtenerPublicaciones', 'uses' => 'UsersController@obtenerPublicaciones']);
 
 	//admin
 	Route::group(['before' => 'isAdmin'],  function(){

@@ -3,5 +3,10 @@
 class Publicacion extends \Eloquent
 {
     protected $table = 'tblPublicacion';
-    protected $fillable = [];
+    protected $fillable = ['contenido', 'fecha'];
+
+    public function user()
+    {
+        return $this->belongsTo('Policontacto\Entidades\User', 'usuario_id', 'id');
+    }
 }

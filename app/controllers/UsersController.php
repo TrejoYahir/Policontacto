@@ -6,37 +6,41 @@ use Policontacto\Managers\CuentaManager;
 use Policontacto\Repositorios\AreaRepo;
 use Policontacto\Repositorios\PlantelRepo;
 use Policontacto\Repositorios\EspecialidadRepo;
+use Policontacto\Repositorios\PublicacionRepo;
 use Policontacto\Managers\PerfilManager;
+use Policontacto\Managers\PublicarManager;
 
 class UsersController extends BaseController
 {
 
-    protected $estudianteRepo;
+	protected $estudianteRepo;
 	protected $especialidadRepo;
 	protected $areaRepo;
 	protected $plantelRepo;
+	protected $publicacionRepo;
 
-    public function __construct(EstudianteRepo $estudianteRepo, EspecialidadRepo $especialidadRepo, AreaRepo $areaRepo, PlantelRepo $plantelRepo)
-    {
-        $this->estudianteRepo = $estudianteRepo;
-	    $this->especialidadRepo = $especialidadRepo;
-	    $this->areaRepo = $areaRepo;
-	    $this->plantelRepo = $plantelRepo;
-    }
+	public function __construct(EstudianteRepo $estudianteRepo, EspecialidadRepo $especialidadRepo, AreaRepo $areaRepo, PlantelRepo $plantelRepo, PublicacionRepo $publicacionRepo)
+	{
+		$this->estudianteRepo = $estudianteRepo;
+		$this->especialidadRepo = $especialidadRepo;
+		$this->areaRepo = $areaRepo;
+		$this->plantelRepo = $plantelRepo;
+		$this->publicacionRepo = $publicacionRepo;
+	}
 
-    public function registro()
-    {
+	public function registro()
+	{
 
-        $user = $this->estudianteRepo->nuevoEstudiante();
-        $manager = new RegistroManager($user, Input::all());
+		$user = $this->estudianteRepo->nuevoEstudiante();
+		$manager = new RegistroManager($user, Input::all());
 
-        $manager->save();
+		$manager->save();
 
-        Auth::login($user);
+		Auth::login($user);
 
-        return Redirect::route('perfil');
+		return Redirect::route('perfil');
 
-    }
+	}
 
 	public function cuenta()
 	{
@@ -79,7 +83,32 @@ class UsersController extends BaseController
 		$manager->save();
 
 		return Redirect::route('home');			
-		
+
+	}
+
+	public function publicar()
+	{
+
+		$publicacion = $this->publicacionRepo->nuevaPublicacion();
+		$manager = new PublicarManager($publicacion, Input::all());		
+		$manager->save();
+
+		 return Response::json(array(
+			'success' => true,
+			'message' => 'Publicacion exitosa'
+		));	
+
+	}
+
+	public function obtenerPublicaciones()
+	{
+
+		$user = Auth::user();
+		$publicaciones = $user->publicaciones;
+
+		 return Response::json(array(
+			'publicaciones' => $publicaciones
+		));	
 
 	}
 

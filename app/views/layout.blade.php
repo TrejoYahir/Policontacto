@@ -12,7 +12,7 @@
 		<title>Policontacto</title>
 	</head>
 	<body @yield('body-class')>
-		<header>
+		<header @yield('header-class')>
 			<div class="max min">
 				<a class="title" href="{{ route('home') }}">
 					<img src="{{ asset('img/logo-small.png') }}" alt="" class="logo">
@@ -23,9 +23,7 @@
 					<div class="info">
 						@if(isset(Auth::user()->estudiante->nombre))
 							<span class="elemento-info"><a href="{{ route('estudiante', [Auth::user()->estudiante->slug, Auth::user()->estudiante->id]) }}" class="nombre-avatar">{{ Auth::user()->estudiante->nombre }}</a></span>
-							<figure class="img-avatar elemento-info">
-								<a href="{{ route('estudiante', [Auth::user()->estudiante->slug, Auth::user()->estudiante->id]) }}"><img src="{{ asset(Auth::user()->estudiante->url_foto) }}" alt="" class="img-avatar"></a>
-							</figure>
+								<a href="{{ route('estudiante', [Auth::user()->estudiante->slug, Auth::user()->estudiante->id]) }}"><img src="{{ asset(Auth::user()->estudiante->url_foto) }}" alt="" class="img-avatar elemento-info"></a>
 						@else
 					 		<span>{{ Auth::user()->email }}</span>
 					 	@endif	
