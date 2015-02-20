@@ -2,6 +2,11 @@
 
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
 
+//Listas
+Route::get('areas/{slug}/{id}', ['as' => 'area', 'uses' => 'AreaController@area']);
+Route::get('{slug}/{id}', ['as' => 'estudiante', 'uses' => 'AreaController@estudiante']);
+Route::get('empresa/{slug}/{id}', ['as' => 'empresa', 'uses' => 'AreaController@empresa']);
+
 //Autentificación
 
 Route::group(['before' => 'guest'],  function(){
@@ -13,10 +18,6 @@ Route::group(['before' => 'guest'],  function(){
 
 //Edición
 Route::group(['before' => 'auth'],  function(){
-
-	Route::get('areas/{slug}/{id}', ['as' => 'area', 'uses' => 'AreaController@area']);
-    Route::get('{slug}/{id}', ['as' => 'estudiante', 'uses' => 'AreaController@estudiante']);
-    Route::get('empresa/{slug}/{id}', ['as' => 'empresa', 'uses' => 'AreaController@empresa']);
 
 	Route::get('cuenta', ['as' => 'cuenta', 'uses' => 'UsersController@cuenta']);
 	Route::put('cuenta', ['as' => 'cambiarCuenta', 'uses' => 'UsersController@cambiarCuenta']);
