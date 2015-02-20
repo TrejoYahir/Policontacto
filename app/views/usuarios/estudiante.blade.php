@@ -42,7 +42,9 @@
 				@foreach ($estudiante->user->publicaciones as $publicacion)
 					<div class="publicacion">
 						<div class="publicacion-header">
-							<a href="{{ route('estudiante', [$estudiante->slug, $estudiante->id]) }}"><img src="{{ asset($estudiante->url_foto) }}" alt="" class="img-avatar avatar-publicacion"></a>
+							<a href="{{ route('estudiante', [$estudiante->slug, $estudiante->id]) }}">
+								<img src="{{ asset($estudiante->url_foto) }}" alt="" class="img-avatar avatar-publicacion">
+							</a>
 							<div class="info-publicacion">
 								<a class="nombre-publicacion" href="{{ route('estudiante', [$estudiante->slug, $estudiante->id]) }}">{{ $estudiante->nombre_corto  }}</a><br>
 								<span class="email-publicacion">{{ $estudiante->user->email }}</span><br>
@@ -62,6 +64,13 @@
 @section('custom-js')
 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/masonry/3.2.2/masonry.pkgd.min.js"></script>
+<script>
+    var nombre = "{{ $estudiante->nombre }}",
+    	correo = "{{ $estudiante->user->correo }}",
+    	url_foto = "{{ asset($estudiante->url_foto) }}",
+    	url_estudiante = "{{ route('estudiante', [$estudiante->slug, $estudiante->id]) }}";
+
+</script>
 <script src="{{ asset('js/perfil-estudiante.js') }}"></script>
 
 @stop
