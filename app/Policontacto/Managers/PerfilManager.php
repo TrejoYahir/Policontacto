@@ -59,7 +59,12 @@ class PerfilManager extends BaseManager
 	{
 		$nombreCompleto = $data['nombre'] . " " . $data['apellidos'];
 		$slug = \Str::slug($nombreCompleto);
+		$envi = \App::environment();
 		$cuentaSlug = Estudiante::whereRaw("slug ~ '^{$slug}(-[0-9]*)?$'");
+		if($envi == 'local')
+		{
+			$cuentaSlug = Estudiante::whereRaw("slug REGEXP '^{$slug}(-[0-9]*)?$'");
+		}
 
 		if ($cuentaSlug->count() === 0) {
 	        return $slug;

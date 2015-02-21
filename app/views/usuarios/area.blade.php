@@ -9,7 +9,7 @@
 @endforeach
 
 @foreach ($area->empresas as $empresa)
-    <a href="{{ route('empresa', [$empresa->slug) }}">{{ $empresa->user->email }}</a><br/>
+    <a href="{{ route('empresa', [$empresa->slug]) }}">{{ $empresa->user->email }}</a><br/>
 @endforeach
 
 @stop
