@@ -1,6 +1,6 @@
 <?php
 
-$host = 'localhost';
+$host = '192.168.1.233';
 $username = 'root';
 $password = 'n0m3l0';
 $database = 'poliprueba';
