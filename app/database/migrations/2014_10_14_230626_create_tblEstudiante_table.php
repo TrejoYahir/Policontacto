@@ -25,7 +25,7 @@ class CreateTblEstudianteTable extends Migration
             $table->text('curriculum');
             $table->date('fecha');
             $table->string('url_foto')->nullable();
-            $table->string('slug')->nullable();
+            $table->string('slug')->unique();
             $table->boolean('serv')->default(false);
             $table->boolean('empleo')->default(false);
 

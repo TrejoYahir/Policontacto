@@ -1,7 +1,7 @@
 <?php
 
 namespace Policontacto\Managers;
-
+use Policontacto\Entidades\Estudiante;
 
 class PerfilManager extends BaseManager
 {
@@ -48,10 +48,30 @@ class PerfilManager extends BaseManager
 			$data['empleo'] = 0;
 		}
 
-		$nombreCompleto = $data['nombre'] . " " . $data['apellidos'];
-		$this->entidad->slug = \Str::slug($nombreCompleto);
+		$slug = $this->generarSlug($data);
+
+		$this->entidad->slug = $slug;
 
 		return $data;
+	}
+
+	public function generarSlug($data)
+	{
+		$nombreCompleto = $data['nombre'] . " " . $data['apellidos'];
+		$slug = \Str::slug($nombreCompleto);
+		$cuentaSlug = Estudiante::whereRaw("slug REGEXP '^{$slug}(-[0-9]*)?$'");
+
+		if ($cuentaSlug->count() === 0) {
+	        return $slug;
+	    }
+
+	    $ultimoSlug = $cuentaSlug->orderBy('slug', 'desc')->first()->slug;
+	    $ultimoNumero = intval(str_replace($slug . '-', '', $ultimoSlug));
+
+	    $slug = $slug . '-' . ($ultimoNumero + 1);
+
+	    return $slug;
+
 	}
 
 }

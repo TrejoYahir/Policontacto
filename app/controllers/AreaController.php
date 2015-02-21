@@ -19,10 +19,10 @@ class AreaController extends BaseController
 
     }
 
-    public function area($slug, $id)
+    public function area($slug)
     {
 
-        $area = $this->AreaRepo->find($id);
+        $area = $this->AreaRepo->findBySlug($slug);
 
 	    $this->notFoundUnless($area);
 
@@ -30,10 +30,10 @@ class AreaController extends BaseController
 
     }
 
-    public function estudiante($slug, $id)
+    public function estudiante($slug)
     {
 
-        $estudiante = $this->EstudianteRepo->find($id);
+        $estudiante = $this->EstudianteRepo->findBySlug($slug);
 
 	    $this->notFoundUnless($estudiante);
 
@@ -41,10 +41,10 @@ class AreaController extends BaseController
 
     }
 
-    public function empresa($slug, $id)
+    public function empresa($slug)
     {
 
-        $empresa = $this->EmpresaRepo->find($id);
+        $empresa = $this->EmpresaRepo->findBySlug($slug);
 
 	    $this->notFoundUnless($empresa);
 

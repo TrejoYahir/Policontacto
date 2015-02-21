@@ -9,7 +9,7 @@
 		</figure>
 		<p class="info-perfil nombre-perfil"><strong>{{ $empresa->nombre  }}</strong></p>
 		<p class="info-perfil">{{ $empresa->user->email  }}</p>
-		<p class="info-perfil"><a href="{{ route('area', [$empresa->area->slug, $empresa->area->id]) }}">{{ $empresa->area->nombre  }}</a></p>
+		<p class="info-perfil"><a href="{{ route('area', [$empresa->area->slug]) }}">{{ $empresa->area->nombre  }}</a></p>
 	</div>
 </section>
 

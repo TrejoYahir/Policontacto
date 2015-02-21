@@ -22,8 +22,8 @@
 
 					<div class="info">
 						@if(isset(Auth::user()->estudiante->nombre))
-							<span class="elemento-info"><a href="{{ route('estudiante', [Auth::user()->estudiante->slug, Auth::user()->estudiante->id]) }}" class="nombre-avatar">{{ Auth::user()->estudiante->nombre }}</a></span>
-								<a href="{{ route('estudiante', [Auth::user()->estudiante->slug, Auth::user()->estudiante->id]) }}"><img src="{{ asset(Auth::user()->estudiante->url_foto) }}" alt="" class="img-avatar elemento-info"></a>
+							<span class="elemento-info"><a href="{{ route('estudiante', [Auth::user()->estudiante->slug]) }}" class="nombre-avatar">{{ Auth::user()->estudiante->nombre }}</a></span>
+								<a href="{{ route('estudiante', [Auth::user()->estudiante->slug]) }}"><img src="{{ asset(Auth::user()->estudiante->url_foto) }}" alt="" class="img-avatar elemento-info"></a>
 						@else
 					 		<span>{{ Auth::user()->email }}</span>
 					 	@endif	

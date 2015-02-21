@@ -20,7 +20,7 @@
 						<span class="info-perfil correo-perfil">{{ $estudiante->user->email  }}</span><br>
 					</div>
 					<div class="info-section">
-						<span class="info-perfil"><a href="{{ route('area', [$estudiante->area->slug, $estudiante->area->id]) }}">{{ $estudiante->area->nombre  }}</a></span><br>
+						<span class="info-perfil"><a href="{{ route('area', [$estudiante->area->slug]) }}">{{ $estudiante->area->nombre  }}</a></span><br>
 					</div>
 					<div class="info-section">
 						<span class="info-perfil align-left">{{ $estudiante->curriculum  }}</span><br>
@@ -42,11 +42,11 @@
 				@foreach ($estudiante->user->publicaciones as $publicacion)
 					<div class="publicacion">
 						<div class="publicacion-header">
-							<a href="{{ route('estudiante', [$estudiante->slug, $estudiante->id]) }}">
+							<a href="{{ route('estudiante', [$estudiante->slug]) }}">
 								<img src="{{ asset($estudiante->url_foto) }}" alt="" class="img-avatar avatar-publicacion">
 							</a>
 							<div class="info-publicacion">
-								<a class="nombre-publicacion" href="{{ route('estudiante', [$estudiante->slug, $estudiante->id]) }}">{{ $estudiante->nombre_corto  }}</a><br>
+								<a class="nombre-publicacion" href="{{ route('estudiante', [$estudiante->slug]) }}">{{ $estudiante->nombre_corto  }}</a><br>
 								<span class="email-publicacion">{{ $estudiante->user->email }}</span><br>
 								<span class="fecha-publicacion">{{ $publicacion->fecha }}</span>
 							</div>							
@@ -68,7 +68,7 @@
     var nombre = "{{ $estudiante->nombre }}",
     	correo = "{{ $estudiante->user->correo }}",
     	url_foto = "{{ asset($estudiante->url_foto) }}",
-    	url_estudiante = "{{ route('estudiante', [$estudiante->slug, $estudiante->id]) }}";
+    	url_estudiante = "{{ route('estudiante', [$estudiante->slug]) }}";
 
 </script>
 <script src="{{ asset('js/perfil-estudiante.js') }}"></script>
