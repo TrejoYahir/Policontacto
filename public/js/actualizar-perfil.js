@@ -1,23 +1,26 @@
 
 $(document).ready(function() {
 
-	var datosObtenidos;
+	var datosObtenidos,
+		publicacion = $('.publicacion').first();
 
 	function setData(data)
 	{
 		if(!datosObtenidos)
 			{
 				datosObtenidos = data.publicaciones[0];
-				if(datosObtenidos)
+
+				if($(publicacion).length == 0 && data.publicaciones.length != 0)
 				{
-					console.log("true 0");
-					console.log(datosObtenidos);
+					console.log("true");
 					return true;
 				}
-
-				console.log("false");
+				else
+				{
+					console.log("false");					
+					return false;
+				}
 				console.log(datosObtenidos);
-				return false;
 			} 				
 		else 
 			{
