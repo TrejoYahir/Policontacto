@@ -26,7 +26,7 @@ class Estudiante extends \Eloquent
                 $this->attributes['url_foto'] = $this->attributes['url_foto'];
             }
             else {
-                $this->attributes['url_foto'] = 'profile-pics/default-profile-pic.jpg';
+                $this->attributes['url_foto'] = 'profile-pics/default-profile-pic.png';
             }
         }
         else
