@@ -112,4 +112,15 @@ class UsersController extends BaseController
 
 	}
 
+	public function obtenerPublicacionesExternas($id)
+	{
+
+		$publicaciones = $this->publicacionRepo->findByUser($id);
+
+		 return Response::json(array(
+			'publicaciones' => $publicaciones
+		));	
+
+	}
+
 } 

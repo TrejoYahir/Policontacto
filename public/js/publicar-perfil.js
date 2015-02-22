@@ -1,12 +1,5 @@
 $(document).ready(function() {
 
-var publicaciones = $( '#publicaciones' );
-
-publicaciones.masonry( {
-	columnWidth: 93,
-	  itemSelector: '.publicacion'
-} );
-
 var form = $('.form-publicar');
 	form.bind('submit',function (e) {
 		$.ajax({
@@ -37,7 +30,7 @@ var form = $('.form-publicar');
 function obtenerPosts(){
 	$.ajax({
 		type: 'GET',
-		url: '../posts',
+		url: url_ruta,
 		beforeSend: function(){
 			console.log("antes recibir");
 		},
@@ -64,32 +57,6 @@ function desbloquearBoton(){
 	$(boton).attr("disabled", false);
 }
 
-function anadirPost(data){
-	var publicacionData = data.publicaciones[0];
-
-	var contenido = publicacionData['contenido'],
-		fecha = publicacionData['fecha'],
-		publicaciones = $('#publicaciones'),
-		publicacion = $('.publicacion').first(),
-		nuevaPublicacion = publicacion.clone();
-		if($(publicacion).length == 0)
-		{
-			publicacion = crearPublicacionItem();
-			nuevaPublicacion = $(publicacion).clone();
-		}
-
-	nuevaPublicacion.find('.fecha-publicacion')
-					.text(fecha);
-
-	nuevaPublicacion.find('.contenido-publicacion')
-					.text(contenido);		
-
-	$( publicaciones ).prepend( nuevaPublicacion );
-	$( publicaciones ).masonry( 'reloadItems' );
-	$( publicaciones ).masonry( 'layout' );
-
-}
-
 function afterPost(data)
 {
 	if(data.success == false){
@@ -102,12 +69,6 @@ function afterPost(data)
 		console.log(data);
 		obtenerPosts();
 	}	
-}
-
-function crearPublicacionItem(){
-	var publicacionItem = '<div class="publicacion"><div class="publicacion-header"><a href="'+url_estudiante+'"><img src="'+url_foto+'" alt="" class="img-avatar avatar-publicacion"></a><div class="info-publicacion"><a class="nombre-publicacion" href="'+url_estudiante+'">'+nombre+'</a><br><span class="email-publicacion">'+correo+'</span><br><span class="fecha-publicacion"></span></div></div><div class="contenido-publicacion"></div></div>';
-
-	return publicacionItem;
 }
 
 

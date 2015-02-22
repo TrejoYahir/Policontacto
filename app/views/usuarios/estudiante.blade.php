@@ -70,7 +70,21 @@
     	url_foto = "{{ asset($estudiante->url_foto) }}",
     	url_estudiante = "{{ route('estudiante', [$estudiante->slug]) }}";
 
+    	@if($estudiante->user->id == Auth::user()->id)
+			var	url_ruta = '{{ route("obtenerPublicaciones") }}';
+		@elseif($estudiante->user->id != Auth::user()->id)
+			var	url_ruta = '{{ route("obtenerPublicacionesExternas", [$estudiante->user->id]) }}';
+		@endif
+
 </script>
-<script src="{{ asset('js/perfil-estudiante.js') }}"></script>
+
+<script src="{{ asset('js/perfil-layout.js') }}"></script>
+
+@if($estudiante->user->id == Auth::user()->id)
+	<script src="{{ asset('js/publicar-perfil.js') }}"></script>
+@elseif($estudiante->user->id != Auth::user()->id)	
+	<script src="{{ asset('js/actualizar-perfil.js') }}"></script>
+@endif
+
 
 @stop

@@ -25,4 +25,9 @@ abstract class BaseRepo
         return $this->model->where('slug', $slug)->get()->first();
     }
 
+    public function findByUser($id)
+    {
+        return $this->model->where('usuario_id', $id)->orderBy('id', 'desc')->get();
+    }
+
 } 

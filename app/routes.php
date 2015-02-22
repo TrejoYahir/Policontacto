@@ -1,11 +1,7 @@
 <?php
 
+//Inicio
 Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
-
-//Listas
-Route::get('area/{slug}', ['as' => 'area', 'uses' => 'AreaController@area']);
-Route::get('usuario/{slug}', ['as' => 'estudiante', 'uses' => 'AreaController@estudiante']);
-Route::get('empresa/{slug}', ['as' => 'empresa', 'uses' => 'AreaController@empresa']);
 
 //Autentificación
 
@@ -16,7 +12,7 @@ Route::group(['before' => 'guest'],  function(){
 
 });
 
-//Edición
+//Acceso solo con autentificación
 Route::group(['before' => 'auth'],  function(){
 
 	Route::get('cuenta', ['as' => 'cuenta', 'uses' => 'UsersController@cuenta']);
@@ -26,6 +22,10 @@ Route::group(['before' => 'auth'],  function(){
 	Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@logout']);
 	Route::post('publicar', ['as' => 'publicar', 'uses' => 'UsersController@publicar']);
 	Route::get('posts', ['as' => 'obtenerPublicaciones', 'uses' => 'UsersController@obtenerPublicaciones']);
+	Route::get('posts/usuario/{id}', ['as' => 'obtenerPublicacionesExternas', 'uses' => 'UsersController@obtenerPublicacionesExternas']);
+	Route::get('area/{slug}', ['as' => 'area', 'uses' => 'AreaController@area']);
+	Route::get('usuario/{slug}', ['as' => 'estudiante', 'uses' => 'AreaController@estudiante']);
+	Route::get('empresa/{slug}', ['as' => 'empresa', 'uses' => 'AreaController@empresa']);
 
 	//admin
 	Route::group(['before' => 'isAdmin'],  function(){
