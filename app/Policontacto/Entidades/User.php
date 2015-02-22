@@ -12,7 +12,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
 
     protected $table = 'tblUsuario';
 
-    protected $hidden = array('password', 'remember_token');
+    protected $hidden = array('password');
 
     protected $fillable = array('email', 'password');
 

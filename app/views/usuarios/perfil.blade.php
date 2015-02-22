@@ -56,7 +56,7 @@
 					</div>       
 				</div>
 			</div>
-			<div class="form-section">
+			<div class="form-section align-center">
 				<div class="boton-seleccion @if($estudiante->url_foto) hay-foto @endif" data-fondo={{$estudiante->url_foto}}>
 					<div class="" id="simbolo-upload">+</div>
 					{{ Form::file('url_foto', ['class' => 'input-registro upload','id' => 'imgInp']) }} 

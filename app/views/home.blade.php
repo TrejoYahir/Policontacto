@@ -14,7 +14,7 @@
 			{{Campo::password('password_confirmation', ['class' => 'input-registro', 'required']) }}
 			<div class="terms-container">
 				{{ Form::checkbox('check', null, false, ['id' => 'check', 'required']) }}
-				<label for="check">
+				<label for="check" class="padding-terms">
 					<span class="check"></span>
 					<span class="box"></span>
 					Acepto los <a href="" class="inicio">terminos y condiciones</a>
