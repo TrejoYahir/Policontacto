@@ -43,7 +43,7 @@
 						{{ Form::password('password', ['class' => 'input-login', 'placeholder'=>'Contraseña','maxlength' => '30', 'required']) }}<br class="res-br">
 						 <button type="submit" class="boton">Entrar</button><br>
 						 <div class="terms-container2">
-						 {{ Form::checkbox('remember', null, false, ['id' => 'remember']) }}
+						 {{ Form::checkbox('remember', true, false, ['id' => 'remember']) }}
 						 <label for="remember" class="remember">
 							 <span class="check2"></span>
 							 <span class="box2"></span>

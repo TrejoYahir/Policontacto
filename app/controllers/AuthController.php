@@ -6,10 +6,11 @@ class AuthController extends BaseController
     public function login()
     {
         $data = Input::only('email', 'password', 'remember');
+        $remember = (Input::has('remember')) ? true : false;
 
         $credenciales = ['email' => $data['email'], 'password' => $data['password']];
 
-        if (Auth::attempt($credenciales, $data['remember'])) {
+        if (Auth::attempt($credenciales, $remember)) {
             return Redirect::back();
         }
 
