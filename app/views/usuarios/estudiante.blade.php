@@ -66,7 +66,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/masonry/3.2.2/masonry.pkgd.min.js"></script>
 <script>
     var nombre = "{{ $estudiante->nombre }}",
-    	correo = "{{ $estudiante->user->correo }}",
+    	correo = "{{ $estudiante->user->email }}",
     	url_foto = "{{ asset($estudiante->url_foto) }}",
     	url_estudiante = "{{ route('estudiante', [$estudiante->slug]) }}";
 
