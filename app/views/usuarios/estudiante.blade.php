@@ -32,7 +32,7 @@
 			@if($estudiante->user == Auth::user())
 			<div class="compartir-form">
 				{{ Form::open(['route' => 'publicar', 'method' => 'POST', 'class' => 'form-publicar']) }}
-					{{ Form::textarea('contenido', null, ['class' => 'textarea-compartir','maxlength' => '500', 'required']) }}
+					{{ Form::textarea('contenido', null, ['class' => 'textarea-compartir','maxlength' => '500', 'placeholder' => 'Comparte algo con los demás...', 'required']) }}
 					{{ $errors->first('check', '<span class="back-error">:message</span>') }}
 					<button type="submit" class="boton-compartir">Compartir</button>
 				{{ Form::close() }}

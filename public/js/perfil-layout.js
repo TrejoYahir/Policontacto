@@ -3,8 +3,8 @@ $(document).ready(function() {
 	var publicaciones = $( '#publicaciones' );
 
 	publicaciones.masonry( {
-		columnWidth: 93,
-		  itemSelector: '.publicacion'
+		columnWidth: '.publicacion',
+		itemSelector: '.publicacion'
 	} );
 
 });
