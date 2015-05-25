@@ -36,7 +36,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
 
 	public function publicaciones()
 	{
-		return $this->hasMany('Policontacto\Entidades\Publicacion', 'usuario_id', 'id')->orderBy('fecha', 'DESC');
+		return $this->hasMany('Policontacto\Entidades\Publicacion', 'usuario_id', 'id')->orderBy('fecha_p', 'DESC');
 	}
 
 

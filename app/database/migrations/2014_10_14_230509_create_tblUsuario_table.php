@@ -18,7 +18,8 @@ class CreateTblUsuarioTable extends Migration
 
             $table->string('email');
             $table->string('password');
-            $table->text('descripcion')->nullable();
+            $table->boolean('confirmed')->default(0);
+            $table->string('confirmation_code')->nullable();
             $table->boolean('admin')->default(false);
             $table->rememberToken();
 

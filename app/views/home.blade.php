@@ -5,7 +5,7 @@
 <section class="home">
 	<article class="max-container">
 		<h2 class="texto-inicio">
-			Nosotros te ayudamos a encontrar un lugar para hacer tu servicio social, encontrar empleo, mantenerte en contacto con otros estudiantes y alimentar tus conocimientos.
+			Nosotros te ayudamos a encontrar un lugar para hacer tu servicio social, mantenerte en contacto con otros estudiantes y alimentar tus conocimientos.
 		</h2>
 		@if(Auth::guest())
 		{{ Form::open(['route' => 'registro', 'method' => 'POST', 'class' => 'form-registro']) }}
@@ -30,9 +30,24 @@
 			@if(isAdmin())
 				<p>Eres admin, lol</p>
 			@endif
-		@endif
+		@endif		 		
 	</article>
 </section>
+@if (Session::has('mensaje'))
+	<div class='registro-exitoso mensaje-f'>
+		<strong>{{ Session::get('mensaje') }}</strong>
+	</div>
+@endif
+@if (Session::has('v_error'))
+	<div class='error-v mensaje-f'>
+		<strong>El código de verificación no existe.</strong>
+	</div>
+@endif
+@if (Session::has('u_error'))
+	<div class='error-v mensaje-f'>
+		<strong>El código de verificación no corresponde a ningun usuario.</strong>
+	</div>
+@endif
 <section class="section-class">
 	<article class="top-section">	
 		<h2 class="titulo-seccion">¿Qué es Policontacto?</h2>
@@ -42,7 +57,7 @@
 	<article class="contenido special-bg">
 		<div class="cont-container">			
 			<div class="bloque-texto">
-				Policontacto es un sistema que te provee una serie de herramientas útiles para facilitar trámites, buscar empleo, ampliar tus conocimientos y mantenerte conectado con personas de tu área profesional desde la comodidad de tu hogar.
+				Policontacto es un sistema que te provee una serie de herramientas útiles para facilitar trámites, ampliar tus conocimientos y mantenerte conectado con personas de tu área profesional desde la comodidad de tu hogar.
 			</div>
 		</div>
 	</article>

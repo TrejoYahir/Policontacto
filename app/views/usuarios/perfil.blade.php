@@ -3,7 +3,11 @@
 @section('body-class')class='perfil'@stop
 
 @section('content')
-
+@if (Session::has('mensaje'))
+	<div class='registro-exitoso mensaje-f'>
+		<strong>{{ Session::get('mensaje') }}</strong>
+	</div>
+@endif
 <section class="section-class">
 	<article class="max-container">
 		{{ Form::model($estudiante, ['route' => 'cambiarPerfil', 'method' => 'PUT', 'files' => true, 'class' => 'form-perfil']) }}
@@ -27,7 +31,7 @@
 					</div>
 					{{ $errors->first('fecha', '<span class="back-error">:message</span>') }}
 				</div>
-			 {{Campo::textarea('curriculum', null, ['class' => 'input-registro','maxlength' => '2000', 'required']) }}        
+			 {{Form::textarea('descripcion', null, ['class' => 'input-registro','maxlength' => '2000', 'required', 'placeholder' => 'Descripción']) }}        
 				<div class="select-form">
 					<div class="form-inline">
 						<span class="texto-form">Área</span><br/>
@@ -35,26 +39,7 @@
 						{{ Campo::select('plantel_id', $planteles, null, ['class' => 'combo-perfil']) }}
 						{{ Campo::select('especialidad_id', $especialidades, null, ['class' => 'combo-perfil']) }}
 				</div>
-				</div>
-				<div class="form-inline">          
-					<span class="texto-form">Busco</span><br/>
-					<div class="terms-container check-perfil">
-						{{ Form::checkbox('serv', '1', false, ['id' => 'check']) }}
-								<label for="check">
-										<span class="check"></span>
-										<span class="box"></span>
-												Servicio Social
-								</label>
-					</div>
-					<div class="terms-container2 check-perfil">
-							{{ Form::checkbox('empleo', '1', false, ['id' => 'check2']) }}
-							<label for="check2">
-									<span class="check2"></span>
-									<span class="box2"></span>
-									Empleo
-							</label>
-					</div>       
-				</div>
+				</div>				
 			</div>
 			<div class="form-section align-center">
 				<div class="boton-seleccion @if($estudiante->url_foto) hay-foto @endif" data-fondo={{$estudiante->url_foto}}>

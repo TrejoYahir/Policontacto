@@ -19,7 +19,7 @@ class CreateTblPublicacionTable extends Migration
             $table->integer('usuario_id')->unsigned();
             $table->string('contenido');
             $table->string('url_archivo')->nullable();
-            $table->dateTime('fecha');
+            $table->dateTime('fecha_p');
             $table->enum('tipo', ['texto', 'archivo', 'video', 'código', 'imágen', 'audio']);
 
             $table->foreign('usuario_id')->references('id')->on('tblUsuario')->onDelete('cascade')->onUpdate('cascade');

@@ -3,7 +3,7 @@
 class Estudiante extends \Eloquent
 {
     protected $table = 'tblEstudiante';
-    protected $fillable = ['area_id', 'especialidad_id', 'plantel_id', 'nombre', 'apellidos', 'curriculum', 'fecha', 'serv', 'empleo', 'genero', 'url_foto'];
+    protected $fillable = ['area_id', 'especialidad_id', 'plantel_id', 'nombre', 'apellidos', 'descripcion', 'fecha', 'genero', 'url_foto'];
 
     public function user()
     {
@@ -26,7 +26,7 @@ class Estudiante extends \Eloquent
                 $this->attributes['url_foto'] = $this->attributes['url_foto'];
             }
             else {
-                $this->attributes['url_foto'] = 'profile-pics/default-profile-pic.png';
+                $this->attributes['url_foto'] = 'profile-pics/default-profile-pic' .rand(1, 4). '.png';
             }
         }
         else

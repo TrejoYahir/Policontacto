@@ -21,13 +21,11 @@ class CreateTblEstudianteTable extends Migration
             $table->integer('especialidad_id')->unsigned();
             $table->string('nombre');
             $table->string('apellidos');
-	        $table->string('genero');
-            $table->text('curriculum');
+            $table->string('genero');
+            $table->text('descripcion');
             $table->date('fecha');
             $table->string('url_foto')->nullable();
             $table->string('slug')->unique();
-            $table->boolean('serv')->default(false);
-            $table->boolean('empleo')->default(false);
 
             $table->foreign('id')->references('id')->on('tblUsuario')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('plantel_id')->references('id')->on('ctgPlantel')->onUpdate('cascade');

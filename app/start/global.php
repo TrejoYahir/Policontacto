@@ -54,6 +54,11 @@ App::error(function (Policontacto\Managers\ExcepcionesValidacion $excepcion) {
 	return Redirect::back()->withInput()->withErrors($excepcion->getErrors());
 });
 
+App::missing(function($exception)
+{
+    return Response::view('errores.missing', array(), 404);
+});
+
 /*
 |--------------------------------------------------------------------------
 | Maintenance Mode Handler

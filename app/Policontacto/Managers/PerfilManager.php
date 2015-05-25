@@ -14,10 +14,8 @@ class PerfilManager extends BaseManager
 			'especialidad_id' => 'required|exists:ctgEspecialidad,id',
 			'nombre' => 'required|alpha_spaces|min:2|Max:30|',
 			'apellidos' => 'required|alpha_spaces|min:2|Max:50|',
-			'curriculum' => 'required|max:2000',
+			'descripcion' => 'required|max:500',
 			'fecha' => 'required|date',
-			'serv' => '',
-			'empleo' => '',
 			'genero' => 'required|in:Masculino,Femenino',
 			'url_foto' => 'max:6000|mimes:jpg,png,jpeg'
 		];
@@ -39,14 +37,6 @@ class PerfilManager extends BaseManager
 
 	public function prepararDatos($data)
 	{
-
-		if(!isset($data['serv'])) {
-			$data['serve'] = 0;
-		}
-
-		if(!isset($data['empleo'])) {
-			$data['empleo'] = 0;
-		}
 
 		$slug = $this->generarSlug($data);
 

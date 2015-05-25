@@ -20,8 +20,6 @@ class CreateCtgVacanteTable extends Migration
             $table->string('nombre');
             $table->text('requisitos');
             $table->text('descripcion');
-            $table->boolean('serv_social');
-            $table->boolean('empleo');
 
             $table->foreign('empresa_id')->references('id')->on('tblEmpresa')->onDelete('cascade')->onUpdate('cascade');
 

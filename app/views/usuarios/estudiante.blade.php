@@ -16,20 +16,20 @@
 						</figure>
 					</div>
 					<div class="info-section">
-						<span class="info-perfil nombre-perfil"><strong>{{ $estudiante->nombre  }} {{ $estudiante->apellidos  }}</strong></span><br>
-						<span class="info-perfil correo-perfil">{{ $estudiante->user->email  }}</span><br>
+						<span class="info-perfil nombre-perfil"><strong>{{{ $estudiante->nombre  }}} {{{ $estudiante->apellidos  }}}</strong></span><br>
+						<span class="info-perfil correo-perfil">{{{ $estudiante->user->email  }}}</span><br>
 					</div>
 					<div class="info-section">
-						<span class="info-perfil"><a href="{{ route('area', [$estudiante->area->slug]) }}">{{ $estudiante->area->nombre  }}</a></span><br>
+						<span class="info-perfil"><a href="{{ route('area', [$estudiante->area->slug]) }}">{{{ $estudiante->area->nombre }}}</a></span><br>
 					</div>
 					<div class="info-section">
-						<span class="info-perfil align-left">{{ $estudiante->curriculum  }}</span><br>
+						<span class="info-perfil align-left">{{{ $estudiante->descripcion  }}}</span><br>
 					</div>		
 				</div>
 			</div>		
 		</div>
 		<div class="contenido-perfil">
-			@if($estudiante->user == Auth::user())
+			@if($estudiante->user->id == Auth::user()->id)
 			<div class="compartir-form">
 				{{ Form::open(['route' => 'publicar', 'method' => 'POST', 'class' => 'form-publicar']) }}
 					{{ Form::textarea('contenido', null, ['class' => 'textarea-compartir','maxlength' => '500', 'placeholder' => 'Comparte algo con los demás...', 'required']) }}
@@ -46,9 +46,9 @@
 								<img src="{{ asset($estudiante->url_foto) }}" alt="" class="img-avatar avatar-publicacion">
 							</a>
 							<div class="info-publicacion">
-								<a class="nombre-publicacion" href="{{ route('estudiante', [$estudiante->slug]) }}">{{ $estudiante->nombre_corto  }}</a><br>
-								<span class="email-publicacion">{{ $estudiante->user->email }}</span><br>
-								<span class="fecha-publicacion">{{ $publicacion->fecha }}</span>
+								<a class="nombre-publicacion" href="{{ route('estudiante', [$estudiante->slug]) }}">{{{ $estudiante->nombre_corto  }}}</a><br>
+								<span class="email-publicacion">{{{ $estudiante->user->email }}}</span><br>
+								<span class="fecha-publicacion">{{{ $publicacion->fecha_p }}}</span>
 							</div>							
 						</div>						
 						<div class="contenido-publicacion">{{ $publicacion->contenido }}</div>

@@ -17,6 +17,8 @@ gris = #8a9094
 gris-c = #919191
 gris-f = #38373c
 azul-hover = #2c3e50
+verde-exito = #2ecc71
+rojo-error = #e74c3c
 
 /*Funciones*/
 
@@ -219,6 +221,35 @@ footer
 	display none
 	right 0
 
+.buscar
+	display inline-block
+	border-radius(10px)
+	border none
+	height 1.6rem
+	padding .3rem .7rem .3rem 2.5rem
+	font-weight normal
+	color gray
+	width 20rem
+	position relative
+	&:focus
+		outline none
+		
+.icono-buscar
+	display block
+	vertical-align middle
+	color gris-c
+	position absolute
+	top 7px
+	left 13px
+	z-index 3
+	font-size 1.2rem
+	
+.busqueda
+	display inline-block
+	vertical-align middle
+	margin -.7rem 0 .5rem 10%
+	position relative
+
 .rotate
 	transform rotate(180deg)
 
@@ -306,6 +337,22 @@ footer
 	color white
 	background-color naranja
 	padding .3rem
+
+.registro-exitoso
+	display block
+	background-color verde-exito
+	color white
+	margin 0
+	padding .5rem 0
+	text-align center
+	font-size 1.1rem
+	
+.error-v
+	@extend .registro-exitoso
+	background-color rojo-error
+	
+.mensaje-f
+	transition 1s
 
 .block
 	display block
@@ -694,7 +741,7 @@ label
 	position relative
 	top 0
 	text-align left
-
+	
 .relative
 	position relative
 
@@ -788,6 +835,47 @@ label
 .padding-terms
 	padding-left 10px
 
+
+//404
+
+//novedades
+
+.max-novedades
+	max-width 100%
+	margin-top 5rem
+	padding 0
+	display block
+	text-align center
+	
+.contenido-novedades
+	position relative
+	top 0
+	text-align center
+	display inline-block
+	width 70%
+
+.publicaciones-n
+	width 100%
+	display inline-block
+	text-align center
+	
+.publicacion-n
+	display inline-block
+	max-width 18rem
+	min-width 18rem
+	padding 1rem
+	color gris
+	background-color white
+	vertical-align top
+	margin .3rem .2rem
+	box-shadow 0 3px 2px -2px #ccc
+	border-radius(2px)
+
+.sin-info
+	font-size 1.2rem
+	color gris-c
+	font-weight bold
+
 @media screen and (min-width 56.66rem)
 
 	.login-form
@@ -871,7 +959,7 @@ label
 		text-align center
 		display inline-block
 		left 0
-		
+
 	.publicacion
 		min-width 49%
 		max-width 49%
@@ -957,8 +1045,9 @@ label
 	
 	.textarea-compartir
 		width 100%
-		height 3rem
+		height 4rem
 		margin-bottom .5rem
+		max-width 100%
 		box-sizing border-box
 		
 	.boton-compartir

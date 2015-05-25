@@ -13,7 +13,7 @@ function anadirPost(data){
 		var publicacionData = data.publicaciones[0];
 
 		var contenido = publicacionData['contenido'],
-			fecha = publicacionData['fecha'],
+			fecha = publicacionData['fecha_p'],
 			publicaciones = $('#publicaciones'),
 			publicacion = $('.publicacion').first(),
 			nuevaPublicacion = publicacion.clone();

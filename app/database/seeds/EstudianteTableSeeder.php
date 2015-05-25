@@ -34,13 +34,11 @@ class EstudianteTableSeeder extends Seeder
 
                 'id' => $user->id,
                 'area_id' => 1,
-                'serv' => $faker->boolean(70),
-                'empleo' => $faker->boolean(30),
                 'nombre' => $nombre,
                 'apellidos' => $apellidos,
                 'genero' => $faker->randomElement(['Hombre', 'Mujer']),
                 'fecha' => $fecha,
-                'curriculum' => $faker->text(),
+                'descripcion' => $faker->text(200),
                 'slug' => \Str::slug($nombre_completo),
                 'plantel_id' => 9,
                 'especialidad_id' => $faker->numberBetween(1, 3)

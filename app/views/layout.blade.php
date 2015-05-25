@@ -3,7 +3,7 @@
 	<head>
 		<!--Meta tags-->
 		<meta charset="UTF-8" />
-		<meta name="description" content="Plataforma diseñada para facilitarles a los estudiantes el encontrar en dónde hacer servicio social o encontrar empleo" />
+		<meta name="description" content="Plataforma diseñada para facilitarles a los estudiantes el encontrar en donde hacer servicio social." />
 		<meta name="author" content="CodeArt">
 		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0" />
 		<!--icono y estilos-->
@@ -19,13 +19,17 @@
 					<h1 class="titulo">Poli<strong>contacto</strong></h1>
 				</a>
 				@if(Auth::check())
-
+					<div class="busqueda">
+						<span class="icon-search icono-buscar"></span>
+						<input type="text" id="buscar" class="buscar" placeholder='Buscar'>
+						<div id="resultados"></div>
+					</div>
 					<div class="info">
 						@if(isset(Auth::user()->estudiante->nombre))
 							<span class="elemento-info"><a href="{{ route('estudiante', [Auth::user()->estudiante->slug]) }}" class="nombre-avatar">{{ Auth::user()->estudiante->nombre }}</a></span>
 								<a href="{{ route('estudiante', [Auth::user()->estudiante->slug]) }}"><img src="{{ asset(Auth::user()->estudiante->url_foto) }}" alt="" class="img-avatar elemento-info"></a>
 						@else
-					 		<span>{{ Auth::user()->email }}</span>
+							<span class="elemento-info"><a href="{{ route('cambiarPerfil') }}" class="nombre-avatar">{{ Auth::user()->email  }}</a></span>
 					 	@endif	
 						<div class="flecha-abajo"></div>
 						 <span class="menu">
@@ -55,7 +59,7 @@
 						 @endif
 					{{ Form::close() }}
 					</div>
-					<button class="boton-login">login</button>
+					<button class="boton-login">Entrar</button>
 
 				@endif
 		</header>
@@ -64,6 +68,8 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" charset="utf-8"></script>
 	<script>window.jQuery || document.write('<script src="{{ asset('js/lib/jquery-2.1.1.min.js') }}"><\/script>')</script>
 	<script src="{{ asset('js/home.js') }}"></script>
+	<script>var	 url_ruta = '{{ route("buscar") }}';</script>
+	<script src="{{ asset('js/busqueda.js') }}"></script>
 	@yield('custom-js')
 	</body>
 </html>

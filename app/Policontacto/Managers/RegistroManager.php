@@ -17,4 +17,12 @@ class RegistroManager extends BaseManager
         return $reglas;
     }
 
+	public function prepararDatos($data)
+	{
+		$confirmation_code = str_random(30);
+		$this->entidad->confirmation_code = $confirmation_code;
+
+		return $data;
+	}
+
 }

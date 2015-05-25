@@ -61,5 +61,5 @@ $(document).ready(function() {
 				console.log(errors);
 			}
 		})
-	},5000);
+	},2000);
 });

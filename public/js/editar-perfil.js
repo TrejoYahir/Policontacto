@@ -1,4 +1,5 @@
 var selector = $('.boton-seleccion').first();
+
 $(function() {
 	if($(selector).hasClass('hay-foto'))
 	{
@@ -43,3 +44,4 @@ $(".upload").hover(
 				$( "#simbolo-upload" ).toggle(300, 'linear');
 			}
 });
+
