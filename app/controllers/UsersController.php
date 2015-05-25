@@ -10,6 +10,7 @@ use Policontacto\Repositorios\PublicacionRepo;
 use Policontacto\Managers\PerfilManager;
 use Policontacto\Managers\PublicarManager;
 use Policontacto\Repositorios\UserRepo;
+use Policontacto\Entidades\User;
 
 class UsersController extends BaseController
 {
