@@ -67,7 +67,7 @@
 	<article class="contenido">
 		<div class="bloque-informacion">
 			<div class="icon-holder">			
-				<span class="icon-bolt icono"></span>
+				<i class="fa fa-bolt icono"></i>
 			</div><br>
 			<strong class="icono-title">
 				Rápido y seguro
@@ -78,7 +78,7 @@
 		</div>
 		<div class="bloque-informacion">
 			<div class="icon-holder">			
-				<span class="icon-home icono"></span>
+				<i class="fa fa-home icono"></i>
 			</div><br>
 			<strong class="icono-title">
 				Desde la comodidad de tu hogar
@@ -89,7 +89,7 @@
 		</div>
 		<div class="bloque-informacion">
 			<div class="icon-holder">			
-				<span class="icon-desktop icono"></span>
+				<i class="fa fa-desktop icono"></i>
 			</div><br>
 			<strong class="icono-title">
 				Compatible con todos los dispositivos
@@ -100,7 +100,7 @@
 		</div>
 		<div class="bloque-informacion">
 			<div class="icon-holder">			
-				<span class="icon-web icono"></span>
+				<i class="fa fa-cloud icono"></i>
 			</div><br>
 			<strong class="icono-title">
 				Accesible desde cualquier lugar

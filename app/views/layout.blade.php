@@ -9,6 +9,7 @@
 		<!--icono y estilos-->
 		<link rel="shortcut icon" href="{{ asset('favicon.png' ) }}" />
 		<link rel="stylesheet" href="{{ asset('css/estilos.css') }}" />
+		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 		<title>Policontacto</title>
 	</head>
 	<body @yield('body-class')>
@@ -20,7 +21,7 @@
 				</a>
 				@if(Auth::check())
 					<div class="busqueda">
-						<span class="icon-search icono-buscar"></span>
+						<i class="fa fa-search icono-buscar"></i>
 						<input type="text" id="buscar" class="buscar" placeholder='Buscar'>
 						<div id="resultados"></div>
 					</div>
