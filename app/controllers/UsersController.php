@@ -8,8 +8,10 @@ use Policontacto\Repositorios\PlantelRepo;
 use Policontacto\Repositorios\EspecialidadRepo;
 use Policontacto\Repositorios\PublicacionRepo;
 use Policontacto\Managers\PerfilManager;
+use Policontacto\Managers\EmpresaPerfilManager;
 use Policontacto\Managers\PublicarManager;
 use Policontacto\Repositorios\UserRepo;
+use Policontacto\Repositorios\EmpresaRepo;
 use Policontacto\Entidades\User;
 
 class UsersController extends BaseController
@@ -21,8 +23,11 @@ class UsersController extends BaseController
 	protected $plantelRepo;
 	protected $publicacionRepo;
 	protected $userRepo;
+	protected $empresaRepo;
 
-	public function __construct(EstudianteRepo $estudianteRepo, EspecialidadRepo $especialidadRepo, AreaRepo $areaRepo, PlantelRepo $plantelRepo, PublicacionRepo $publicacionRepo, UserRepo $userRepo)
+	//Constructor
+
+	public function __construct(EstudianteRepo $estudianteRepo, EspecialidadRepo $especialidadRepo, AreaRepo $areaRepo, PlantelRepo $plantelRepo, PublicacionRepo $publicacionRepo, UserRepo $userRepo, EmpresaRepo $empresaRepo)
 	{
 		$this->estudianteRepo = $estudianteRepo;
 		$this->especialidadRepo = $especialidadRepo;
@@ -30,24 +35,49 @@ class UsersController extends BaseController
 		$this->plantelRepo = $plantelRepo;
 		$this->publicacionRepo = $publicacionRepo;
 		$this->userRepo = $userRepo;
+		$this->empresaRepo = $empresaRepo;
 	}
+
+	//registros
 
 	public function registro()
 	{
 
 		$user = $this->estudianteRepo->nuevoEstudiante();
 		$manager = new RegistroManager($user, Input::all());
-
+		$user->tipo = 'estudiante';
 		$manager->save();
+		$user->save();
 
 		Mail::send('emails.verificacion', array('confirmation_code' => $user->confirmation_code), function($message) {
-			$message->to(Input::get('email'), 'Querido usuario')
+			$message->to(Input::get('email'), 'Nuestro nuevo usuario')
 				->subject('Verifica tu cuenta');
 		});
 
 		return Redirect::back()->with('mensaje', '¡Registro exitoso! Por favor revisa tu correo electrónico para confirmar tu cuenta en Policontacto.');
 
 	}
+
+	public function registroEmpresa()
+	{
+
+		$user = $this->empresaRepo->nuevaEmpresa();
+		$manager = new RegistroManager($user, Input::all());
+		$user->tipo = 'empresa';
+		$manager->save();
+		$user->save();
+
+		Mail::send('emails.verificacion-empresa', array('confirmation_code' => $user->confirmation_code), function($message) {
+			$message->to(Input::get('email'), 'Nuestro nuevo usuario')
+				->subject('Verifica tu cuenta');
+		});
+
+		return Redirect::back()->with('mensaje', '¡Registro exitoso! Por favor revisa tu correo electrónico para confirmar tu cuenta en Policontacto.');
+
+	}
+
+
+	//Cuentas
 
 	public function cuenta()
 	{
@@ -67,6 +97,8 @@ class UsersController extends BaseController
 		return Redirect::route('home');
 
 	}
+
+	//perfiles
 
 	public function perfil()
 	{
@@ -92,6 +124,31 @@ class UsersController extends BaseController
 		return Redirect::route('home');			
 
 	}
+
+	public function perfilEmpresa()
+	{
+
+		$user = Auth::user();
+		$empresa = $user->getEmpresa();
+		$areas = $this->areaRepo->getList();
+
+		return View::make('usuarios/perfilEmpresa', compact('user', 'empresa', 'areas'));
+
+	}
+
+	public function cambiarPerfilEmpresa()
+	{
+
+		$user = Auth::user();
+		$empresa = $user->getEmpresa();
+		$manager = new EmpresaPerfilManager($empresa, Input::all());		
+		$manager->save();
+
+		return Redirect::route('home');			
+
+	}
+
+	//publicaciones
 
 	public function publicar()
 	{
@@ -130,6 +187,14 @@ class UsersController extends BaseController
 
 	}
 
+	public function novedades()
+	{
+		$publicaciones = $this->publicacionRepo->getAll();
+		return View::make('novedades', compact('publicaciones'));
+	}
+
+	//Confirmación de cuentas
+
 	public function confirmar($confirmation_code)
 	{
 		if( ! $confirmation_code)
@@ -152,12 +217,33 @@ class UsersController extends BaseController
 
 		return Redirect::route('perfil')->with('mensaje', '¡Tu cuenta ya está activada! Por favor llena tus datos para terminar de configurarla.');
 	}
-	
-	public function novedades()
+
+	public function confirmarEmpresa($confirmation_code)
 	{
-		$publicaciones = $this->publicacionRepo->getAll();
-		return View::make('novedades', compact('publicaciones'));
+		if( ! $confirmation_code)
+		{
+				return Redirect::home()->with('v_error', 1);
+		}
+
+		$user = User::whereConfirmationCode($confirmation_code)->first();
+
+		if ( ! $user)
+		{
+				return Redirect::home()->with('u_error', 1);
+		}
+
+		$user->confirmed = 1;
+		$user->confirmation_code = null;
+		$user->save();
+
+		Auth::login($user);
+
+		return Redirect::route('perfilEmpresa')->with('mensaje', '¡Tu cuenta ya está activada! Por favor llena tus datos para terminar de configurarla.');
 	}
+	
+
+	//Busqueda
+
 
 	public function buscar()
 	{
@@ -172,11 +258,11 @@ class UsersController extends BaseController
 		{
 
 			if(isset($u->estudiante->nombre))
-				$nombreEs = $u->estudiante->nombre;
+				$nombreEs = $u->estudiante->nombre . ' ' . $u->estudiante->apellidos;
 			if(isset($u->empresa->nombre))
 				$nombreEm = $u->empresa->nombre;
 
-			if(Str::contains(Str::lower($nombreEs), Str::lower($keywords)) || Str::contains(Str::lower($nombreEm), Str::lower($keywords)))
+			if(Str::startsWith(Str::lower($nombreEs), Str::lower($keywords)) || Str::startsWith(Str::lower($nombreEm), Str::lower($keywords)))
 			{
 				if($u->estudiante){
 					array_push($estudiantes, $u->estudiante);
@@ -187,11 +273,17 @@ class UsersController extends BaseController
 			}
 		}
 
-		return Response::json(array(
-			'estudiantes' => $estudiantes,
-			'empresas' => $empresas
-		));	
+		return View::make('usuarios/buscarUsuarios', compact('estudiantes', 'empresas'));
+	}
+
+
+	//Solo vistas
+
+	public function empresa()
+	{
+
+		return View::make('empresaRegistro');
+
 	}
 
 } 
-

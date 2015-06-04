@@ -5,10 +5,10 @@
 <section class="home">
 	<article class="max-container">
 		<h2 class="texto-inicio">
-			Nosotros te ayudamos a encontrar un lugar para hacer tu servicio social, mantenerte en contacto con otros estudiantes y alimentar tus conocimientos.
+			Policontacto para empresas te ayudará a facilitar el trámite e ingreso de alumnos que quieren hacer su servicio social en tu empresa.
 		</h2>
 		@if(Auth::guest())
-		{{ Form::open(['route' => 'registro', 'method' => 'POST', 'class' => 'form-registro']) }}
+		{{ Form::open(['route' => 'registroEmpresa', 'method' => 'POST', 'class' => 'form-registro']) }}
 			{{ Campo::email('email', null, ['class' => 'input-registro', 'required']) }}
 			{{Campo::password('password',  ['class' => 'input-registro', 'required']) }}
 			{{Campo::password('password_confirmation', ['class' => 'input-registro', 'required']) }}
@@ -22,7 +22,7 @@
 			</div>
 			{{ $errors->first('check', '<span class="back-error">:message</span>') }}
 			<button type="submit" class="boton-registro">Registrarse</button>
-			<p class="reg-empresa">o registrate como empresa <a href="{{ route('empresa-r') }}" class="inicio">aquí</a></p>
+			<p class="reg-empresa">o registrate como estudiante <a href="{{ route('home') }}" class="inicio">aquí</a></p>
 
 		{{ Form::close() }}
 		@endif
@@ -57,7 +57,7 @@
 	<article class="contenido special-bg">
 		<div class="cont-container">			
 			<div class="bloque-texto">
-				Policontacto es un sistema que te provee una serie de herramientas útiles para facilitar trámites, ampliar tus conocimientos y mantenerte conectado con personas de tu área profesional desde la comodidad de tu hogar.
+				Policontacto para empresas es un sistema que te provee una serie de herramientas útiles para facilitar trámites,  y mantenerte conectado con personas de tu área profesional desde la comodidad de tu oficina.
 			</div>
 		</div>
 	</article>
@@ -84,7 +84,7 @@
 				Desde la comodidad de tu hogar
 			</strong>
 			<p class="icono-text">
-				Busca y encuentra lo que desees desde la comodidad de tu hogar, no más viajes en vano para pedir informes.
+				Busca y encuentra lo que desees desde la comodidad de tu oficina, no más viajes en vano para pedir informes.
 			</p>
 		</div>
 		<div class="bloque-informacion">

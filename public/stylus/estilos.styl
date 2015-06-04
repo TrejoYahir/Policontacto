@@ -250,6 +250,58 @@ footer
 	margin -.7rem 0 .5rem 10%
 	position relative
 
+#resultados
+	background-color white
+	position absolute
+	color gris-c
+	width 100%
+	margin-top 5px
+	box-sizing border-box
+	border-radius(5px)
+
+.t-resultados
+	display block
+	color gris-c
+	font-weight normal
+	font-size 0.9rem
+	padding .2rem .5rem
+
+.sin-resultados
+	color gris-c
+	padding .5rem
+	display block
+
+.resultado-i
+	display block
+	text-align left
+	transition 0.2s
+	padding .5rem
+	&:hover
+		background-color #e5e5e5
+
+.div-img-r
+	display inline-block
+	margin-top 2px
+
+.info-r
+	display inline-block
+	margin-top -1rem
+	font-size 1rem
+
+.nombre-r
+	display block
+	
+.correo-r
+	display block
+	font-size 0.8rem
+	color gris-c
+
+.img-r
+	border-radius(50%)
+	width 2rem
+	height 2rem
+	display inline-block
+
 .rotate
 	transform rotate(180deg)
 
@@ -901,9 +953,6 @@ label
 
 	.max-perfil
 		min-width 56rem
-		
-	.textarea-compartir
-		min-width 24rem
 	
 	.publicaciones
 		min-width 100%
@@ -929,6 +978,9 @@ label
 
 @media screen and (max-width 56.6rem)
 
+	.titulo
+		display none
+	
 	.max-perfil
 		max-width 100%
 		min-width 100%
@@ -972,7 +1024,7 @@ label
 		width 19%
 
 	.logo
-		margin 0 0 0 3rem
+		margin .5rem 0 0 3rem
 
 	.info-section
 		vertical-align top

@@ -9,7 +9,7 @@
 	<div class="max-container max-novedades">		
 		<div class="contenido-novedades">
 		@if(Auth::check())
-			@if(isset(Auth::user()->estudiante->nombre))
+			@if(isset(Auth::user()->estudiante->id) || isset(Auth::user()->empresa->id))
 				<div class="publicaciones-n" id="publicaciones-n">
 					@forelse($publicaciones as $publicacion)
 						<div class="publicacion-n">
@@ -30,7 +30,7 @@
 					@endforelse
 				</div>
 			@else
-				<span>No hay nada que mostrar</span>
+				<p class="sin-info">No hay nada que mostrar</p>
 			@endif
 		@endif
 		</div>

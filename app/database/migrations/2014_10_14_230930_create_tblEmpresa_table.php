@@ -19,9 +19,9 @@ class CreateTblEmpresaTable extends Migration
             $table->integer('area_id')->unsigned();
             $table->string('nombre');
             $table->string('ubicacion');
-            $table->text('requisitos');
-            $table->string('slug');
+            $table->string('descripcion');
             $table->string('url_foto')->nullable();
+            $table->string('slug');
 
             $table->foreign('id')->references('id')->on('tblUsuario')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('area_id')->references('id')->on('ctgArea')->onUpdate('cascade');

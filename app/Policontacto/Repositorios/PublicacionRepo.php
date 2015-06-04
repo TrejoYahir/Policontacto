@@ -21,12 +21,24 @@ class PublicacionRepo extends BaseRepo
 	public function getAll()
 	{
 
-		return Publicacion::join('tblEstudiante', function($join){
-			$join->on('tblPublicacion.usuario_id', '=', 'tblEstudiante.id')->where('tblEstudiante.area_id', '=', \Auth::user()->estudiante->area_id);
-		})
-		->orderBy('fecha_p', 'desc')
-		->get();
-		//return Publicacion::orderBy('fecha', 'desc')->get();
+		if(isset(\Auth::user()->estudiante->id))
+		{			
+			return Publicacion::join('tblEstudiante', function($join){
+				$join->on('tblPublicacion.usuario_id', '=', 'tblEstudiante.id')->where('tblEstudiante.area_id', '=', \Auth::user()->estudiante->area_id);
+			})
+			->orderBy('fecha_p', 'desc')
+			->get();
+		}
+
+		if(isset(\Auth::user()->empresa->id))
+		{			
+			return Publicacion::join('tblEstudiante', function($join){
+				$join->on('tblPublicacion.usuario_id', '=', 'tblEstudiante.id')->where('tblEstudiante.area_id', '=', \Auth::user()->empresa->area_id);
+			})
+			->orderBy('fecha_p', 'desc')
+			->get();
+		}
+
 	}
 
 	public function nuevaPublicacion()

@@ -26,16 +26,26 @@
 						<div id="resultados"></div>
 					</div>
 					<div class="info">
-						@if(isset(Auth::user()->estudiante->nombre))
+						@if(esEstudiante() && isset(Auth::user()->estudiante->nombre))
 							<span class="elemento-info"><a href="{{ route('estudiante', [Auth::user()->estudiante->slug]) }}" class="nombre-avatar">{{ Auth::user()->estudiante->nombre }}</a></span>
 								<a href="{{ route('estudiante', [Auth::user()->estudiante->slug]) }}"><img src="{{ asset(Auth::user()->estudiante->url_foto) }}" alt="" class="img-avatar elemento-info"></a>
-						@else
-							<span class="elemento-info"><a href="{{ route('cambiarPerfil') }}" class="nombre-avatar">{{ Auth::user()->email  }}</a></span>
+						@elseif(esEstudiante() && !isset(Auth::user()->estudiante->nombre))
+							<span class="elemento-info"><a href="{{ route('perfil') }}" class="nombre-avatar">{{ Auth::user()->email  }}</a></span>
+					 	@endif
+					 	@if(esEmpresa() && isset(Auth::user()->empresa->nombre))
+							<span class="elemento-info"><a href="{{ route('empresa', [Auth::user()->empresa->slug]) }}" class="nombre-avatar">{{ Auth::user()->empresa->nombre }}</a></span>
+								<a href="{{ route('empresa', [Auth::user()->empresa->slug]) }}"><img src="{{ asset(Auth::user()->empresa->url_foto) }}" alt="" class="img-avatar elemento-info"></a>
+						@elseif(esEmpresa() && !isset(Auth::user()->empresa->nombre))
+							<span class="elemento-info"><a href="{{ route('perfilEmpresa') }}" class="nombre-avatar">{{ Auth::user()->email  }}</a></span>
 					 	@endif	
 						<div class="flecha-abajo"></div>
 						 <span class="menu">
 							 <a href="{{ route('cuenta') }}" class="item-link">Editar usuario</a>
-							 <a href="{{ route('perfil') }}" class="item-link">Editar Perfil</a>
+							@if(esEstudiante())
+							 	<a href="{{ route('perfil') }}" class="item-link">Editar Perfil</a>
+							 @elseif(esEmpresa())
+							 	<a href="{{ route('perfilEmpresa') }}" class="item-link">Editar Perfil</a>
+							 @endif
 							 <a href="{{ route('logout') }}" class="item-link">Salir</a>
 						 </span>
 					</div>
@@ -69,7 +79,7 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" charset="utf-8"></script>
 	<script>window.jQuery || document.write('<script src="{{ asset('js/lib/jquery-2.1.1.min.js') }}"><\/script>')</script>
 	<script src="{{ asset('js/home.js') }}"></script>
-	<script>var	 url_ruta = '{{ route("buscar") }}';</script>
+	<script>var	 url_ruta_buscar = '{{ route("buscar") }}';</script>
 	<script src="{{ asset('js/busqueda.js') }}"></script>
 	@yield('custom-js')
 	</body>

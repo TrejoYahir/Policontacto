@@ -81,3 +81,11 @@ Route::filter('csrf', function () {
 Route::filter('isAdmin', function () {
 	if (!isAdmin()) return Redirect::to('/');
 });
+
+Route::filter('esEstudiante', function () {
+    if (!esEstudiante()) return Redirect::to('/');
+});
+
+Route::filter('esEmpresa', function () {
+    if (!esEmpresa()) return Redirect::to('/');
+});

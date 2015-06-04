@@ -92,3 +92,13 @@ function isAdmin()
 {
 	return Auth::check() & Auth::user()->admin == true;
 }
+
+function esEmpresa()
+{
+	return Auth::check() & Auth::user()->tipo == 'empresa';
+}
+
+function esEstudiante()
+{
+	return Auth::check() & Auth::user()->tipo == 'estudiante';
+}

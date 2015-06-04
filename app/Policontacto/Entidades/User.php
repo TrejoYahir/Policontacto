@@ -56,7 +56,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
 	public function getEmpresa()
 	{
 
-		$empresa = $this->empresa();
+		$empresa = $this->empresa;
 
 		if(is_null($empresa)) {
 			$empresa = new Empresa();
