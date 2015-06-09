@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-var form = $('.form-publicar');
+var form = $('#form-publicar');
 	form.bind('submit',function (e) {
 		$.ajax({
 			type: form.attr('method'),

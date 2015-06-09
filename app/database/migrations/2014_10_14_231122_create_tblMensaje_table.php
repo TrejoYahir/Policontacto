@@ -17,7 +17,11 @@ class CreateTblMensajeTable extends Migration
             $table->increments('id');
 
             $table->integer('usuario_id')->unsigned();
+            $table->text('remitente');
+            $table->text('destinatario');
             $table->text('contenido');
+            $table->dateTime('fecha');
+            $table->boolean('leido')->default(false);
 
             $table->foreign('usuario_id')->references('id')->on('tblUsuario')->onDelete('cascade')->onUpdate('cascade');
 

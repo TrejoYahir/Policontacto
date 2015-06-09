@@ -8,10 +8,12 @@ use Policontacto\Repositorios\PlantelRepo;
 use Policontacto\Repositorios\EspecialidadRepo;
 use Policontacto\Repositorios\PublicacionRepo;
 use Policontacto\Managers\PerfilManager;
+use Policontacto\Managers\MensajeManager;
 use Policontacto\Managers\EmpresaPerfilManager;
 use Policontacto\Managers\PublicarManager;
 use Policontacto\Repositorios\UserRepo;
 use Policontacto\Repositorios\EmpresaRepo;
+use Policontacto\Repositorios\MensajeRepo;
 use Policontacto\Entidades\User;
 
 class UsersController extends BaseController
@@ -24,10 +26,11 @@ class UsersController extends BaseController
 	protected $publicacionRepo;
 	protected $userRepo;
 	protected $empresaRepo;
+	protected $mensajeRepo;
 
 	//Constructor
 
-	public function __construct(EstudianteRepo $estudianteRepo, EspecialidadRepo $especialidadRepo, AreaRepo $areaRepo, PlantelRepo $plantelRepo, PublicacionRepo $publicacionRepo, UserRepo $userRepo, EmpresaRepo $empresaRepo)
+	public function __construct(EstudianteRepo $estudianteRepo, EspecialidadRepo $especialidadRepo, AreaRepo $areaRepo, PlantelRepo $plantelRepo, PublicacionRepo $publicacionRepo, UserRepo $userRepo, EmpresaRepo $empresaRepo, MensajeRepo $mensajeRepo)
 	{
 		$this->estudianteRepo = $estudianteRepo;
 		$this->especialidadRepo = $especialidadRepo;
@@ -36,6 +39,8 @@ class UsersController extends BaseController
 		$this->publicacionRepo = $publicacionRepo;
 		$this->userRepo = $userRepo;
 		$this->empresaRepo = $empresaRepo;
+		$this->mensajeRepo = $mensajeRepo;
+
 	}
 
 	//registros
@@ -259,15 +264,18 @@ class UsersController extends BaseController
 
 			if(isset($u->estudiante->nombre))
 				$nombreEs = $u->estudiante->nombre . ' ' . $u->estudiante->apellidos;
-			if(isset($u->empresa->nombre))
+			elseif(isset($u->empresa->nombre))
 				$nombreEm = $u->empresa->nombre;
 
-			if(Str::startsWith(Str::lower($nombreEs), Str::lower($keywords)) || Str::startsWith(Str::lower($nombreEm), Str::lower($keywords)))
+			if($nombreEs != '' && Str::startsWith(Str::lower($nombreEs), Str::lower($keywords)))
 			{
 				if($u->estudiante){
 					array_push($estudiantes, $u->estudiante);
 				}
-				if($u->empresas){
+			}
+			elseif($nombreEm != '' && Str::startsWith(Str::lower($nombreEm), Str::lower($keywords)))
+			{				
+				if($u->empresa){
 					array_push($empresas, $u->empresa);
 				}
 			}
@@ -277,6 +285,46 @@ class UsersController extends BaseController
 	}
 
 
+	//chat
+
+	public function chat($usuario)
+	{
+		$destinatario = $this->findUserBySlug($usuario);
+		$user = Auth::user();
+		$tipou = getUserType();
+		$remitente = $user->$tipou->slug;
+		$mensajes = $this->mensajeRepo->getLista($remitente, $destinatario->slug);
+		return View::make('mensajes', compact('destinatario', 'user', 'tipou', 'mensajes'));
+	}
+
+	public function enviarMensaje()
+	{
+
+		$mensaje = $this->mensajeRepo->nuevoMensaje();
+		$manager = new MensajeManager($mensaje, Input::all());		
+		$manager->save();
+
+		 return Response::json(array(
+			'success' => true,
+			'message' => 'Mensaje enviado'
+		));	
+
+	}
+
+	public function getMensajes()
+	{
+		$remitente = Input::get('remitente');
+
+		$mensaje = $this->mensajeRepo->getNuevosMensajes($remitente);
+
+		if (count($mensaje) > 0)
+		{
+			$mensaje->leido = true;
+			$mensaje->save();
+			return $mensaje->contenido;
+		}
+	}
+
 	//Solo vistas
 
 	public function empresa()
@@ -284,6 +332,37 @@ class UsersController extends BaseController
 
 		return View::make('empresaRegistro');
 
+	}
+
+	//funciones
+
+	public function findUserBySlug($usuario)
+	{
+		$users = $this->userRepo->getAll();
+
+		if(isset(Auth::user()->estudiante->slug))
+			$mislug = Auth::user()->estudiante->slug;
+		elseif(isset(Auth::user()->empresa->slug))
+			$mislug = Auth::user()->empresa->slug;
+		else
+			App::abort(404);
+
+		foreach($users as $u)
+		{
+
+			if(isset($u->estudiante->slug))
+			{
+				if($u->estudiante->slug == $usuario && $u->estudiante->slug != $mislug)
+					return $u->estudiante;
+			}
+			if(isset($u->empresa->slug))
+			{
+				if($u->empresa->slug == $usuario && $u->empresa->slug != $mislug)
+					return $u->empresa;
+			}			
+
+		}
+		App::abort(404);
 	}
 
 } 

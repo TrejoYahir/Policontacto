@@ -30,6 +30,9 @@ Route::group(['before' => 'auth'],  function(){
 	Route::get('u/{slug}', ['as' => 'estudiante', 'uses' => 'AreaController@estudiante']);
 	Route::get('e/{slug}', ['as' => 'empresa', 'uses' => 'AreaController@empresa']);
 	Route::get('buscar', ['as' => 'buscar', 'uses' => 'UsersController@buscar']);
+	Route::get('mensajes/{usuario}', ['as' => 'mensajes', 'uses' => 'UsersController@chat']);
+	Route::post('chat/enviarMensaje', ['as' => 'enviarMensaje', 'uses' => 'UsersController@enviarMensaje']);
+	Route::post('chat/getmensajes', ['as' => 'getMensajes', 'uses' => 'UsersController@getMensajes']);
 
 	Route::get('cuenta', ['as' => 'cuenta', 'uses' => 'UsersController@cuenta']);
 	Route::put('cuenta', ['as' => 'cambiarCuenta', 'uses' => 'UsersController@cambiarCuenta']);

@@ -37,10 +37,11 @@ class PerfilManager extends BaseManager
 
 	public function prepararDatos($data)
 	{
-
-		$slug = $this->generarSlug($data);
-
-		$this->entidad->slug = $slug;
+		if(!isset($this->entidad->slug))
+		{
+			$slug = $this->generarSlug($data);
+			$this->entidad->slug = $slug;			
+		}
 
 		return $data;
 	}
@@ -61,6 +62,11 @@ class PerfilManager extends BaseManager
 	    }
 
 	    $ultimoSlug = $cuentaSlug->orderBy('slug', 'desc')->first()->slug;
+
+	    if(isset($this->entidad->slug)){
+	    	if($ultimoSlug == $this->entidad->slug) return $slug;
+	  }
+
 	    $ultimoNumero = intval(str_replace($slug . '-', '', $ultimoSlug));
 
 	    $slug = $slug . '-' . ($ultimoNumero + 1);

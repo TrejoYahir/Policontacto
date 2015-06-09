@@ -229,7 +229,7 @@ footer
 	padding .3rem .7rem .3rem 2.5rem
 	font-weight normal
 	color gray
-	width 20rem
+	width 18rem
 	position relative
 	&:focus
 		outline none
@@ -258,6 +258,7 @@ footer
 	margin-top 5px
 	box-sizing border-box
 	border-radius(5px)
+	z-index 100
 
 .t-resultados
 	display block
@@ -927,6 +928,109 @@ label
 	font-size 1.2rem
 	color gris-c
 	font-weight bold
+
+//chat
+.chat
+	text-align center
+	background-color #e5e5e5
+
+.max-mensajes
+	padding-top 8rem
+
+.titulo-chat
+	display block
+	background-color white
+	padding 0.5rem
+	text-align center
+	margin-top 4rem
+	position fixed
+	left 0
+	right 0
+	z-index 10
+
+.info-chat
+	display inline-block
+
+.img-chat-i
+	width 3rem
+	height 3rem
+	display inline-block
+	border-radius(50%)
+
+.img-chat
+	display inline-block
+
+.info-chat-m
+	text-align left
+	display inline-block
+	vertical-align top
+	margin-top .3rem
+
+.nombre-chat
+	color gris-f
+	font-size 1.1rem
+	display inline-block
+
+.correo-chat
+	color gris-c
+	font-size .8rem
+	display inline-block
+
+.mensaje-seccion
+	display block
+	text-align center
+	position relative
+
+.seccion-mensajes
+	position relative
+	width 60%
+	
+#mensajes
+	padding 0.5rem 1rem
+
+.contenedor-mensaje
+	display block
+	margin .3rem 0
+	&.enviado
+		text-align right
+	&.recibido
+		text-align left
+
+.mensaje
+	border-radius(8px)
+	padding .5rem
+	display inline-block
+	position relative
+	max-width 18rem
+	&.enviado
+		background-color azul
+		color white
+	&.recibido
+		color gris-c
+		background-color white
+
+.contenedor-mensaje
+	word-wrap break-word
+
+.enviar-form
+	margin .5rem 0
+	position fixed
+	bottom 0
+
+.input-mensaje
+	display inline-block
+	border-radius(5px)
+	padding .35rem 1.2rem
+	border none
+	height 1.7rem
+	min-width 20rem
+	color gray
+	transition .3s
+	box-shadow 0 3px 2px -2px #ccc
+	bottom 0
+	&:focus
+		outline none
+	
 
 @media screen and (min-width 56.66rem)
 

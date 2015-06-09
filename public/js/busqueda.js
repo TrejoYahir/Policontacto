@@ -1,3 +1,5 @@
+$(document).ready(function() {
+
 var buscar = $("#buscar");
 var res = $("#resultados");
 
@@ -50,3 +52,5 @@ buscar.focus(function(){
 
 
 buscar.keyup(upp);
+
+});

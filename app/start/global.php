@@ -102,3 +102,8 @@ function esEstudiante()
 {
 	return Auth::check() & Auth::user()->tipo == 'estudiante';
 }
+
+function getUserType()
+{
+    return Auth::user()->tipo;
+}
