@@ -1,7 +1,8 @@
 var boton = $(".boton-login").first(),
     login = $(".login-form").first(),
-    flecha = $('.flecha-abajo').first(),
-    menu = $('.menu').first();
+    flecha = $('.icono-menu').first(),
+    menu_control = $('.menu-top').first(),
+    menu = $('.menu-navegacion').first();
     mensaje = $('.mensaje-f').first();
 
 function showForm() {
@@ -9,9 +10,19 @@ function showForm() {
     boton.toggleClass("active");
 }
 
-function showMenu() {
-    menu.fadeToggle(100);
-    flecha.toggleClass("rotate");
+function toggleMenu() {
+    if(menu.hasClass( "colapsado" ))
+    {
+    	menu.removeClass("colapsado");
+    	menu.addClass("expandido");
+    	flecha.toggleClass("rotate");
+    }
+    else if(menu.hasClass( "expandido" ))
+    {
+    	menu.removeClass("expandido");
+    	menu.addClass("colapsado");
+    	flecha.toggleClass("rotate");
+    }
 }
 
 function fade() {
@@ -21,4 +32,4 @@ function fade() {
 setTimeout(fade, 5000);
 
 $(boton).click(showForm);
-$(flecha).click(showMenu);
+$(menu_control).click(toggleMenu);

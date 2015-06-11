@@ -12,13 +12,20 @@
 			@if(isset(Auth::user()->estudiante->id) || isset(Auth::user()->empresa->id))
 				<div class="publicaciones-n" id="publicaciones-n">
 					@forelse($publicaciones as $publicacion)
+						<span class="display-none">{{$tipou = $publicacion->user->tipo}}</span>
 						<div class="publicacion-n">
 							<div class="publicacion-header">
-								<a href="{{ route('estudiante', [$publicacion->user->estudiante->slug]) }}">
-									<img src="{{ asset($publicacion->user->estudiante->url_foto) }}" alt="" class="img-avatar avatar-publicacion">
+								<a href="{{ route($tipou, [$publicacion->user->$tipou->slug]) }}">
+									<img src="{{ asset($publicacion->user->$tipou->url_foto) }}" alt="" class="img-avatar avatar-publicacion">
 								</a>
 								<div class="info-publicacion">
-									<a class="nombre-publicacion" href="{{ route('estudiante', [$publicacion->user->estudiante->slug]) }}">{{{ $publicacion->user->estudiante->nombre_corto  }}}</a><br>
+									<a class="nombre-publicacion" href="{{ route($tipou, [$publicacion->user->$tipou->slug]) }}">
+										@if(isset(Auth::user()->estudiante->id))
+											{{{ $publicacion->user->$tipou->nombre_corto  }}}
+										@elseif(isset(Auth::user()->empresa->id))
+											{{{ $publicacion->user->$tipou->nombre }}}
+										@endif
+									</a><br>
 									<span class="email-publicacion">{{{ $publicacion->user->email }}}</span><br>
 									<span class="fecha-publicacion">{{{ $publicacion->fecha_p }}}</span>
 								</div>							

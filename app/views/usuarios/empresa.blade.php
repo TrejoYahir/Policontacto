@@ -46,7 +46,7 @@
 								<img src="{{ asset($empresa->url_foto) }}" alt="" class="img-avatar avatar-publicacion">
 							</a>
 							<div class="info-publicacion">
-								<a class="nombre-publicacion" href="{{ route('empresa', [$empresa->slug]) }}">{{{ $empresa->nombre_corto  }}}</a><br>
+								<a class="nombre-publicacion" href="{{ route('empresa', [$empresa->slug]) }}">{{{ $empresa->nombre  }}}</a><br>
 								<span class="email-publicacion">{{{ $empresa->user->email }}}</span><br>
 								<span class="fecha-publicacion">{{{ $publicacion->fecha_p }}}</span>
 							</div>							

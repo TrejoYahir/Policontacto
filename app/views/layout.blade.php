@@ -25,7 +25,7 @@
 						<input type="text" id="buscar" class="buscar" placeholder='Buscar'>
 						<div id="resultados"></div>
 					</div>
-					<div class="info">
+					<div class="info">						
 						@if(esEstudiante() && isset(Auth::user()->estudiante->nombre))
 							<span class="elemento-info"><a href="{{ route('estudiante', [Auth::user()->estudiante->slug]) }}" class="nombre-avatar">{{ Auth::user()->estudiante->nombre }}</a></span>
 								<a href="{{ route('estudiante', [Auth::user()->estudiante->slug]) }}"><img src="{{ asset(Auth::user()->estudiante->url_foto) }}" alt="" class="img-avatar elemento-info"></a>
@@ -37,18 +37,8 @@
 								<a href="{{ route('empresa', [Auth::user()->empresa->slug]) }}"><img src="{{ asset(Auth::user()->empresa->url_foto) }}" alt="" class="img-avatar elemento-info"></a>
 						@elseif(esEmpresa() && !isset(Auth::user()->empresa->nombre))
 							<span class="elemento-info"><a href="{{ route('perfilEmpresa') }}" class="nombre-avatar">{{ Auth::user()->email  }}</a></span>
-					 	@endif	
-						<div class="flecha-abajo"></div>
-						 <span class="menu">
-							 <a href="{{ route('cuenta') }}" class="item-link">Editar usuario</a>
-							@if(esEstudiante())
-							 	<a href="{{ route('perfil') }}" class="item-link">Editar Perfil</a>
-							 @elseif(esEmpresa())
-							 	<a href="{{ route('perfilEmpresa') }}" class="item-link">Editar Perfil</a>
-							 @endif
-							 <a href="{{ route('logout') }}" class="item-link">Salir</a>
-						 </span>
-					</div>
+						@endif
+					</div>	
 
 				@else
 
@@ -74,6 +64,38 @@
 
 				@endif
 		</header>
+		@if(Auth::check())
+			<div class="menu-navegacion colapsado">
+				<div class="elemento-menu menu-top">
+					<div class="icono-menu menu-control"><span class="icono-control"> < </span></div>
+					<span class="menu-titulo">Menú</span>
+				</div>
+				<div class="elemento-menu {{ (Request::is('/') ? 'active' : '') }}" onclick="window.location='{{ route('home') }}';">
+					<i class="fa fa-home icono-menu"></i> <span>Inicio</span>
+				</div>
+				<div class="elemento-menu">
+					<i class="fa fa-compass icono-menu"></i> <span>Explorar</span>
+				</div>
+				<div class="elemento-menu">
+					<i class="fa fa-comments icono-menu"></i> <span>Mensajes</span>
+				</div>
+				@if(esEstudiante())
+					<div class="elemento-menu {{ (Request::is('perfil') ? 'active' : '') }}" onclick="window.location='{{ route('perfil') }}';">
+						<i class="fa fa-user icono-menu"></i> <span>Editar perfil</span>
+					</div>
+				@elseif(esEmpresa())
+					<div class="elemento-menu {{ (Request::is('em/perfil') ? 'active' : '') }}" onclick="window.location='{{ route('perfilEmpresa') }}';">
+						<i class="fa fa-user icono-menu"></i> <span>Editar perfil</span>
+					</div>
+				@endif
+				<div class="elemento-menu {{ (Request::is('cuenta') ? 'active' : '') }}" onclick="window.location='{{ route('cuenta') }}';">
+					<i class="fa fa-cog icono-menu"></i> <span>Editar cuenta</span>
+				</div>
+				<div class="elemento-menu" onclick="window.location='{{ route('logout') }}';">
+					<i class="fa fa-sign-out icono-menu"></i> <span>Salir</span>
+				</div>
+			</div>
+		@endif
 
 	@yield('content')
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" charset="utf-8"></script>

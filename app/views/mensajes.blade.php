@@ -32,12 +32,12 @@
 						</div>
 					</div>
 				@empty
-					<span class="contenido sin-info">No hay mensajes para mostrar</span>
+					<span class="contenido sin-info" id="sin-mensajes">No hay mensajes para mostrar</span>
 				@endforelse
 			</div>
 			<div class="enviar-form">
 				<input type="text" class="input-mensaje" id="input-mensaje">
-				<button class="boton">Enviar</button>
+				<button class="boton" id="btn-enviar-mensaje">Enviar</button>
 			</div>
 		</div>
 	</div>

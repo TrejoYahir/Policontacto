@@ -47,19 +47,18 @@ $(document).ready(function() {
 		{
 			anadirPost(data);
 		}
-	}	
+	}
 
-	setInterval(function(){
-		$.ajax({
+	(function actualizarDatos(){
+		$.ajax({ 
 			type: 'GET',
 			url: url_ruta,
-			success: function (data) {
+			success: function(data){
 				procesar(data);
-			},
-			error: function(errors){
-				console.log("error: ");
-				console.log(errors);
-			}
-		})
-	},2000);
+			}, 
+			complete: actualizarDatos,
+			timeout: 30000 
+		});
+	})();
+
 });
