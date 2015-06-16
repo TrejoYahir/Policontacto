@@ -1,6 +1,7 @@
 <?php
 
 use Policontacto\Managers\RegistroManager;
+use Policontacto\Managers\VacanteManager;
 use Policontacto\Repositorios\EstudianteRepo;
 use Policontacto\Managers\CuentaManager;
 use Policontacto\Repositorios\AreaRepo;
@@ -14,6 +15,7 @@ use Policontacto\Managers\PublicarManager;
 use Policontacto\Repositorios\UserRepo;
 use Policontacto\Repositorios\EmpresaRepo;
 use Policontacto\Repositorios\MensajeRepo;
+use Policontacto\Repositorios\VacanteRepo;
 use Policontacto\Entidades\User;
 
 class UsersController extends BaseController
@@ -27,10 +29,11 @@ class UsersController extends BaseController
 	protected $userRepo;
 	protected $empresaRepo;
 	protected $mensajeRepo;
+	protected $vacanteRepo;
 
 	//Constructor
 
-	public function __construct(EstudianteRepo $estudianteRepo, EspecialidadRepo $especialidadRepo, AreaRepo $areaRepo, PlantelRepo $plantelRepo, PublicacionRepo $publicacionRepo, UserRepo $userRepo, EmpresaRepo $empresaRepo, MensajeRepo $mensajeRepo)
+	public function __construct(EstudianteRepo $estudianteRepo, EspecialidadRepo $especialidadRepo, AreaRepo $areaRepo, PlantelRepo $plantelRepo, PublicacionRepo $publicacionRepo, UserRepo $userRepo, EmpresaRepo $empresaRepo, MensajeRepo $mensajeRepo, VacanteRepo $vacanteRepo)
 	{
 		$this->estudianteRepo = $estudianteRepo;
 		$this->especialidadRepo = $especialidadRepo;
@@ -40,6 +43,7 @@ class UsersController extends BaseController
 		$this->userRepo = $userRepo;
 		$this->empresaRepo = $empresaRepo;
 		$this->mensajeRepo = $mensajeRepo;
+		$this->vacanteRepo = $vacanteRepo;
 
 	}
 
@@ -294,7 +298,19 @@ class UsersController extends BaseController
 		$tipou = getUserType();
 		$remitente = $user->$tipou->slug;
 		$mensajes = $this->mensajeRepo->getLista($remitente, $destinatario->slug);
-		return View::make('mensajes', compact('destinatario', 'user', 'tipou', 'mensajes'));
+		$area = $user->$tipou->area->slug;
+		$usuarios = $this->areaRepo->findBySlug($area);
+		return View::make('mensajes', compact('destinatario', 'user', 'tipou', 'mensajes', 'usuarios'));
+	}
+
+	public function iniciarChat()
+	{
+		$user = Auth::user();
+		$tipou = getUserType();
+		$remitente = $user->$tipou->slug;
+		$area = $user->$tipou->area->slug;
+		$usuarios = $this->areaRepo->findBySlug($area);
+		return View::make('mensajesDefault', compact('user', 'tipou', 'usuarios'));
 	}
 
 	public function enviarMensaje()
@@ -331,6 +347,26 @@ class UsersController extends BaseController
 	{
 
 		return View::make('empresaRegistro');
+
+	}
+
+	//vacantes
+
+	public function vacantes()
+	{
+
+		return View::make('vacantes');
+
+	}
+
+	public function guardarVacante()
+	{
+
+		$vacante = $this->vacanteRepo->nuevaVacante();
+		$manager = new VacanteManager($vacante, Input::all());	
+		$manager->save();
+
+		return Redirect::back();
 
 	}
 

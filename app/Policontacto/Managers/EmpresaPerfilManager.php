@@ -22,10 +22,11 @@ class EmpresaPerfilManager extends BaseManager
 	public function prepararDatos($data)
 	{
 
-		$slug = $this->generarSlug($data);
-
-		$this->entidad->slug = $slug;
-
+		if(!isset($this->entidad->slug))
+		{
+			$slug = $this->generarSlug($data);
+			$this->entidad->slug = $slug;			
+		}
 		return $data;
 	}
 

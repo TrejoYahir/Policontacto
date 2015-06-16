@@ -15,6 +15,11 @@ class Empresa extends \Eloquent
         return $this->belongsTo('Policontacto\Entidades\Area');
     }
 
+   public function vacantes()
+    {
+        return $this->hasMany('Policontacto\Entidades\Vacante', 'empresa_id', 'id')->orderBy('created_at', 'DESC');
+    }
+
     public function setUrlFotoAttribute($val)
     {
 

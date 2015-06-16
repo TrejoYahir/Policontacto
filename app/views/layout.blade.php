@@ -64,26 +64,35 @@
 
 				@endif
 		</header>
-		@if(Auth::check())
-			<div class="menu-navegacion colapsado">
+		@if(Auth::check() && isset(Auth::user()->empresa->nombre) || Auth::check() && isset(Auth::user()->estudiante->nombre))
+			<div class="menu-navegacion @if(esEstudiante()) colapsado-e @elseif(esEmpresa()) colapsado @endif">
 				<div class="elemento-menu menu-top">
 					<div class="icono-menu menu-control"><span class="icono-control"> < </span></div>
 					<span class="menu-titulo">Menú</span>
 				</div>
 				<div class="elemento-menu {{ (Request::is('/') ? 'active' : '') }}" onclick="window.location='{{ route('home') }}';">
 					<i class="fa fa-home icono-menu"></i> <span>Inicio</span>
-				</div>
-				<div class="elemento-menu">
-					<i class="fa fa-compass icono-menu"></i> <span>Explorar</span>
-				</div>
-				<div class="elemento-menu">
+				</div>				
+				@if(esEstudiante() && isset(Auth::user()->estudiante->nombre))
+					<div class="elemento-menu {{ (Request::is('a/*') ? 'active' : '') }}" onclick="window.location='{{ route('area', [Auth::user()->estudiante->area->slug]) }}';">
+						<i class="fa fa-compass icono-menu"></i> <span>Explorar</span>
+					</div>
+				@elseif(esEmpresa() && isset(Auth::user()->empresa->nombre))
+					<div class="elemento-menu {{ (Request::is('a/*') ? 'active' : '') }}" onclick="window.location='{{ route('area', [Auth::user()->empresa->area->slug]) }}';">
+						<i class="fa fa-compass icono-menu"></i> <span>Explorar</span>
+					</div>
+				@endif
+				<div class="elemento-menu {{ (Request::is('mensajes/*') ? 'active' : '') }}" onclick="window.location='{{ route('chat') }}';">
 					<i class="fa fa-comments icono-menu"></i> <span>Mensajes</span>
 				</div>
-				@if(esEstudiante())
+				@if(esEstudiante() && isset(Auth::user()->estudiante->nombre))
 					<div class="elemento-menu {{ (Request::is('perfil') ? 'active' : '') }}" onclick="window.location='{{ route('perfil') }}';">
 						<i class="fa fa-user icono-menu"></i> <span>Editar perfil</span>
 					</div>
-				@elseif(esEmpresa())
+				@elseif(esEmpresa() && isset(Auth::user()->empresa->nombre))
+					<div class="elemento-menu {{ (Request::is('vacantes') ? 'active' : '') }}" onclick="window.location='{{ route('vacantes') }}';">
+						<i class="fa fa-pencil-square-o icono-menu"></i> <span>Adm. vacantes</span>
+					</div>
 					<div class="elemento-menu {{ (Request::is('em/perfil') ? 'active' : '') }}" onclick="window.location='{{ route('perfilEmpresa') }}';">
 						<i class="fa fa-user icono-menu"></i> <span>Editar perfil</span>
 					</div>

@@ -23,6 +23,18 @@ function toggleMenu() {
     	menu.addClass("colapsado");
     	flecha.toggleClass("rotate");
     }
+    else if(menu.hasClass( "colapsado-e" ))
+    {
+        menu.removeClass("colapsado-e");
+        menu.addClass("expandido-e");
+        flecha.toggleClass("rotate");
+    }
+    else if(menu.hasClass( "expandido-e" ))
+    {
+        menu.removeClass("expandido-e");
+        menu.addClass("colapsado-e");
+        flecha.toggleClass("rotate");
+    }
 }
 
 function fade() {

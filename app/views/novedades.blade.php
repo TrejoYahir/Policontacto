@@ -33,7 +33,7 @@
 							<div class="contenido-publicacion">{{ $publicacion->contenido }}</div>
 						</div>
 					@empty
-					    <p class="sin-info">No hay nada que mostrar, contacta con tus amigos para seguir su actividad.</p>
+					    <p class="sin-info">Aún no hay nada que mostrar</p>
 					@endforelse
 				</div>
 			@else

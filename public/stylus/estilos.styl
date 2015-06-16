@@ -202,7 +202,7 @@ footer
 		color white
 	
 .icono-menu
-	margin-right .5rem
+	margin-right .8rem
 	font-weight normal
 	
 .menu-control
@@ -236,7 +236,7 @@ footer
 .menu-titulo
 	position relative
 	top .6rem
-	left 1.7rem
+	left 1.9rem
 
 .info
 	display inline-block
@@ -246,13 +246,22 @@ footer
 	float right
 	position relative
 	margin-top .7rem
+	margin-right 1.3rem
 	
 
 .colapsado
+	margin-right -8.7rem
+	transition .2s
+
+.colapsado-e
 	margin-right -7.8rem
 	transition .2s
 
 .expandido
+	margin-right 0
+	transition .2s
+
+.expandido-e
 	margin-right 0
 	transition .2s
 
@@ -265,7 +274,7 @@ footer
 	padding .3rem .7rem .3rem 2.5rem
 	font-weight normal
 	color gray
-	width 18rem
+	width 100%
 	position relative
 	&:focus
 		outline none
@@ -285,16 +294,18 @@ footer
 	vertical-align middle
 	margin -.7rem 0 .5rem 10%
 	position relative
+	width 18rem
 
 #resultados
 	background-color white
 	position absolute
 	color gris-c
+	min-width 16rem
 	width 100%
 	margin-top 5px
 	box-sizing border-box
 	border-radius(5px)
-	z-index 100
+	z-index 10
 
 .t-resultados
 	display block
@@ -716,6 +727,7 @@ label
 	display block
 	text-align center
 	position relative
+	margin-right 3rem
 
 .max-perfil
 	max-width 100rem
@@ -1015,6 +1027,7 @@ label
 	display inline-block
 	width 35rem
 	text-align left
+	vertical-align top
 
 .u-elemento
 	display block
@@ -1073,7 +1086,7 @@ label
 	background-color #e5e5e5
 
 .max-mensajes
-	padding-top 8rem
+	padding-top 0
 
 .titulo-chat
 	display block
@@ -1081,10 +1094,8 @@ label
 	padding 0.5rem
 	text-align center
 	margin-top 4rem
-	position fixed
 	left 0
 	right 0
-	z-index 1
 
 .info-chat
 	display inline-block
@@ -1118,11 +1129,21 @@ label
 	display block
 	text-align center
 	position relative
+	margin-right 3rem
 
 .seccion-mensajes
 	position relative
 	width 60%
-	
+	display inline-block
+	margin-left 12rem
+
+.chat-activo
+	background-color #BBDEFB
+
+.titulo-s-chat
+	text-align left
+	padding .5rem
+
 #mensajes
 	padding 0.5rem 1rem
 
@@ -1151,7 +1172,7 @@ label
 	word-wrap break-word
 
 .enviar-form
-	margin .5rem 0
+	margin .5rem 3rem .5rem 0
 	position fixed
 	bottom 0
 
@@ -1168,6 +1189,173 @@ label
 	bottom 0
 	&:focus
 		outline none
+
+.m-vacio
+	margin-top 4rem
+
+#barra-chat
+	position fixed
+	min-width 10rem
+	background-color white
+	bottom 0
+	top 0
+	left 0
+	z-index 2
+	color gris-c
+	font-weight bold
+	text-align left
+	z-index 0
+	margin-top 4rem
+	overflow-y scroll
+	
+.elemento-u-chat
+	display block
+	padding .7rem
+	border-top 1px solid #e5e5e5
+	transition 0.2s
+	cursor pointer
+	&:hover
+		background-color #BBDEFB
+	&:nth-last-child()
+		border bottom 1px solid #e5e5e5
+
+.info-u-chat
+	display inline-block
+
+.img-u-chat
+	width 2rem
+	height 2rem
+	border-radius(50%)
+
+.img-u-c-chat
+	display inline-block
+
+.email-u-chat
+	font-size .8rem
+	display block
+	font-weight normal
+
+.nombre-u-chat
+	color gris-f
+	display block
+
+//vacantes
+
+.lista-vacantes
+	display inline-block
+	width 35rem
+	text-align left
+	vertical-align top
+
+.u-elemento-v
+	display block
+	padding 1rem
+	color gris
+	background-color white
+	vertical-align top
+	margin .3rem .2rem
+	box-shadow 0 3px 2px -2px #ccc
+	border-radius(2px)
+	text-align left
+	position relative
+	left 0
+	right 0
+	&:hover
+		.nombre-elemento
+			color azul
+
+.s-i-v
+	margin 1rem .3rem
+
+.icono-crear-v
+	@extend .icono-menu
+	position absolute
+	right 0
+	transition 0.3s
+	cursor pointer
+	&:hover
+		color azul 
+
+.titulo-vacantes
+	color white
+	background-color azul-fuerte
+	font-weight bold
+	font-size 1.1rem
+
+.form-container
+	position absolute
+	top 0
+	bottom 0
+	left 0
+	right 0
+	display none
+	justify-content space-around
+	align-items center
+	flex-wrap wrap
+	background-color rgba(44, 62, 80,.7)
+	z-index 3
+
+.salir
+	color rojo
+	cursor pointer
+	position absolute
+	font-size 1.8rem
+	top 2rem
+	right 2rem
+	
+.form-vacante
+	background-color white
+	padding 2rem
+	border-radius(5px)
+	position relative
+	
+.input-vacante, .textarea-vacante{
+	margin: 40px 25px;
+	width: 20rem;
+	display: block;
+	border: none;
+	padding: 10px 0;
+	border-bottom: solid 1px azul;
+	transition: all 0.3s cubic-bezier(0.64, 0.09, 0.08, 1);
+	background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 98%, azul 4%);
+	background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 98%, azul 4%);
+	background-position: -20rem 0;
+	background-size: 20rem 100%;
+	background-repeat: no-repeat;
+	color: azul-fuerte;
+}
+
+.input-vacante:focus, .input-vacante:valid, .textarea-vacante:focus, .textarea-vacante:valid{
+	box-shadow: none;
+	outline: none;
+	background-position: 0 0;
+}
+
+.textarea-vacante {
+	resize: none;
+}
+
+.t-vacante-form
+	display block
+	margin 40px 25px
+	margin-bottom 0
+	width 20rem
+	text-align left
+	font-weight bold
+	color gris-c
+
+.boton-vacante
+	display block
+	border none
+	border-radius(5px)
+	color white
+	background-color azul
+	padding .5rem 1.2rem
+	transition 0.3s
+	margin 40px 25px
+	width 20rem
+	&:hover
+		background-color azul-hover
 	
 
 @media screen and (min-width 56.66rem)
@@ -1328,7 +1516,21 @@ label
 
 	.login-form
 		display none
+	
+	.busqueda
+		margin-left .7rem
+		width 20%
+	
+	.info-u-chat
+		display none	
 
+	
+	#barra-chat
+		min-width 2rem
+	
+	.seccion-mensajes
+		width 80%
+		margin-left 3rem
 
 @media screen and (max-width 45rem)
 

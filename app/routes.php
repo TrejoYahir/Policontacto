@@ -30,6 +30,7 @@ Route::group(['before' => 'auth'],  function(){
 	Route::get('u/{slug}', ['as' => 'estudiante', 'uses' => 'AreaController@estudiante']);
 	Route::get('e/{slug}', ['as' => 'empresa', 'uses' => 'AreaController@empresa']);
 	Route::get('buscar', ['as' => 'buscar', 'uses' => 'UsersController@buscar']);
+	Route::get('mensajes', ['as' => 'chat', 'uses' => 'UsersController@iniciarChat']);
 	Route::get('mensajes/{usuario}', ['as' => 'mensajes', 'uses' => 'UsersController@chat']);
 	Route::post('chat/enviarMensaje', ['as' => 'enviarMensaje', 'uses' => 'UsersController@enviarMensaje']);
 	Route::post('chat/getmensajes', ['as' => 'getMensajes', 'uses' => 'UsersController@getMensajes']);
@@ -50,6 +51,8 @@ Route::group(['before' => 'auth'],  function(){
 		
 		Route::get('em/perfil', ['as' => 'perfilEmpresa', 'uses' => 'UsersController@perfilEmpresa']);
 		Route::put('em/perfil', ['as' => 'cambiarPerfilEmpresa', 'uses' => 'UsersController@cambiarPerfilEmpresa']);
+		Route::get('vacantes', ['as' => 'vacantes', 'uses' => 'UsersController@vacantes']);
+		Route::post('guardar/vacante', ['as' => 'guardarVacante', 'uses' => 'UsersController@guardarVacante']);
 		
 	});
 

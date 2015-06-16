@@ -30,7 +30,7 @@ class MensajeRepo extends BaseRepo
 
 	public function getLista($remitente, $destinatario)
 	{
-		return Mensaje::where('remitente', '=', $remitente)->where('destinatario', '=',$destinatario)->orWhere('destinatario', '=',$remitente)->where('remitente', '=',$destinatario)->get();
+		return Mensaje::where('remitente', '=', $remitente)->where('destinatario', '=',$destinatario)->orWhere('destinatario', '=',$remitente)->where('remitente', '=',$destinatario)->where('leido', '=', '1')->get();
 	}
 
 }

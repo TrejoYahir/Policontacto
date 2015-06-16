@@ -23,7 +23,10 @@
 						<span class="info-perfil"><a href="{{ route('area', [$empresa->area->slug]) }}">{{{ $empresa->area->nombre }}}</a></span><br>
 					</div>
 					<div class="info-section">
-						<span class="info-perfil align-left">{{{ $empresa->descripcion  }}}</span><br>
+						<span class="info-perfil">{{{ $empresa->ubicacion  }}}</span><br>
+					</div>	
+					<div class="info-section">
+						<span class="info-perfil">{{{ $empresa->descripcion  }}}</span><br>
 					</div>		
 				</div>
 			</div>		

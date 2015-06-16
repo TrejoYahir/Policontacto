@@ -3,5 +3,11 @@
 class Vacante extends \Eloquent
 {
     protected $table = 'ctgVacante';
-    protected $fillable = [];
+    protected $fillable = ['nombre', 'descripcion'];
+
+    public function empresa()
+    {
+        return $this->belongsTo('Policontacto\Entidades\Empresa', 'empresa_id', 'id');
+    }
+
 }
