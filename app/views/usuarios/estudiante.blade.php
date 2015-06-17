@@ -86,5 +86,4 @@
 	<script src="{{ asset('js/actualizar-perfil.js') }}"></script>
 @endif
 
-
 @stop

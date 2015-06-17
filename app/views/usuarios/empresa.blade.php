@@ -20,6 +20,9 @@
 						<span class="info-perfil correo-perfil">{{{ $empresa->user->email  }}}</span><br>
 					</div>
 					<div class="info-section">
+						<span class="info-perfil"><a href="{{ route('verVacantes', [$empresa->slug]) }}">Ver empleos disponibles en esta empresa.</a></span><br>
+					</div>	
+					<div class="info-section">
 						<span class="info-perfil"><a href="{{ route('area', [$empresa->area->slug]) }}">{{{ $empresa->area->nombre }}}</a></span><br>
 					</div>
 					<div class="info-section">
@@ -89,6 +92,5 @@
 @elseif($empresa->user->id != Auth::user()->id)	
 	<script src="{{ asset('js/actualizar-perfil.js') }}"></script>
 @endif
-
 
 @stop

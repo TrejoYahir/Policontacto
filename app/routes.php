@@ -17,7 +17,6 @@ Route::group(['before' => 'guest'],  function(){
 	Route::get('registro/v/{confirmationCode}', ['as' => 'confirmacion', 'uses' => 'UsersController@confirmar']);
 	Route::get('registro/v/e/{confirmationCode}', ['as' => 'confirmacionEmpresa', 'uses' => 'UsersController@confirmarEmpresa']);
 
-	Route::get('posts/usuario/{id}', ['as' => 'obtenerPublicacionesExternas', 'uses' => 'UsersController@obtenerPublicacionesExternas']);
 });
 
 //Acceso solo con autentificación
@@ -27,6 +26,7 @@ Route::group(['before' => 'auth'],  function(){
 
 	Route::post('publicar', ['as' => 'publicar', 'uses' => 'UsersController@publicar']);
 	Route::get('posts', ['as' => 'obtenerPublicaciones', 'uses' => 'UsersController@obtenerPublicaciones']);
+	Route::get('posts/usuario/{id}', ['as' => 'obtenerPublicacionesExternas', 'uses' => 'UsersController@obtenerPublicacionesExternas']);
 
 	Route::get('a/{slug}', ['as' => 'area', 'uses' => 'AreaController@area']);
 	Route::get('u/{slug}', ['as' => 'estudiante', 'uses' => 'AreaController@estudiante']);
