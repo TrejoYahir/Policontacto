@@ -72,6 +72,7 @@
     	correo = "{{ $empresa->user->email }}",
     	url_foto = "{{ asset($empresa->url_foto) }}",
     	url_empresa = "{{ route('empresa', [$empresa->slug]) }}";
+    	url_estudiante = "{{ route('empresa', [$empresa->slug]) }}";
 
     	@if($empresa->user->id == Auth::user()->id)
 			var	url_ruta = '{{ route("obtenerPublicaciones") }}';

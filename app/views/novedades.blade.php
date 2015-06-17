@@ -21,7 +21,7 @@
 								<div class="info-publicacion">
 									<a class="nombre-publicacion" href="{{ route($tipou, [$publicacion->user->$tipou->slug]) }}">
 										@if(isset(Auth::user()->estudiante->id))
-											{{{ $publicacion->user->$tipou->nombre_corto  }}}
+											{{{ $publicacion->user->$tipou->nombre  }}}
 										@elseif(isset(Auth::user()->empresa->id))
 											{{{ $publicacion->user->$tipou->nombre }}}
 										@endif

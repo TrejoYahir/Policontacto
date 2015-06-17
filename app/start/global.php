@@ -107,3 +107,16 @@ function getUserType()
 {
     return Auth::user()->tipo;
 }
+
+function tieneNoLeidos($mensajes)
+{
+    $cont = 0;
+    foreach ($mensajes as $m) {
+        if($m->leido == 0)
+        {
+            $cont++;
+        }
+    }
+    return $cont;
+
+}

@@ -38,6 +38,9 @@
 						@elseif(esEmpresa() && !isset(Auth::user()->empresa->nombre))
 							<span class="elemento-info"><a href="{{ route('perfilEmpresa') }}" class="nombre-avatar">{{ Auth::user()->email  }}</a></span>
 						@endif
+						@if(!(isset(Auth::user()->empresa->nombre)) && !(isset(Auth::user()->estudiante->nombre)))
+							<a href="{{ route('logout') }}" class="salir-p"><i class="fa fa-times-circle-o"></i></a>
+						@endif
 					</div>	
 
 				@else
@@ -82,8 +85,9 @@
 						<i class="fa fa-compass icono-menu"></i> <span>Explorar</span>
 					</div>
 				@endif
-				<div class="elemento-menu {{ (Request::is('mensajes/*') ? 'active' : '') }}" onclick="window.location='{{ route('chat') }}';">
-					<i class="fa fa-comments icono-menu"></i> <span>Mensajes</span>
+				<div class="elemento-menu {{ ((Request::is('mensajes/*') || Request::is('mensajes')) ? 'active' : '') }}" onclick="window.location='{{ route('chat') }}';">
+					<span id="mensajes-count"></span>
+					<i class="fa fa-comments icono-menu"></i> <span>Mensajes</span>					
 				</div>
 				@if(esEstudiante() && isset(Auth::user()->estudiante->nombre))
 					<div class="elemento-menu {{ (Request::is('perfil') ? 'active' : '') }}" onclick="window.location='{{ route('perfil') }}';">
@@ -110,8 +114,26 @@
 	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript" charset="utf-8"></script>
 	<script>window.jQuery || document.write('<script src="{{ asset('js/lib/jquery-2.1.1.min.js') }}"><\/script>')</script>
 	<script src="{{ asset('js/home.js') }}"></script>
-	<script>var	 url_ruta_buscar = '{{ route("buscar") }}';</script>
+	<script>
+		var	 url_ruta_buscar = '{{ route("buscar") }}';
+		var	 url_mensajes_count = '{{ route("mensajesCount") }}';
+	</script>
 	<script src="{{ asset('js/busqueda.js') }}"></script>
+	@if(Auth::check() && isset(Auth::user()->estudiante->nombre) || Auth::check() && isset(Auth::user()->empresa->nombre))
+		<script>
+			(function getMensajesCount(){
+			$.ajax({ 
+					type: 'POST',
+					url: url_mensajes_count,
+					success: function(data){
+						$("#mensajes-count").html(data);
+					}, 
+					complete: getMensajesCount,
+					timeout: 30000 
+				});
+			})();
+		</script>
+	@endif
 	@yield('custom-js')
 	</body>
 </html>

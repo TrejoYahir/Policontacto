@@ -39,6 +39,11 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
 		return $this->hasMany('Policontacto\Entidades\Publicacion', 'usuario_id', 'id')->orderBy('fecha_p', 'DESC');
 	}
 
+	public function mensajes()
+	{
+		return $this->hasMany('Policontacto\Entidades\Mensaje', 'usuario_id', 'id')->orderBy('fecha', 'DESC');
+	}
+
 
 	public function getEstudiante()
 	{

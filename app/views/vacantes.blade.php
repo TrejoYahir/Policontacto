@@ -10,13 +10,16 @@
 			<div class="lista-vacantes">
 				<div class="titulo-vacantes u-elemento-v">Vacantes <i class="fa fa-pencil-square-o icono-crear-v" id="llamar-form"></i></div>
 				@forelse(Auth::user()->empresa->vacantes as $vacante)
-					<div class="u-elemento-v">
+					<div class="u-elemento-v" data-id="{{$vacante->id}}">
 						<div class="info-elemento">
 							<div class="info-elemento-t">
 								<span class="nombre-elemento">{{$vacante->nombre}}</span>
 								<span class="correo-elemento">{{$vacante->descripcion}}</span>
 							</div>
 						</div>
+						<span class="btn-eliminar" onclick="borrarVacante(this, {{$vacante->id}})">
+							<i class="fa fa-times"></i>
+						</span>
 					</div>
 				@empty
 						<p class="sin-info s-i-v">No has creado ninguna vacante.</p>
@@ -65,6 +68,24 @@ $(document).ready(function()
 	});
 
 });
+
+function borrarVacante(e, id) {
+	$.ajax({
+		url: 'eliminar/vacante/'+id,
+		type: 'DELETE',
+		beforeSend: function() {
+			$(e).parent().fadeOut();
+		},
+		success: function(data) {
+			console.log(data);
+		},
+		error: function(errors){
+			console.log("error recibir: ");
+			console.log(errors)
+		}
+
+	});
+}
 </script>
 
 @stop

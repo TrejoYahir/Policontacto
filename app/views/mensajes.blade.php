@@ -26,7 +26,7 @@
 				<div class="titulo-s-chat">Estudiantes:</div>
 					@forelse($usuarios->estudiantes as $e)
 						@if($e->user->id != Auth::user()->id)
-							<div class="elemento-u-chat @if($destinatario->slug == $e->slug) chat-activo @endif" onclick="window.location='{{ route('mensajes', [$e->slug]) }}';">
+							<div class="elemento-u-chat @if($destinatario->slug == $e->slug) chat-activo @endif @if(tieneNoLeidos($e->user->mensajes) > 0) pendiente @endif" onclick="window.location='{{ route('mensajes', [$e->slug]) }}';">
 								<div class="img-u-c-chat">
 									<img src="{{ asset($e->url_foto) }}" class="img-u-chat">
 								</div>
@@ -34,17 +34,20 @@
 									<a href="{{ route('estudiante', [$e->slug]) }}"><span class="nombre-u-chat">{{$e->nombre_corto}}</span></a>									
 									<span class="email-u-chat">{{$e->user->email}}</span>
 								</div>
-							</div>
+								@if(tieneNoLeidos($e->user->mensajes) > 0)
+									<span class="bolita-indicadora"><i class="fa fa-circle"></i></span>
+								@endif
+							</div>						
 						@endif
 					@empty
-						<div class="elemento-u-chat" id="sin-mensajes">No hay contactos en esta sección</div>
+						<div class="elemento-u-chat">No hay contactos en esta sección</div>
 					@endforelse
 				</div>
 				<div class="contactos-container">
 				<div class="titulo-s-chat">Empresas:</div>
 					@forelse($usuarios->empresas as $em)
 						@if($em->user->id != Auth::user()->id)
-							<div class="elemento-u-chat @if($destinatario->slug == $em->slug) chat-activo @endif" onclick="window.location='{{ route('mensajes', [$em->slug]) }}';">
+							<div class="elemento-u-chat @if($destinatario->slug == $em->slug) chat-activo @endif @if(tieneNoLeidos($em->user->mensajes) > 0) pendiente @endif" onclick="window.location='{{ route('mensajes', [$em->slug]) }}';">
 								<div class="img-u-c-chat">
 									<img src="{{ asset($em->url_foto) }}" class="img-u-chat">
 								</div>
@@ -52,10 +55,13 @@
 									<a href="{{ route('empresa', [$em->slug]) }}"><span class="nombre-u-chat">{{$em->nombre}}</span></a>									
 									<span class="email-u-chat">{{$em->user->email}}</span>
 								</div>
+								@if(tieneNoLeidos($em->user->mensajes) > 0)
+									<i class="fa fa-circle bolita-indicadora"></i>
+								@endif
 							</div>
 						@endif
 					@empty
-						<div class="elemento-u-chat" id="sin-mensajes">No hay contactos en esta sección</div>
+						<div class="elemento-u-chat">No hay contactos en esta sección</div>
 					@endforelse
 				</div>				
 			</div>

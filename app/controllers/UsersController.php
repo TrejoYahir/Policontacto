@@ -341,6 +341,13 @@ class UsersController extends BaseController
 		}
 	}
 
+	public function mensajesCount()
+	{
+
+		$count = $this->mensajeRepo->mensajesCount();
+		return $count;
+	}
+
 	//Solo vistas
 
 	public function empresa()
@@ -362,11 +369,40 @@ class UsersController extends BaseController
 	public function guardarVacante()
 	{
 
-		$vacante = $this->vacanteRepo->nuevaVacante();
-		$manager = new VacanteManager($vacante, Input::all());	
+		$publicacion = $this->publicacionRepo->nuevaPublicacion();
+		$managerp = new PublicarManager($publicacion, array('contenido' => 'Se ha agregado una nueva vacante como <strong>' . Input::get('nombre') . '</strong>'));
+		$managerp->save();
+
+		$vacante = $this->vacanteRepo->nuevaVacante();				
+		$vacante->publicacion_id = $publicacion->id;
+
+		$manager = new VacanteManager($vacante, Input::all());
+
 		$manager->save();
 
 		return Redirect::back();
+
+	}
+
+	public function eliminarVacante($id)
+	{
+		$vacante = $this->vacanteRepo->find($id);
+		$publicacion = $vacante->publicacion;
+
+		$vacante->delete();
+		$publicacion->delete();
+
+		 return Response::json(array(
+			'vacante' => true,
+			'message' => 'Eliminados'
+		));	
+	}
+
+	public function verVacantes($slug)
+	{
+		$empresa = $this->empresaRepo->findBySlug($slug);
+
+		return View::make('verVacantes', compact('empresa'));
 
 	}
 

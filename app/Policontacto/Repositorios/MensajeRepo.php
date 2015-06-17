@@ -33,4 +33,10 @@ class MensajeRepo extends BaseRepo
 		return Mensaje::where('remitente', '=', $remitente)->where('destinatario', '=',$destinatario)->orWhere('destinatario', '=',$remitente)->where('remitente', '=',$destinatario)->where('leido', '=', '1')->get();
 	}
 
+	public function mensajesCount()
+	{
+		$tipo = getUserType();
+		return Mensaje::where('destinatario', '=', \Auth::user()->$tipo->slug)->where('leido', '=', '0')->count();
+	}
+
 }

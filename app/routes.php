@@ -17,26 +17,33 @@ Route::group(['before' => 'guest'],  function(){
 	Route::get('registro/v/{confirmationCode}', ['as' => 'confirmacion', 'uses' => 'UsersController@confirmar']);
 	Route::get('registro/v/e/{confirmationCode}', ['as' => 'confirmacionEmpresa', 'uses' => 'UsersController@confirmarEmpresa']);
 
+	Route::get('posts/usuario/{id}', ['as' => 'obtenerPublicacionesExternas', 'uses' => 'UsersController@obtenerPublicacionesExternas']);
 });
 
 //Acceso solo con autentificación
 Route::group(['before' => 'auth'],  function(){
 
 	Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@logout']);
+
 	Route::post('publicar', ['as' => 'publicar', 'uses' => 'UsersController@publicar']);
 	Route::get('posts', ['as' => 'obtenerPublicaciones', 'uses' => 'UsersController@obtenerPublicaciones']);
-	Route::get('posts/usuario/{id}', ['as' => 'obtenerPublicacionesExternas', 'uses' => 'UsersController@obtenerPublicacionesExternas']);
+
 	Route::get('a/{slug}', ['as' => 'area', 'uses' => 'AreaController@area']);
 	Route::get('u/{slug}', ['as' => 'estudiante', 'uses' => 'AreaController@estudiante']);
 	Route::get('e/{slug}', ['as' => 'empresa', 'uses' => 'AreaController@empresa']);
+
 	Route::get('buscar', ['as' => 'buscar', 'uses' => 'UsersController@buscar']);
+
 	Route::get('mensajes', ['as' => 'chat', 'uses' => 'UsersController@iniciarChat']);
 	Route::get('mensajes/{usuario}', ['as' => 'mensajes', 'uses' => 'UsersController@chat']);
 	Route::post('chat/enviarMensaje', ['as' => 'enviarMensaje', 'uses' => 'UsersController@enviarMensaje']);
 	Route::post('chat/getmensajes', ['as' => 'getMensajes', 'uses' => 'UsersController@getMensajes']);
+	Route::post('chat/mensajesCount', ['as' => 'mensajesCount', 'uses' => 'UsersController@mensajesCount']);
 
 	Route::get('cuenta', ['as' => 'cuenta', 'uses' => 'UsersController@cuenta']);
 	Route::put('cuenta', ['as' => 'cambiarCuenta', 'uses' => 'UsersController@cambiarCuenta']);
+
+	Route::get('vacantes/{slug}', ['as' => 'verVacantes', 'uses' => 'UsersController@verVacantes']);
 
 	//solo estudiantes
 	Route::group(['before' => 'esEstudiante'],  function(){
@@ -51,8 +58,10 @@ Route::group(['before' => 'auth'],  function(){
 		
 		Route::get('em/perfil', ['as' => 'perfilEmpresa', 'uses' => 'UsersController@perfilEmpresa']);
 		Route::put('em/perfil', ['as' => 'cambiarPerfilEmpresa', 'uses' => 'UsersController@cambiarPerfilEmpresa']);
+
 		Route::get('vacantes', ['as' => 'vacantes', 'uses' => 'UsersController@vacantes']);
 		Route::post('guardar/vacante', ['as' => 'guardarVacante', 'uses' => 'UsersController@guardarVacante']);
+		Route::delete('eliminar/vacante/{id}', ['as' => 'eliminarVacante', 'uses' => 'UsersController@eliminarVacante']);
 		
 	});
 

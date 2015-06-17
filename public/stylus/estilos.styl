@@ -184,10 +184,27 @@ footer
 	color white
 	font-weight bold
 	text-align left
+	
+#mensajes-count
+	border-radius(50%)
+	width 0.7rem
+	height 0.7rem
+	position absolute
+	display block
+	margin 0
+	padding .4rem
+	color white
+	background-color #D32F2F
+	bottom 2rem
+	left -.45rem
+	font-size .7rem
+	font-weight normal
+	text-align center
 
 .elemento-menu
 	padding 1.4rem
 	transition-duration .2s
+	position relative
 	color white
 	cursor pointer
 	&:nth-child(1)
@@ -278,7 +295,16 @@ footer
 	position relative
 	&:focus
 		outline none
-		
+	
+.salir-p
+	color white
+	font-size 1.4rem
+	font-weight 'normal'
+	vertical-align middle
+	margin-top .3rem
+	&:hover
+		color azul
+
 .icono-buscar
 	display block
 	vertical-align middle
@@ -1057,6 +1083,7 @@ label
 	display inline-block
 	vertical-align top
 	margin-top 0.5rem
+	position relative
 
 .nombre-elemento
 	display block
@@ -1119,6 +1146,8 @@ label
 	color gris-f
 	font-size 1.1rem
 	display inline-block
+	&:hover
+		color azul
 
 .correo-chat
 	color gris-c
@@ -1143,6 +1172,14 @@ label
 .titulo-s-chat
 	text-align left
 	padding .5rem
+	display block
+
+.bolita-indicadora
+	color azul-hover
+	position absolute
+	top 35%
+	right 1rem
+	font-size .3rem
 
 #mensajes
 	padding 0.5rem 1rem
@@ -1214,6 +1251,7 @@ label
 	border-top 1px solid #e5e5e5
 	transition 0.2s
 	cursor pointer
+	position relative
 	&:hover
 		background-color #BBDEFB
 	&:nth-last-child()
@@ -1238,6 +1276,8 @@ label
 .nombre-u-chat
 	color gris-f
 	display block
+	&:hover
+		color azul
 
 //vacantes
 
@@ -1251,6 +1291,7 @@ label
 	display block
 	padding 1rem
 	color gris
+	position relative
 	background-color white
 	vertical-align top
 	margin .3rem .2rem
@@ -1263,6 +1304,15 @@ label
 	&:hover
 		.nombre-elemento
 			color azul
+
+.btn-eliminar
+	position absolute
+	right 1rem
+	top 1rem
+	cursor pointer
+	color gris-c
+	&:hover
+		color gris
 
 .s-i-v
 	margin 1rem .3rem
@@ -1388,6 +1438,8 @@ label
 		min-width 100%
 		text-align center
 		
+	.contenido-novedades
+		width 90%		
 
 @media screen and (min-width 85rem)
 
@@ -1531,6 +1583,9 @@ label
 	.seccion-mensajes
 		width 80%
 		margin-left 3rem
+	
+	.titulo-s-chat
+		display none
 
 @media screen and (max-width 45rem)
 
@@ -1580,6 +1635,16 @@ label
 		margin .5rem 0 00
 		width 17rem
 		padding .6rem 1.2rem
+
+	.input-mensaje
+		width 100% -2rem
+		position relative
+		left 0
+	
+	#btn-enviar-mensaje
+		width 100% -2rem
+		position relative
+		left 0
 
 @media screen and (max-width 23rem)
 

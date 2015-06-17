@@ -25,6 +25,7 @@ class CreateTblPublicacionTable extends Migration
             $table->foreign('usuario_id')->references('id')->on('tblUsuario')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
