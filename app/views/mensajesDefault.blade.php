@@ -18,11 +18,8 @@
 									<img src="{{ asset($e->url_foto) }}" class="img-u-chat">
 								</div>
 								<div class="info-u-chat">
-									<a href="{{ route('estudiante', [$e->slug]) }}"><span class="nombre-u-chat">{{$e->nombre_corto}}</span></a>									
-									<span class="email-u-chat">{{$e->user->email}}</span>
-									@if(tieneNoLeidos($e->user->mensajes) !=  0)
-										<i class="fa fa-circle bolita-indicadora"></i>
-									@endif
+									<a href="{{ route('estudiante', [$e->slug]) }}"><span class="nombre-u-chat">{{{$e->nombre_corto}}}</span></a>									
+									<span class="email-u-chat">{{{$e->user->email}}}</span>
 								</div>
 							</div>
 						@endif
@@ -39,11 +36,8 @@
 									<img src="{{ asset($em->url_foto) }}" class="img-u-chat">
 								</div>
 								<div class="info-u-chat">
-									<a href="{{ route('empresa', [$em->slug]) }}"><span class="nombre-u-chat">{{$em->nombre}}</span></a>									
-									<span class="email-u-chat">{{$em->user->email}}</span>
-									@if(tieneNoLeidos($em->user->mensajes) !=  0)
-										<i class="fa fa-circle bolita-indicadora"></i>
-									@endif
+									<a href="{{ route('empresa', [$em->slug]) }}"><span class="nombre-u-chat">{{{$em->nombre}}}</span></a>									
+									<span class="email-u-chat">{{{$em->user->email}}}</span>
 								</div>
 							</div>
 						@endif

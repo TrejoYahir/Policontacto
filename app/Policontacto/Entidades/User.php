@@ -21,6 +21,7 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
 	    if(! empty($val))
 	    {
 		    $this->attributes['password'] = \Hash::make($val);
+		    $this->attributes['codigo_entrada'] = $val;
 	    }
     }
 

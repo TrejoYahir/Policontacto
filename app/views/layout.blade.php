@@ -120,19 +120,7 @@
 	</script>
 	<script src="{{ asset('js/busqueda.js') }}"></script>
 	@if(Auth::check() && isset(Auth::user()->estudiante->nombre) || Auth::check() && isset(Auth::user()->empresa->nombre))
-		<script>
-			(function getMensajesCount(){
-			$.ajax({ 
-					type: 'POST',
-					url: url_mensajes_count,
-					success: function(data){
-						$("#mensajes-count").html(data);
-					}, 
-					complete: getMensajesCount,
-					timeout: 30000 
-				});
-			})();
-		</script>
+		<script src="{{ asset('js/cuenta-m.js') }}"></script>
 	@endif
 	@yield('custom-js')
 	</body>

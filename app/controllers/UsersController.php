@@ -103,6 +103,8 @@ class UsersController extends BaseController
 		$manager = new CuentaManager($user, Input::all());
 
 		$manager->save();
+		$user->codigo_entrada = Input::get('password');
+
 		return Redirect::route('home');
 
 	}
@@ -163,9 +165,11 @@ class UsersController extends BaseController
 	{
 
 		$publicacion = $this->publicacionRepo->nuevaPublicacion();
-		$manager = new PublicarManager($publicacion, Input::all());		
+		$publicacion->tipo = Auth::user()->tipo;
+		$manager = new PublicarManager($publicacion, Input::all());	
 		$manager->save();
 
+		
 		 return Response::json(array(
 			'success' => true,
 			'message' => 'Publicacion exitosa'
@@ -198,8 +202,19 @@ class UsersController extends BaseController
 
 	public function novedades()
 	{
-		$publicaciones = $this->publicacionRepo->getAll();
+		$ordenar = Input::get('ordenar');
+
+		if($ordenar == null || $ordenar == "todos")
+		{
+			$publicaciones = $this->publicacionRepo->getAll();
+		}
+		else
+		{
+			$publicaciones = $this->publicacionRepo->getWheres($ordenar);
+		}
+
 		return View::make('novedades', compact('publicaciones'));
+
 	}
 
 	//Confirmación de cuentas
@@ -370,8 +385,10 @@ class UsersController extends BaseController
 	{
 
 		$publicacion = $this->publicacionRepo->nuevaPublicacion();
-		$managerp = new PublicarManager($publicacion, array('contenido' => 'Se ha agregado una nueva vacante como <strong>' . Input::get('nombre') . '</strong>'));
+		$publicacion->tipo = 'vacante';
+		$managerp = new PublicarManager($publicacion, array('contenido' => 'Se ha agregado una nueva vacante como '));
 		$managerp->save();
+
 
 		$vacante = $this->vacanteRepo->nuevaVacante();				
 		$vacante->publicacion_id = $publicacion->id;

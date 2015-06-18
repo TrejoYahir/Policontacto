@@ -27,7 +27,7 @@ function anadirPost(data){
 						.text(fecha);
 
 		nuevaPublicacion.find('.contenido-publicacion')
-						.html(contenido);		
+						.text(contenido);		
 
 		$( publicaciones ).prepend( nuevaPublicacion );
 		$( publicaciones ).masonry( 'reloadItems' );

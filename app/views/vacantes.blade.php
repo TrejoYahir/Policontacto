@@ -12,9 +12,9 @@
 				@forelse(Auth::user()->empresa->vacantes as $vacante)
 					<div class="u-elemento-v" data-id="{{$vacante->id}}">
 						<div class="info-elemento">
-							<div class="info-elemento-t">
-								<span class="nombre-elemento">{{$vacante->nombre}}</span>
-								<span class="correo-elemento">{{$vacante->descripcion}}</span>
+							<div class="info-elemento-v">
+								<span class="nombre-elemento-v">{{{$vacante->nombre}}}</span>
+								<span class="correo-elemento">{{{$vacante->descripcion}}}</span>
 							</div>
 						</div>
 						<span class="btn-eliminar" onclick="borrarVacante(this, {{$vacante->id}})">

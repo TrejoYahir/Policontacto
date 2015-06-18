@@ -955,7 +955,7 @@ label
 .contenido-publicacion
 	display block
 	text-align left
-	padding .5rem .3rem
+	padding .8rem .5rem
 	background-color #F5F5F5
 	border .5px solid #ccc
 	word-wrap break-word
@@ -989,19 +989,36 @@ label
 
 //novedades
 
+.link-vacante-p
+	display block
+	margin-top .5rem
+	font-size .8rem
+	&:hover
+		color naranja
+
+.nombre-p-empresa
+	&:hover
+		color naranja
+
+.c-pub-vacante
+	display block
+
 .max-novedades
 	max-width 100%
 	margin-top 5rem
 	padding 0
 	display block
 	text-align center
-	
+
+.contenido-publicacion
+	font-weight bold
+
 .contenido-novedades
 	position relative
 	top 0
 	text-align center
 	display inline-block
-	width 70%
+	width 90%
 
 .publicaciones-n
 	width 100%
@@ -1014,6 +1031,7 @@ label
 	min-width 18rem
 	padding 1rem
 	color gris
+	position relative
 	background-color white
 	vertical-align top
 	margin .3rem .2rem
@@ -1025,6 +1043,35 @@ label
 	color gris-c
 	font-weight bold
 
+
+.pager
+	list-style-type none
+	margin 0
+	display inline-block
+	padding 0
+	> *
+		display inline-block
+		margin 0 .5rem
+
+
+.disabled
+	color gris-c
+		
+.p-empresa
+	background-color azul-hover
+	color white
+
+.contenido-e
+	background-color azul-fuerte
+	font-weight normal
+	
+
+.v-info
+	color naranja
+	position absolute
+	right 1rem
+	top 1rem
+	font-size .7rem
 
 //areas
 
@@ -1085,6 +1132,18 @@ label
 	margin-top 0.5rem
 	position relative
 
+.info-elemento-v
+	display inline-block
+	vertical-align top
+	position relative
+
+.nombre-elemento-v
+	display block
+	font-weight bold
+	font-size 1.1rem
+	&:hover
+		color gris
+
 .nombre-elemento
 	display block
 	font-weight bold
@@ -1108,6 +1167,10 @@ label
 	font-size 1.1rem
 
 //chat
+
+.pendiente
+	background-color #BBDEFB
+
 .chat
 	text-align center
 	background-color #e5e5e5
@@ -1167,7 +1230,8 @@ label
 	margin-left 12rem
 
 .chat-activo
-	background-color #BBDEFB
+	background-color #536DFE
+	color white
 
 .titulo-s-chat
 	text-align left
@@ -1411,8 +1475,14 @@ label
 	width 20rem
 	&:hover
 		background-color azul-hover
-	
+		
 
+@media screen and (max-width 56.6rem)
+	
+	.publicacion-n
+		min-width 90%
+
+	
 @media screen and (min-width 56.66rem)
 
 	.login-form
@@ -1442,9 +1512,16 @@ label
 	.publicaciones
 		min-width 100%
 		text-align center
+	
+
+
+@media screen and (max-width 85rem)
+
+	.publicacion-n
+		min-width 45%
 		
 	.contenido-novedades
-		width 90%		
+		margin-left 3rem
 
 @media screen and (min-width 85rem)
 
@@ -1468,6 +1545,9 @@ label
 	.titulo
 		display none
 	
+	.publicacion-n
+		min-width 90%
+
 	.max-perfil
 		max-width 100%
 		min-width 100%
@@ -1585,12 +1665,11 @@ label
 	#barra-chat
 		min-width 2rem
 	
-	.seccion-mensajes
-		width 80%
-		margin-left 3rem
-	
 	.titulo-s-chat
 		display none
+	
+	.contenido-novedades
+		margin-left 1rem
 
 @media screen and (max-width 45rem)
 

@@ -19,8 +19,8 @@
 								<img src="{{ asset($estudiante->url_foto)  }}" class="img-i-elemento">
 							</div>
 							<div class="info-elemento-t">
-								<span class="nombre-elemento">{{$estudiante->nombre . ' ' . $estudiante->apellidos}}</span>
-								<span class="correo-elemento">{{$estudiante->user->email}}</span>
+								<span class="nombre-elemento">{{{$estudiante->nombre . ' ' . $estudiante->apellidos}}}</span>
+								<span class="correo-elemento">{{{$estudiante->user->email}}}</span>
 							</div>
 						</div>
 					</div>
@@ -37,8 +37,8 @@
 								<img src="{{ asset($empresa->url_foto)  }}" class="img-i-elemento">
 							</div>
 							<div class="info-elemento-t">
-								<span class="nombre-elemento">{{$empresa->nombre }}</span>
-								<span class="correo-elemento">{{$empresa->user->email}}</span>
+								<span class="nombre-elemento">{{{$empresa->nombre }}}</span>
+								<span class="correo-elemento">{{{$empresa->user->email}}}</span>
 							</div>
 						</div>
 					</div>

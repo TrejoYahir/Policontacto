@@ -21,7 +21,14 @@ class PublicacionRepo extends BaseRepo
 	public function getAll()
 	{
 		
-			return Publicacion::all();
+			return Publicacion::orderBy('fecha_p', 'desc')->simplePaginate(25);
+
+	}
+
+	public function getWheres($ordenar)
+	{
+		
+			return Publicacion::where('tipo', '=', $ordenar)->orderBy('fecha_p', 'desc')->simplePaginate(25);
 
 	}
 

@@ -19,7 +19,6 @@ class PublicarManager extends BaseManager
 	{
 
 		$data['fecha_p'] = date('Y-m-d H:i:s');
-		$data['tipo'] = 'texto'; 
 
 		return $data;
 	}

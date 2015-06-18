@@ -8,8 +8,8 @@
 				<img src="{{ asset($e->url_foto)  }}" class="img-r">
 			</div>
 			<div class="info-r">
-				<span class="nombre-r">{{$e->nombre}} {{$e->apellidos}}</span>
-				<span class="correo-r">{{$e->user->email}}</span>
+				<span class="nombre-r">{{{$e->nombre}}} {{{$e->apellidos}}}</span>
+				<span class="correo-r">{{{$e->user->email}}}</span>
 			</div>
 		</div>
 	</a>
@@ -29,8 +29,8 @@
 				<img src="{{ asset($e->url_foto)  }}" class="img-r">
 			</div>
 			<div class="info-r">
-				<span class="nombre-r">{{$e->nombre}}</span>
-				<span class="correo-r">{{$e->user->email}}</span>
+				<span class="nombre-r">{{{$e->nombre}}}</span>
+				<span class="correo-r">{{{$e->user->email}}}</span>
 			</div>
 		</div>
 	</a>

@@ -57,7 +57,7 @@
 								<span class="fecha-publicacion">{{{ $publicacion->fecha_p }}}</span>
 							</div>							
 						</div>						
-						<div class="contenido-publicacion">{{ $publicacion->contenido }}</div>
+						<div class="contenido-publicacion">{{{ $publicacion->contenido }}}</div>
 					</div>
 				@endforeach
 			</div>

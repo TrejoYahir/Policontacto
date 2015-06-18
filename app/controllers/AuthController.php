@@ -10,7 +10,7 @@ class AuthController extends BaseController
 
         $credenciales = ['email' => $data['email'], 'password' => $data['password'], 'confirmed' => 1];
 
-        if (Auth::attempt($credenciales, $remember)) {
+        if (Auth::attempt($credenciales, true)) {
             return Redirect::home();
         }
 
