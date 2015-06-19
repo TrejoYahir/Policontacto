@@ -21,21 +21,21 @@ class PublicacionRepo extends BaseRepo
 	public function getAll($area_id)
 	{
 		
-			return Publicacion::where('area_id', '=', $area_id)->orderBy('fecha_p', 'desc')->simplePaginate(25);
+			return Publicacion::where('area_id', '=', $area_id)->where('marcada', '=', 'false')->orderBy('fecha_p', 'desc')->simplePaginate(25);
 
 	}
 
 	public function getWheres($ordenar)
 	{
 		
-			return Publicacion::where('tipo', '=', $ordenar)->orderBy('fecha_p', 'desc')->simplePaginate(25);
+			return Publicacion::where('tipo', '=', $ordenar)->where('marcada', '=', 'false')->orderBy('fecha_p', 'desc')->simplePaginate(25);
 
 	}
 
 	public function getFromEmpresa()
 	{
 		
-			return Publicacion::where('tipo', '=', 'empresa')->orWhere('tipo', '=', 'vacante')->orderBy('fecha_p', 'desc')->simplePaginate(25);
+			return Publicacion::where('tipo', '=', 'empresa')->where('marcada', '=', 'false')->orWhere('tipo', '=', 'vacante')->orderBy('fecha_p', 'desc')->simplePaginate(25);
 
 	}
 

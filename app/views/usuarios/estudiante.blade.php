@@ -22,6 +22,11 @@
 					<div class="info-section">
 						<span class="info-perfil"><a href="{{ route('area', [$estudiante->area->slug]) }}">{{{ $estudiante->area->nombre }}}</a></span><br>
 					</div>
+					@if($estudiante->user->marcadas > 3)
+						<div class="info-section">
+							<span class="info-perfil marcado"><strong>Este usuario ha intentado actividades sospechosas y/o ha publicado contenido ofensivo.</strong></span><br>
+						</div>
+					@endif
 					<div class="info-section">
 						<span class="info-perfil align-left">{{{ $estudiante->descripcion  }}}</span><br>
 					</div>		

@@ -18,4 +18,10 @@ class UserRepo extends BaseRepo
 		return User::all();
 	}
 
+	public function actualizar($faltas)
+	{
+		return User::where('id', '=', \Auth::user()->id)->update(array('marcadas' => $faltas));
+
+	}
+
 } 

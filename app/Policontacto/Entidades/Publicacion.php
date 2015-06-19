@@ -9,7 +9,7 @@ class Publicacion extends \Eloquent
 
     protected $dates = ['deleted_at'];
     protected $table = 'tblPublicacion';
-    protected $fillable = ['contenido', 'fecha_p', 'tipo'];
+    protected $fillable = ['contenido', 'fecha_p', 'tipo', 'marcada'];
 
     public function user()
     {

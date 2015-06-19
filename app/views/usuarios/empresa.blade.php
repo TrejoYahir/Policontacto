@@ -27,7 +27,12 @@
 					</div>
 					<div class="info-section">
 						<span class="info-perfil">{{{ $empresa->ubicacion  }}}</span><br>
-					</div>	
+					</div>
+					@if($empresa->user->marcadas > 3)
+						<div class="info-section">
+							<span class="info-perfil marcado"><strong>Este usuario ha intentado actividades sospechosas y/o ha publicado contenido ofensivo en repetidas ocasiones.</strong></span><br>
+						</div>
+					@endif
 					<div class="info-section">
 						<span class="info-perfil">{{{ $empresa->descripcion  }}}</span><br>
 					</div>		

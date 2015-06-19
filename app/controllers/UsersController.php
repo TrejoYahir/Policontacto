@@ -177,6 +177,13 @@ class UsersController extends BaseController
 		$manager = new PublicarManager($publicacion, Input::all());	
 		$manager->save();
 
+		if($publicacion->marcada == 1)
+		{
+			$faltas = Auth::user()->marcadas;
+			$marcas = $faltas+1;
+			$this->userRepo->actualizar($marcas);
+		}
+
 		
 		 return Response::json(array(
 			'success' => true,

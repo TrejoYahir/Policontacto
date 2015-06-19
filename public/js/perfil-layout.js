@@ -45,7 +45,7 @@ function anadirPost(data){
 
 			if(tipo == "empresa")
 			{
-				nuevaPublicacion.find('v-info')
+				nuevaPublicacion.find('.v-info')
 								.hide();
 			}
 
