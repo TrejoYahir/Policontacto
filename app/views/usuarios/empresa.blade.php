@@ -46,19 +46,49 @@
 			@endif
 			<div class="publicaciones" id="publicaciones">
 				@foreach ($empresa->user->publicaciones as $publicacion)
-					<div class="publicacion">
-						<div class="publicacion-header">
-							<a href="{{ route('empresa', [$empresa->slug]) }}">
-								<img src="{{ asset($empresa->url_foto) }}" alt="" class="img-avatar avatar-publicacion">
-							</a>
-							<div class="info-publicacion">
-								<a class="nombre-publicacion" href="{{ route('empresa', [$empresa->slug]) }}">{{{ $empresa->nombre  }}}</a><br>
-								<span class="email-publicacion">{{{ $empresa->user->email }}}</span><br>
-								<span class="fecha-publicacion">{{{ $publicacion->fecha_p }}}</span>
-							</div>							
-						</div>						
-						<div class="contenido-publicacion">{{{ $publicacion->contenido }}}</div>
-					</div>
+					@if($publicacion->tipo == "empresa")
+
+						<div class="publicacion p-empresa">
+							<div class="publicacion-header">
+								<a href="{{ route('empresa', [$publicacion->user->empresa->slug]) }}">
+									<img src="{{ asset($publicacion->user->empresa->url_foto) }}" alt="" class="img-avatar avatar-publicacion">
+								</a>
+								<div class="info-publicacion">
+									<a class="nombre-publicacion nombre-p-empresa" href="{{ route('empresa', [$publicacion->user->empresa->slug]) }}">
+											{{{ $publicacion->user->empresa->nombre  }}}
+									</a><br>
+									<span class="email-publicacion">{{{ $publicacion->user->email }}}</span><br>
+									<span class="fecha-publicacion">{{{ $publicacion->fecha_p }}}</span>
+								</div>							
+							</div>						
+							<div class="contenido-publicacion contenido-e">{{{ $publicacion->contenido }}}</div>
+						</div>
+
+					@elseif($publicacion->tipo == "vacante")
+
+						<div class="publicacion publicacion-vacante p-empresa">
+							<div class="publicacion-header">
+								<a href="{{ route('empresa', [$publicacion->user->empresa->slug]) }}">
+									<img src="{{ asset($publicacion->user->empresa->url_foto) }}" alt="" class="img-avatar avatar-publicacion">
+								</a>
+								<div class="info-publicacion info-e">
+									<a class="nombre-publicacion nombre-p-empresa" href="{{ route('empresa', [$publicacion->user->empresa->slug]) }}">
+											{{{ $publicacion->user->empresa->nombre  }}}
+									</a><br>
+									<span class="email-publicacion">{{{ $publicacion->user->email }}}</span><br>
+									<span class="fecha-publicacion">{{{ $publicacion->fecha_p }}}</span>
+								</div>							
+								<span class="v-info">Vacante <i class="fa fa-circle"></i></span>
+							</div>						
+							<div class="contenido-publicacion contenido-e">
+								<span class="c-pub-vacante">										
+									<strong>{{{ $publicacion->contenido }}}</strong>
+								</span>
+								<a href="{{ route('verVacantes', [$publicacion->user->empresa->slug]) }}" class="link-vacante-p"> <i class="fa fa-eye"></i> Ver las otras vacantes</a>
+							</div>
+						</div>
+
+					@endif
 				@endforeach
 			</div>
 		</div>
@@ -76,6 +106,7 @@
     	url_foto = "{{ asset($empresa->url_foto) }}",
     	url_empresa = "{{ route('empresa', [$empresa->slug]) }}";
     	url_estudiante = "{{ route('empresa', [$empresa->slug]) }}";
+    	url_vacante = "{{ route('verVacantes', [$empresa->slug]) }}";
 
     	@if($empresa->user->id == Auth::user()->id)
 			var	url_ruta = '{{ route("obtenerPublicaciones") }}';

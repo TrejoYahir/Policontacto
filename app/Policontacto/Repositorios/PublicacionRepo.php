@@ -18,10 +18,10 @@ class PublicacionRepo extends BaseRepo
 		return Publicacion::lists('contenido', 'id', 'url_archivo', 'fecha_p');
 	}
 
-	public function getAll()
+	public function getAll($area_id)
 	{
 		
-			return Publicacion::orderBy('fecha_p', 'desc')->simplePaginate(25);
+			return Publicacion::where('area_id', '=', $area_id)->orderBy('fecha_p', 'desc')->simplePaginate(25);
 
 	}
 
@@ -32,10 +32,27 @@ class PublicacionRepo extends BaseRepo
 
 	}
 
+	public function getFromEmpresa()
+	{
+		
+			return Publicacion::where('tipo', '=', 'empresa')->orWhere('tipo', '=', 'vacante')->orderBy('fecha_p', 'desc')->simplePaginate(25);
+
+	}
+
+	public function actualizar()
+	{
+			$tipow = getUserType();
+			return Publicacion::where('usuario_id', '=', \Auth::user()->id)->update(array('area_id' => \Auth::user()->$tipow->area_id));
+
+	}
+
+
 	public function nuevaPublicacion()
 	{
+		$tipow = getUserType();
 		$publicacion = new Publicacion();
 		$publicacion->usuario_id = \Auth::user()->id;
+		$publicacion->area_id = \Auth::user()->$tipow->area_id;
 		return $publicacion;
 	}
 

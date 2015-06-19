@@ -17,7 +17,9 @@ class CreateTblPublicacionTable extends Migration
             $table->increments('id');
 
             $table->integer('usuario_id')->unsigned();
+            $table->integer('area_id')->unsigned();
             $table->string('contenido');
+            $table->boolean('marcada')->default(false);
             $table->string('url_archivo')->nullable();
             $table->dateTime('fecha_p');
             $table->enum('tipo', ['estudiante', 'empresa','vacante', 'archivo']);

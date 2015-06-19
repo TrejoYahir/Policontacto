@@ -132,6 +132,9 @@ class UsersController extends BaseController
 		$manager = new PerfilManager($estudiante, Input::all());		
 		$manager->save();
 
+		if(isset($user->estudiante->area_id))
+			$this->publicacionRepo->actualizar();
+
 		return Redirect::route('home');			
 
 	}
@@ -154,6 +157,11 @@ class UsersController extends BaseController
 		$empresa = $user->getEmpresa();
 		$manager = new EmpresaPerfilManager($empresa, Input::all());		
 		$manager->save();
+
+		if(isset($user->empresa->area_id))
+			$this->publicacionRepo->actualizar();
+
+
 
 		return Redirect::route('home');			
 
@@ -203,10 +211,15 @@ class UsersController extends BaseController
 	public function novedades()
 	{
 		$ordenar = Input::get('ordenar');
+		$tip = getUserType();
 
 		if($ordenar == null || $ordenar == "todos")
 		{
-			$publicaciones = $this->publicacionRepo->getAll();
+			$publicaciones = $this->publicacionRepo->getAll(Auth::user()->$tip->area_id);
+		}
+		else if($ordenar == "empresa")
+		{
+			$publicaciones = $this->publicacionRepo->getFromEmpresa();
 		}
 		else
 		{
@@ -386,7 +399,7 @@ class UsersController extends BaseController
 
 		$publicacion = $this->publicacionRepo->nuevaPublicacion();
 		$publicacion->tipo = 'vacante';
-		$managerp = new PublicarManager($publicacion, array('contenido' => 'Se ha agregado una nueva vacante como '));
+		$managerp = new PublicarManager($publicacion, array('contenido' => 'Se ha agregado una nueva vacante como ' . Input::get('nombre')));
 		$managerp->save();
 
 

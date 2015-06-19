@@ -19,6 +19,7 @@ class CreateTblUsuarioTable extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('tipo');
+            $table->integer('marcadas')->default(0)->unsigned();
             $table->boolean('confirmed')->default(0);
             $table->string('confirmation_code')->nullable();
             $table->boolean('admin')->default(false);

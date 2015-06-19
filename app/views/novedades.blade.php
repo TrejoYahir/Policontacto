@@ -5,15 +5,23 @@
 
 @section('content')
 
+
 <section class="perfil-seccion">
 	<div class="max-container max-novedades">
+		<div class="ordenar">
+			<a href="/" class="ordenar-por @if(Request::get('ordenar') == null) link-activo @endif"><span class="bullet-container"><i class="fa fa-circle"></i></span> Mostrar todo</a>
+			<a href="?ordenar=estudiante" class="ordenar-por @if(Request::get('ordenar') == 'estudiante') link-activo @endif"><span class="bullet-container"><i class="fa fa-circle"></i></span> Solo de estudiantes</a>
+			<a href="?ordenar=empresa" class="ordenar-por @if(Request::get('ordenar') == 'empresa') link-activo @endif"><span class="bullet-container"><i class="fa fa-circle"></i></span> Solo de empresas</a>
+			<a href="?ordenar=vacante" class="ordenar-por @if(Request::get('ordenar') == 'vacante') link-activo @endif"><span class="bullet-container"><i class="fa fa-circle"></i></span> Solo vacantes</a>
+		</div>
 		<span class="display-none">{{{$tipox = Auth::user()->tipo}}}</span>		
 		<div class="contenido-novedades">
 		@if(Auth::check())
 			@if(isset(Auth::user()->estudiante->id) || isset(Auth::user()->empresa->id))
 				<div class="publicaciones-n" id="publicaciones-n">
 					@forelse($publicaciones as $publicacion)
-						<span class="display-none">{{{$tipou = $publicacion->user->tipo}}}</span>
+					<span class="display-none">{{{$tipou = $publicacion->user->tipo}}}</span>
+					@if($publicacion->user->$tipou->area_id == Auth::user()->$tipox->area_id)
 						@if($publicacion->tipo == "estudiante" && $tipou == "estudiante")
 
 
@@ -73,7 +81,7 @@
 								</div>						
 								<div class="contenido-publicacion contenido-e">
 									<span class="c-pub-vacante">										
-										{{{ $publicacion->contenido }}} <strong>{{{$publicacion->vacante->nombre}}}</strong>
+										<strong>{{{ $publicacion->contenido }}}</strong>
 									</span>
 									<a href="{{ route('verVacantes', [$publicacion->user->$tipou->slug]) }}" class="link-vacante-p"> <i class="fa fa-eye"></i> Ver las otras vacantes</a>
 								</div>
@@ -81,11 +89,12 @@
 
 
 						@endif
+					@endif
 					@empty
 					    <p class="sin-info">Aún no hay nada que mostrar</p>
 					@endforelse
 				</div>
-				<div>{{$publicaciones->links()}}</div>
+				<div>{{$publicaciones->appends(Request::only('ordenar'))->links()}}</div>
 			@else
 				<p class="sin-info">No hay nada que mostrar</p>
 			@endif

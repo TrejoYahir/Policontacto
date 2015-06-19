@@ -12,7 +12,7 @@
 				@forelse($empresa->vacantes as $vacante)
 					<div class="u-elemento-v" data-id="{{$vacante->id}}">
 						<div class="info-elemento">
-							<div class="info-elemento-t">
+							<div class="info-elemento-v">
 								<span class="nombre-elemento">{{{$vacante->nombre}}}</span>
 								<span class="correo-elemento">{{{$vacante->descripcion}}}</span>
 							</div>
