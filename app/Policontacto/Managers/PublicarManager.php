@@ -17,7 +17,7 @@ class PublicarManager extends BaseManager
 
 	public function hacerCambios($data)
 	{
-		$groserias = array("puta","joder","coño","verga","bitch","fuck","idiota","estupido","estúpido","puto","mierda","pendejo","gilipollas","cagon","cagones","cagar","chinga","chingo","chingón","chingó");
+		$groserias = array("puta","joder","coño","verga","bitch","fuck","idiota","estupido","estúpido","puto","mierda","pendejo","gilipollas","cagon","cagones","cagar","chinga","chingo","chingón","chingó", "putos", "putas", "pendejos", "pendejas", "pinches", "idiotas", "estúpidos", "estupidos", "imbécil", "imbecil", "imbeciles", "imbéciles", "coños", "fucking", "pendeja", "cojón", "cojon", "cojones", "cagar", "cagado", "cagados", "cagón", "pinche", "negros asquerosos", "chingar", "vergas", "bitches", "fucker", "coños", "cagon");
 
 		$data['fecha_p'] = date('Y-m-d H:i:s');
 
