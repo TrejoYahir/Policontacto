@@ -10,4 +10,9 @@ class Plantel extends \Eloquent
 		return $this->hasMany('Policontacto\Entidades\Estudiante');
 	}
 
+	public function area() 
+	{
+		return $this->belongsTo('Policontacto\Entidades\Area', 'area_id', 'id');
+	}
+
 }

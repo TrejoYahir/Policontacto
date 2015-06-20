@@ -43,6 +43,8 @@ Route::group(['before' => 'auth'],  function(){
 	Route::get('cuenta', ['as' => 'cuenta', 'uses' => 'UsersController@cuenta']);
 	Route::put('cuenta', ['as' => 'cambiarCuenta', 'uses' => 'UsersController@cambiarCuenta']);
 
+	Route::get('dropdown', ['as' => 'dropdown', 'uses' => 'UsersController@dropdown']);
+
 	Route::get('vacantes/{slug}', ['as' => 'verVacantes', 'uses' => 'UsersController@verVacantes']);
 
 	//solo estudiantes

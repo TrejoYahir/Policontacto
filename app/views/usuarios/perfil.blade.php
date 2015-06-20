@@ -35,10 +35,20 @@
 				<div class="select-form">
 					<div class="form-inline">
 						<span class="texto-form">Área</span><br/>
-						{{ Campo::select('area_id', $areas, null, ['class' => 'combo-perfil']) }}
-						{{ Campo::select('plantel_id', $planteles, null, ['class' => 'combo-perfil']) }}
-						{{ Campo::select('especialidad_id', $especialidades, null, ['class' => 'combo-perfil']) }}
-				</div>
+						{{ Form::select('area_id', $areas, null, ['class' => 'combo-perfil', 'id' => 'area_id']) }}
+						<select id="plantel_id" name="plantel_id" class='combo-perfil'>
+							<option>Seleccione un plantel</option>
+							@if(isset(Auth::user()->estudiante->area_id))
+								<option value='{{$estudiante->plantel_id}}' selected>{{$estudiante->plantel->nombre}}</option>
+							@endif
+						</select>
+						<select id="especialidad_id" name="especialidad_id" class='combo-perfil'>
+							<option>Seleccione una especialidad</option>
+							@if(isset(Auth::user()->estudiante->area_id))
+								<option value='{{$estudiante->especialidad_id}}' selected>{{$estudiante->especialidad->nombre}}</option>
+							@endif
+						</select>
+					</div>
 				</div>				
 			</div>
 			<div class="form-section align-center">
@@ -59,5 +69,33 @@
 @section('custom-js')
 
 <script src="{{ asset('js/editar-perfil.js') }}"></script>
+<script>
+	$(document).ready(function(){
+
+		$('#area_id').change(function(){
+
+			$.get("{{ route('dropdown') }}",
+
+			{ opcion: $(this).val() },
+
+			function(data) {
+
+				$('#plantel_id').empty();
+
+				$.each(data['planteles'], function(key, element) {
+					$('#plantel_id').append("<option value='" + key + "'>" + element + "</option>");
+				});
+
+				$('#especialidad_id').empty();
+				
+				$.each(data['especialidades'], function(key, element) {
+					$('#especialidad_id').append("<option value='" + key + "'>" + element + "</option>");
+				});
+			
+			});
+		});
+
+	});		
+</script>
 
 @stop

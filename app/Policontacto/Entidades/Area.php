@@ -15,4 +15,14 @@ class Area extends \Eloquent
         return $this->hasMany('Policontacto\Entidades\Empresa');
     }
 
+    public function especialidades()
+    {
+        return $this->hasMany('Policontacto\Entidades\Especialidad');
+    }
+
+    public function planteles()
+    {
+        return $this->hasMany('Policontacto\Entidades\Plantel');
+    }
+
 }

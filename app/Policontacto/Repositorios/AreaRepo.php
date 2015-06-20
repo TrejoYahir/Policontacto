@@ -14,7 +14,7 @@ class AreaRepo extends BaseRepo
 
 	public function getList()
 	{
-		return Area::lists('nombre', 'id');
+		return ['' => 'Selecciona un área'] + Area::lists('nombre', 'id');
 	}
 
 } 

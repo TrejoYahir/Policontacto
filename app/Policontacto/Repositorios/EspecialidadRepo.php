@@ -14,7 +14,7 @@ class EspecialidadRepo extends BaseRepo
 
 	public function getList()
 	{
-		return Especialidad::lists('nombre', 'id');
+		return Especialidad::orderBy('nombre', 'DESC')->lists('nombre', 'id');
 	}
 
 } 

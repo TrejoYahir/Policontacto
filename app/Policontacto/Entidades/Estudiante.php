@@ -15,6 +15,16 @@ class Estudiante extends \Eloquent
         return $this->belongsTo('Policontacto\Entidades\Area');
     }
 
+    public function plantel()
+    {
+        return $this->belongsTo('Policontacto\Entidades\Plantel');
+    }
+
+    public function especialidad()
+    {
+        return $this->belongsTo('Policontacto\Entidades\Especialidad');
+    }
+
 
     public function setUrlFotoAttribute($val)
     {

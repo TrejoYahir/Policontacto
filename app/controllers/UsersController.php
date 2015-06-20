@@ -167,6 +167,20 @@ class UsersController extends BaseController
 
 	}
 
+	public function dropdown()
+	{
+
+		$id = Input::get('opcion');
+		$planteles = $this->areaRepo->find($id)->planteles;
+		$especialidades = $this->areaRepo->find($id)->especialidades;
+
+		return Response::json(array(
+			'planteles' => $planteles->lists('nombre', 'id'),
+			'especialidades' => $especialidades->lists('nombre', 'id')
+		));	
+
+	}
+
 	//publicaciones
 
 	public function publicar()
